@@ -52,6 +52,8 @@ export const getStaticProps: GetStaticProps<
     getAllPosts(),
   ])
 
+  console.log(settings);
+
   return {
     props: {
       posts,
