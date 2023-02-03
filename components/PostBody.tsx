@@ -7,21 +7,13 @@
  * https://portabletext.org/
  *
  */
-import { PortableText } from '@portabletext/react'
-
 import styles from './PostBody.module.css'
-import YouTubeEmbed from './rich-text/YouTubeEmbed'
-
-const components = {
-  types: {
-    'youtube': YouTubeEmbed
-  }
-}
+import RichText from './rich-text/RichText'
 
 export default function PostBody({ content }) {
   return (
     <div className={`mx-auto max-w-2xl ${styles.portableText}`}>
-      <PortableText value={content} components={components} />
+      <RichText content={content} />
     </div>
   )
 }
