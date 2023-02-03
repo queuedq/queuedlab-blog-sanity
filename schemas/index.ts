@@ -1,0 +1,6 @@
+export {default as author} from 'schemas/author'
+export {default as post} from 'schemas/post'
+export {default as richText} from 'schemas/richText'
+export {default as settings} from 'schemas/settings'
+export {default as tag} from 'schemas/tag'
+export {default as youtube} from 'schemas/youtube'

@@ -10,9 +10,7 @@ import { settingsPlugin, settingsStructure } from 'plugins/settings'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
-import authorType from 'schemas/author'
-import postType from 'schemas/post'
-import settingsType from 'schemas/settings'
+import * as schemas from 'schemas'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Blog with Sanity.io'
@@ -24,21 +22,21 @@ export default defineConfig({
   title,
   schema: {
     // If you want more content types, you can add them to this array
-    types: [authorType, postType, settingsType],
+    types: Object.values(schemas),
   },
   plugins: [
     deskTool({
-      structure: settingsStructure(settingsType),
+      structure: settingsStructure(schemas.settings),
       // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
       defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    settingsPlugin({ type: settingsType.name }),
+    settingsPlugin({ type: schemas.settings.name }),
     // Add the "Open preview" action
     productionUrl({
       apiVersion,
       previewSecretId,
-      types: [postType.name, settingsType.name],
+      types: [schemas.post.name, schemas.settings.name],
     }),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
