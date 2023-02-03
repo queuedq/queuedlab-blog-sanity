@@ -3,6 +3,8 @@ import { format, parseISO } from 'date-fns'
 import { defineField, defineType } from 'sanity'
 
 import authorType from './author'
+import richTextType from './richText'
+import tagType from './tag'
 
 /**
  * This file is the schema definition for a post.
@@ -42,8 +44,7 @@ export default defineType({
     defineField({
       name: 'content',
       title: 'Content',
-      type: 'array',
-      of: [{ type: 'block' }],
+      type: richTextType.name,
     }),
     defineField({
       name: 'excerpt',
@@ -63,6 +64,20 @@ export default defineType({
       title: 'Date',
       type: 'datetime',
       initialValue: () => new Date().toISOString(),
+    }),
+    defineField({
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: tagType.name }],
+        },
+      ],
+      // TODO: Use custom component?
+      // See https://www.sanity.io/docs/your-first-input-component
+      // or use an existing plugin https://www.sanity.io/plugins
     }),
     defineField({
       name: 'author',
