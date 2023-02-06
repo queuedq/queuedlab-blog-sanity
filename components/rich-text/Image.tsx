@@ -6,7 +6,7 @@ export default function Image({ value }) {
 
   // TODO: write alt
   // TODO: set size
-  // TODO: use next/image
+  // TODO: use next/image or https://www.sanity.io/plugins/next-sanity-image
   return (
     <img src={url} alt="image" />
   )
