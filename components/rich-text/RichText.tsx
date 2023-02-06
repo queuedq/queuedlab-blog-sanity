@@ -9,15 +9,19 @@
  */
 import { PortableText } from '@portabletext/react'
 
+import Image from './Image'
 import YouTubeEmbed from './YouTubeEmbed'
 
 const components = {
   types: {
-    'youtube': YouTubeEmbed
+    image: Image,
+    youtube: YouTubeEmbed
   }
 }
 
 export default function RichText({ content }) {
+  // console.log(JSON.stringify(content))
+
   return (
     <PortableText value={content} components={components} />
   )
