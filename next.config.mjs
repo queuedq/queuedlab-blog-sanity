@@ -4,6 +4,9 @@
 // https://github.com/bem/next-global-css
 import { withGlobalCss } from 'next-global-css'
 
+// TODO: Fix warning "The root value has an unexpected property"
+// that seems to be occuring due to `withGlobalCss`
+
 /** @type {import('next').NextConfig} */
 const config = withGlobalCss({
   images: {
