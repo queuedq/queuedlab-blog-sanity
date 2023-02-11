@@ -19,26 +19,13 @@ export default function YouTubeEmbed({ value }) {
   }
 
   return (
-    <p
-      style={{
-        paddingBottom: '56.25%',
-        position: 'relative',
-        height: 0,
-        overflow: 'hidden',
-      }}
-    >
+    <div style={{ aspectRatio: 16 / 9 }}>
       <iframe
         title="YouTube Embed"
         src={url}
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-        }}
+        className="w-full h-full"
       />
-    </p>
+    </div>
   )
 }
