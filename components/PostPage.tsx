@@ -5,7 +5,6 @@ import PostBody from 'components/PostBody'
 import PostHeader from 'components/PostHeader'
 import PostList from 'components/PostList'
 import PostPageHead from 'components/PostPageHead'
-import PostTitle from 'components/PostTitle'
 import SectionSeparator from 'components/SectionSeparator'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
@@ -42,7 +41,7 @@ export default function PostPage(props: PostPageProps) {
         <Container>
           <BlogHeader title={title} level={2} />
           {preview && !post ? (
-            <PostTitle>Loading…</PostTitle>
+            <div>Loading…</div>
           ) : (
             <>
               <article>

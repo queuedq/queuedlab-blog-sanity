@@ -1,5 +1,5 @@
 import AuthorAvatar from 'components/AuthorAvatar'
-import CoverImage from 'components/CoverImage'
+// import CoverImage from 'components/CoverImage'
 import Date from 'components/PostDate'
 import type { Post } from 'lib/sanity.queries'
 import Link from 'next/link'
@@ -13,9 +13,9 @@ export default function HeroPost(
   const { title, coverImage, date, excerpt, author, slug } = props
   return (
     <section>
-      <div className="mb-8 md:mb-16">
+      {/* <div className="mb-8 md:mb-16">
         <CoverImage slug={slug} title={title} image={coverImage} priority />
-      </div>
+      </div> */}
       <div className="mb-20 md:mb-28 md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8">
         <div>
           <h3 className="mb-4 text-4xl leading-tight lg:text-6xl">
