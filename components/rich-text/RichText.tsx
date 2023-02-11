@@ -9,12 +9,12 @@
  */
 import { PortableText } from '@portabletext/react'
 
-import Image from './Image'
+import Figure from './Figure'
 import YouTubeEmbed from './YouTubeEmbed'
 
 const components = {
   types: {
-    image: Image,
+    figure: Figure,
     youtube: YouTubeEmbed
   }
 }

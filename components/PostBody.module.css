@@ -23,3 +23,13 @@
 .portableText a:hover {
   @apply text-blue-800;
 }
+
+/* figure */
+.portableText figure {
+  @apply my-6
+}
+
+/* iframe embed (e.g. YouTube) */
+.portableText iframe {
+  @apply my-6
+}
