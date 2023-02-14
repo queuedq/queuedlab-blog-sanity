@@ -1,4 +1,3 @@
-import { PortableText } from '@portabletext/react'
 import Link from 'next/link'
 
 export default function BlogHeader({
@@ -12,7 +11,7 @@ export default function BlogHeader({
     case 1:
       return (
         <header>
-          <h1 className="mt-8 mb-8 text-xl font-light">
+          <h1 className="pt-8 pb-8 text-xl font-light">
             {title}
           </h1>
         </header>
@@ -21,7 +20,7 @@ export default function BlogHeader({
     case 2:
       return (
         <header>
-          <h2 className="mt-8 mb-8 text-xl font-light">
+          <h2 className="pt-8 pb-8 text-xl font-light">
             <Link href="/" className="hover:underline">
               {title}
             </Link>

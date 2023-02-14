@@ -45,12 +45,7 @@ export default function PostPage(props: PostPageProps) {
           ) : (
             <>
               <article>
-                <PostHeader
-                  title={post.title}
-                  coverImage={post.coverImage}
-                  date={post.date}
-                  author={post.author}
-                />
+                <PostHeader post={post} />
                 <PostBody content={post.content} />
               </article>
               <SectionSeparator />

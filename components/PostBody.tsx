@@ -12,7 +12,7 @@ import RichText from './rich-text/RichText'
 
 export default function PostBody({ content }) {
   return (
-    <div className={`${styles.portableText}`}>
+    <div className={`mt-16 ${styles.portableText}`}>
       <RichText content={content} />
     </div>
   )

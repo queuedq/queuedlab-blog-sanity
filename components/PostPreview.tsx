@@ -31,7 +31,7 @@ export default function PostPreview({
         </Link>
       </h3>
       {excerpt && <p className="mt-2 text-xl text-gray-500">{excerpt}</p>}
-      <div className="mt-6 text-sm leading-none">
+      <div className="mt-6 text-sm">
         {/* TODO: add tag page */}
         {tags && tags.length > 0 && (
           <>
