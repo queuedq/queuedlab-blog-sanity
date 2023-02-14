@@ -12,7 +12,7 @@ import RichText from './rich-text/RichText'
 
 export default function PostBody({ content }) {
   return (
-    <div className={`mx-auto max-w-2xl ${styles.portableText}`}>
+    <div className={`${styles.portableText}`}>
       <RichText content={content} />
     </div>
   )

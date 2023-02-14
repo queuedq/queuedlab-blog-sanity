@@ -17,7 +17,7 @@ export interface IndexPageProps {
 
 export default function IndexPage(props: IndexPageProps) {
   const { preview, loading, posts, settings } = props
-  const { title = demo.title, description = demo.description } = settings || {}
+  const { title = demo.title } = settings || {}
 
   return (
     <>
@@ -26,7 +26,7 @@ export default function IndexPage(props: IndexPageProps) {
       </Head>
       <Layout preview={preview} loading={loading}>
         <Container>
-          <BlogHeader title={title} description={description} level={1} />
+          <BlogHeader title={title} level={1} />
           <PostList posts={posts} />
         </Container>
         <IntroTemplate />
