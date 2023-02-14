@@ -25,13 +25,13 @@ export default function PostPreview({
           priority={false}
         />
       </div> */}
-      <h3 className="mb-2 text-2xl font-bold">
+      <h3 className="text-2xl font-bold">
         <Link href={`/posts/${slug}`} className="hover:underline">
           {title}
         </Link>
       </h3>
-      {excerpt && <p className="text-xl text-gray-500">{excerpt}</p>}
-      <div className="mt-4 text-sm leading-none">
+      {excerpt && <p className="mt-2 text-xl text-gray-500">{excerpt}</p>}
+      <div className="mt-6 text-sm leading-none">
         {/* TODO: add tag page */}
         {tags && tags.length > 0 && (
           <>
