@@ -9,7 +9,11 @@ export default function PostPreview({
   excerpt,
   author,
   slug,
+  tags,
 }: Omit<Post, '_id'>) {
+  console.log(title)
+  console.log(tags)
+
   return (
     <div className="flex flex-col pt-8 pb-8 border-b border-solid border-slate-200">
       {/* TODO: show cover image */}
@@ -26,13 +30,17 @@ export default function PostPreview({
           {title}
         </Link>
       </h3>
-      {/* TODO: add category */}
       {excerpt && <p className="text-xl text-gray-500">{excerpt}</p>}
       <div className="mt-4 text-sm leading-none">
-        <Link href={`/categories/`} className="order-first mb-2 capitalize hover:underline">
-          {"Category"}
-        </Link>
-        {' · '}
+        {/* TODO: add tag page */}
+        {tags && tags.length > 0 && (
+          <>
+            <Link href={`/tags/${tags[0].slug}`} className="hover:underline">
+              {tags[0].name}
+            </Link>
+            <span className="px-1">{' · '}</span>
+          </>
+        )}
         <span className="text-gray-500">
           <Date dateString={date} />
         </span>

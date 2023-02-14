@@ -14,6 +14,7 @@ export default function PostList({ posts }: { posts: Post[] }) {
             author={post.author}
             slug={post.slug}
             excerpt={post.excerpt}
+            tags={post.tags}
           />
         ))}
       </div>
