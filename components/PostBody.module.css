@@ -6,22 +6,65 @@
 .portableText ul,
 .portableText ol,
 .portableText blockquote {
-  @apply my-6;
+  @apply my-4;
 }
 
-.portableText h2 {
-  @apply mt-12 mb-4 text-3xl font-bold leading-snug;
+/* headings */
+.portableText h1, 
+.portableText h2, 
+.portableText h3, 
+.portableText h4, 
+.portableText h5, 
+.portableText h6 {
+  @apply text-gray-800 font-bold;
 }
+.portableText h1 { @apply mt-12 mb-4 leading-snug text-5xl; }
+.portableText h2 { @apply mt-12 mb-4 leading-snug text-3xl; }
+.portableText h3 { @apply mt-8 mb-4 leading-normal text-2xl; }
+.portableText h4 { @apply mt-8 mb-4 leading-normal text-xl; }
+.portableText h5 { @apply mt-8 mb-4 leading-normal text-base; }
+.portableText h6 { @apply mt-8 mb-4 leading-normal text-sm; }
 
-.portableText h3 {
-  @apply mt-8 mb-4 text-2xl font-bold leading-snug;
-}
-
+/* link */
 .portableText a {
-  @apply text-blue-500 underline;
+  @apply text-brand-500 border-b border-brand-300;
+  @apply transition-all duration-100 ease-in-out;
 }
 .portableText a:hover {
-  @apply text-blue-800;
+  @apply bg-brand-50 text-brand-600 border-brand-400;
+}
+
+/* unordered list */
+.portableText ul { @apply ml-8; }
+.portableText li>ul { @apply my-0; }
+.portableText ul>li,
+.portableText ul>li p {
+  @apply relative my-2;
+}
+.portableText ul>li::before {
+  content: "•";
+  @apply absolute -left-4 -translate-x-1/2 my-auto;
+  @apply font-bold text-brand tracking-tight rounded-full;
+}
+
+/* ordered list */
+.portableText ol { @apply ml-8; }
+.portableText li>ol { @apply my-0; }
+.portableText ol { counter-reset: ol-counter; }
+.portableText ol>li,
+.portableText ol>li p {
+  counter-increment: ol-counter;
+  @apply relative my-2;
+}
+.portableText ol>li::before {
+  content: counter(ol-counter) ". ";
+  @apply absolute top-0 bottom-0 -left-2 -translate-x-full my-auto;
+  @apply font-semibold text-brand tracking-tight tabular-nums;
+}
+
+/* blockquote */
+.portableText blockquote {
+  @apply pl-4 border-l-4 border-gray-500 text-gray-500 italic;
 }
 
 /* figure */

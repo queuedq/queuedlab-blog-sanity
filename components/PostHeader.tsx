@@ -8,7 +8,7 @@ export default function PostHeader(
   const { title, coverImage, date, excerpt, author, slug, tags } = props.post
   return (
     <>
-      <h1 className="mt-8 text-5xl font-bold leading-tight tracking-tight">
+      <h1 className="mt-8 text-5xl text-gray-800 font-bold leading-tight tracking-tight">
         {title}
       </h1>
       {/* <div className="hidden md:mb-12 md:block">
