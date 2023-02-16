@@ -20,11 +20,11 @@ export default function BlogHeader({
     case 2:
       return (
         <header>
-          <h2 className="pt-8 pb-8 text-xl font-light">
+          <div className="pt-8 pb-8 text-xl font-light">
             <Link href="/" className="hover:underline">
               {title}
             </Link>
-          </h2>
+          </div>
         </header>
       )
 
