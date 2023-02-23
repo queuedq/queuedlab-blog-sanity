@@ -11,9 +11,6 @@ export default function PostPreview({
   slug,
   tags,
 }: Omit<Post, '_id'>) {
-  console.log(title)
-  console.log(tags)
-
   return (
     <div className="flex flex-col pt-8 pb-8 border-b border-solid border-slate-200">
       {/* TODO: show cover image */}
