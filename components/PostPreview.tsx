@@ -30,17 +30,14 @@ export default function PostPreview({
           {title}
         </Link>
       </h3>
-      {excerpt && <p className="mt-2 text-xl text-gray-500">{excerpt}</p>}
+      {/* TODO: add tag page */}
+      {tags && tags.length > 0 && (
+        <Link href={`/tags/${tags[0].slug}`} className="mb-1 text-brand font-semibold hover:underline -order-1">
+          {tags[0].name}
+        </Link>
+      )}
+      {excerpt && <p className="mt-2 text-lg text-gray-500">{excerpt}</p>}
       <div className="mt-6 text-sm">
-        {/* TODO: add tag page */}
-        {tags && tags.length > 0 && (
-          <>
-            <Link href={`/tags/${tags[0].slug}`} className="hover:underline">
-              {tags[0].name}
-            </Link>
-            <span className="px-1">{' · '}</span>
-          </>
-        )}
         <span className="text-gray-500">
           <Date dateString={date} />
         </span>
