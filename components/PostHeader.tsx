@@ -7,8 +7,8 @@ export default function PostHeader(
 ) {
   const { title, coverImage, date, excerpt, author, slug, tags } = props.post
   return (
-    <>
-      <h1 className="mt-8 text-5xl text-gray-800 font-bold leading-tight tracking-tight">
+    <div className="mt-8 flex flex-col">
+      <h1 className="text-5xl text-gray-800 font-bold leading-tight tracking-tight">
         {title}
       </h1>
       {/* <div className="hidden md:mb-12 md:block">
@@ -20,21 +20,16 @@ export default function PostHeader(
       <div className="mb-6 block md:hidden">
         {author && <Avatar name={author.name} picture={author.picture} />}
       </div> */}
-      {excerpt && <p className="mt-4 text-2xl text-gray-500">{excerpt}</p>}
-      <div className="mt-4 text-base">
-        {/* TODO: add tag page */}
-        {tags && tags.length > 0 && (
-          <>
-            <Link href={`/tags/${tags[0].slug}`} className="hover:underline">
-              {tags[0].name}
-            </Link>
-            <span className="px-1">{' · '}</span>
-          </>
-        )}
-        <span className="text-gray-500">
-          <Date dateString={date} />
-        </span>
+      {/* TODO: add tag page */}
+      {tags && tags.length > 0 && (
+        <Link href={`/tags/${tags[0].slug}`} className="text-lg text-brand font-semibold hover:underline -order-1">
+          {tags[0].name}
+        </Link>
+      )}
+      {excerpt && <p className="mt-2 text-xl text-gray-500 leading-normal">{excerpt}</p>}
+      <div className="mt-6 text-sm text-gray-500">
+        <Date dateString={date} />
       </div>
-    </>
+    </div>
   )
 }
