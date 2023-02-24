@@ -62,6 +62,11 @@
   @apply font-semibold text-brand tracking-tight tabular-nums;
 }
 
+/* horizontal rule */
+.portableText hr {
+  @apply my-8 border-t-gray-200;
+}
+
 /* blockquote */
 .portableText blockquote {
   @apply pl-4 border-l-4 border-gray-500 text-gray-500 italic;

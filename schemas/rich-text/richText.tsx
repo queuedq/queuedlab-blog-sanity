@@ -1,6 +1,7 @@
 import { defineField, defineType } from 'sanity'
 
 import FigureType from './figure'
+import HorizontalRuleType from './horizontalRule'
 import YoutubeType from './youtube'
 
 const mathInlineIcon = () => (
@@ -25,6 +26,10 @@ export default defineType({
     defineField({
       name: 'figure',
       type: FigureType.name,
+    }),
+    defineField({
+      name: 'horizontalRule',
+      type: HorizontalRuleType.name,
     }),
     defineField({
       name: 'latex',

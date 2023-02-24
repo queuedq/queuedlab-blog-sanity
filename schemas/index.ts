@@ -1,6 +1,7 @@
 export {default as author} from 'schemas/author'
 export {default as post} from 'schemas/post'
 export {default as figure} from 'schemas/rich-text/figure'
+export {default as horizontalRule} from 'schemas/rich-text/horizontalRule'
 export {default as richText} from 'schemas/rich-text/richText'
 export {default as youtube} from 'schemas/rich-text/youtube'
 export {default as settings} from 'schemas/settings'

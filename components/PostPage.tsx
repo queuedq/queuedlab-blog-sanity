@@ -5,7 +5,6 @@ import PostBody from 'components/PostBody'
 import PostHeader from 'components/PostHeader'
 import PostList from 'components/PostList'
 import PostPageHead from 'components/PostPageHead'
-import SectionSeparator from 'components/SectionSeparator'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
 import Head from 'next/head'
@@ -48,8 +47,7 @@ export default function PostPage(props: PostPageProps) {
                 <PostHeader post={post} />
                 <PostBody content={post.content} />
               </article>
-              <SectionSeparator />
-              {morePosts?.length > 0 && <PostList posts={morePosts} />}
+              {/* {morePosts?.length > 0 && <PostList posts={morePosts} />} */}
             </>
           )}
         </Container>
