@@ -4,12 +4,8 @@ import FigureType from './figure'
 import HorizontalRuleType from './horizontalRule'
 import YoutubeType from './youtube'
 
-const mathInlineIcon = () => (
-  <span>
-    <span style={{ fontWeight: 'bold' }}>⍺</span>
-  </span>
-)
-const mathIcon = () => <span style={{ fontWeight: 'bold' }}>∑</span>
+const mathInlineIcon = () => <span className="font-serif font-bold">⍺</span>
+const mathIcon = () => <span className="font-serif font-bold">∑</span>
 
 export default defineType({
   name: 'richText',

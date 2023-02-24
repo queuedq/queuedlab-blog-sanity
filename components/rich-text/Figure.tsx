@@ -10,11 +10,9 @@ export default function Figure({ value }) {
       <Image
         {...imageProps}
         alt={value.alt ?? ''}
-        className="mx-auto"  
+        className="mx-auto"
       />
-      <figcaption
-        className="mt-4 text-center"
-      >
+      <figcaption>
         {value.caption}
       </figcaption>
     </figure>

@@ -6,26 +6,18 @@ export default function YouTubeEmbed({ value }) {
 
   if (!id) {
     return (
-      <p
-        style={{
-          color: 'red',
-          fontWeight: 700,
-          textAlign: 'center'
-        }}
-      >
+      <p className="text-center text-red-500 font-bold">
         Missing YouTube video URL
       </p>
     )
   }
 
   return (
-    <div style={{ aspectRatio: 16 / 9 }}>
-      <iframe
-        title="YouTube Embed"
-        src={url}
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        className="w-full h-full"
-      />
-    </div>
+    <iframe
+      title="YouTube Embed"
+      src={url}
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      className="w-full aspect-video"
+    />
   )
 }

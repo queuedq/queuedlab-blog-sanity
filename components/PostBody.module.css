@@ -2,11 +2,16 @@
   @apply text-base leading-relaxed;
 }
 
+/* margins */
 .portableText p,
 .portableText ul,
 .portableText ol,
 .portableText blockquote {
   @apply my-4;
+}
+.portableText figure,
+.portableText iframe {
+  @apply my-8;
 }
 
 /* headings */
@@ -73,11 +78,6 @@
 }
 
 /* figure */
-.portableText figure {
-  @apply my-6
-}
-
-/* iframe embed (e.g. YouTube) */
-.portableText iframe {
-  @apply my-6
+.portableText figure figcaption {
+  @apply mt-4 text-center text-gray-500;
 }
