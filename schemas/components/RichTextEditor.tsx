@@ -30,8 +30,10 @@ function handlePaste (input) {
     // https://github.com/sanity-io/sanity/issues/3977
     return {
       insert: [
+        // TODO: fix type issue (probably sanity is responsible for it)
         normalizeBlock({
           _type: 'block',
+          // @ts-ignore
           children: [{_type: 'span', text}],
         }),
       ],
