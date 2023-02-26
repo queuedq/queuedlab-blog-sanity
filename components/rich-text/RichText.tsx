@@ -9,12 +9,14 @@
  */
 import { PortableText } from '@portabletext/react'
 
+import BlockCode from './BlockCode'
 import Figure from './Figure'
 import Latex from './Latex'
 import YouTubeEmbed from './YouTubeEmbed'
 
 const components = {
   types: {
+    code: BlockCode,
     figure: Figure,
     horizontalRule: () => <hr />,
     latex: Latex,

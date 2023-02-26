@@ -1,7 +1,8 @@
 /**
  * This config is used to set up Sanity Studio that's mounted on the `/pages/studio/[[...index]].tsx` route
  */
-
+import { StreamLanguage } from '@codemirror/language'
+import { codeInput } from '@sanity/code-input'
 import { visionTool } from '@sanity/vision'
 import { apiVersion, dataset, previewSecretId, projectId } from 'lib/sanity.api'
 import { previewDocumentNode } from 'plugins/previewPane'
@@ -48,7 +49,19 @@ const config = defineConfig({
     
     // Media browser
     media(),
-    // Latex input
+    // Rich text plugins
+    codeInput({
+      codeModes: [
+        {
+          name: 'c',
+          loader: () => import('@codemirror/legacy-modes/mode/clike').then(({c}) => StreamLanguage.define(c)),
+        },
+        {
+          name: 'cpp',
+          loader: () => import('@codemirror/lang-cpp').then(({cpp}) => cpp()),
+        },
+      ],
+    }),    
     latexInput(),
   ],
 })

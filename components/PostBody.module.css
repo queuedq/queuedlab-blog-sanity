@@ -6,7 +6,8 @@
 .portableText p,
 .portableText ul,
 .portableText ol,
-.portableText blockquote {
+.portableText blockquote,
+.portableText pre {
   @apply my-4;
 }
 .portableText figure,
@@ -40,16 +41,13 @@
 }
 
 /* inline code */
-.portableText code {
+.portableText :not(pre) code {
   @apply mx-0.5 px-1 pt-0.5 pb-px;
   @apply border border-brand-200 rounded bg-brand-50 text-sm;
 }
 
-/* TODO: block code */
+/* block code */
 .portableText pre { @apply rounded; }
-.portableText pre code { /* reset for block code */
-  @apply m-0 p-0 border-none bg-none;
-}
 
 /* unordered list */
 .portableText ul { @apply ml-8; }
