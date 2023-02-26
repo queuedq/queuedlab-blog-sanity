@@ -1,27 +1,12 @@
-import Head from 'next/head'
-import { NextStudio } from 'next-sanity/studio'
-import { NextStudioHead } from 'next-sanity/studio/head'
-import { StudioLayout, StudioProvider } from 'sanity'
-import config from 'sanity.config'
-import { createGlobalStyle } from 'styled-components'
+import {NextStudio} from 'next-sanity/studio'
+import {ReactElement} from 'react'
 
-const GlobalStyle = createGlobalStyle(({ theme }) => ({
-  html: { backgroundColor: theme.sanity.color.base.bg },
-}))
+import config from '../../sanity.config'
 
 export default function StudioPage() {
-  return (
-    <>
-      <Head>
-        <NextStudioHead favicons={false} />
-      </Head>
+  return <NextStudio config={config} />
+}
 
-      <NextStudio config={config}>
-        <StudioProvider config={config}>
-          <GlobalStyle />
-          <StudioLayout />
-        </StudioProvider>
-      </NextStudio>
-    </>
-  )
+StudioPage.getLayout = function getLayout(page: ReactElement) {
+  return <>{page}</>
 }
