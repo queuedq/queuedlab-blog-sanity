@@ -22,9 +22,11 @@ export default function PostHeader(
       </div> */}
       {/* TODO: add tag page */}
       {tags && tags.length > 0 && (
-        <Link href={`/tags/${tags[0].slug}`} className="text-lg text-brand font-semibold hover:underline -order-1">
-          {tags[0].name}
-        </Link>
+        <div className="-order-1 text-lg text-brand font-semibold tracking-wide">
+          <Link href={`/tags/${tags[0].slug}`} className="hover:underline">
+            {tags[0].name}
+          </Link>
+        </div>
       )}
       {excerpt && <p className="mt-2 text-xl text-gray-500 leading-normal">{excerpt}</p>}
       <div className="mt-6 text-sm text-gray-500 font-light tracking-wide">

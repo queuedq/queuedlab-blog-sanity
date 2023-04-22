@@ -12,7 +12,7 @@ export default function PostPreview({
   tags,
 }: Omit<Post, '_id'>) {
   return (
-    <div className="flex flex-col pt-6 pb-6 border-slate-200">
+    <div className="flex flex-col pt-6 pb-6">
       {/* TODO: show cover image */}
       {/* <div className="mb-5">
         <CoverImage
