@@ -23,6 +23,7 @@
     "@portabletext/react": "^2.0.0",
     "@sanity/code-input": "^4.0.0",
     "@sanity/image-url": "^1.0.2",
+    "@sanity/portable-text-editor": "^3.9.0",
     "@sanity/vision": "^3.2.4",
     "@vercel/og": "^0.0.27",
     "classnames": "^2.3.2",
