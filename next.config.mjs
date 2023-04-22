@@ -2,13 +2,10 @@
 // https://github.com/vercel/next.js/issues/19936
 // https://github.com/vercel/next.js/discussions/27953
 // https://github.com/bem/next-global-css
-import { withGlobalCss } from 'next-global-css'
-
-// TODO: Fix warning "The root value has an unexpected property"
-// that seems to be occuring due to `withGlobalCss`
+import { patchWebpackConfig } from 'next-global-css'
 
 /** @type {import('next').NextConfig} */
-const config = withGlobalCss({
+const config = {
   images: {
     remotePatterns: [
       { hostname: 'cdn.sanity.io' },
@@ -23,6 +20,9 @@ const config = withGlobalCss({
     /// Set this to false if you want production builds to abort if there's lint errors
     ignoreDuringBuilds: process.env.VERCEL_ENV === 'production',
   },
-})
+  webpack: (config, options) => {
+    return patchWebpackConfig(config, options)
+  },
+}
 
 export default config
