@@ -12,7 +12,7 @@ export default function PostPreview({
   tags,
 }: Omit<Post, '_id'>) {
   return (
-    <div className="flex flex-col pt-8 pb-8 border-b border-solid border-slate-200">
+    <div className="flex flex-col pt-6 pb-6 border-slate-200">
       {/* TODO: show cover image */}
       {/* <div className="mb-5">
         <CoverImage
@@ -22,22 +22,22 @@ export default function PostPreview({
           priority={false}
         />
       </div> */}
-      <h3 className="text-2xl text-gray-800 font-bold">
+      <h3 className="text-2xl text-gray-900 font-bold">
         <Link href={`/posts/${slug}`} className="hover:underline">
           {title}
         </Link>
       </h3>
       {/* TODO: add tag page */}
       {tags && tags.length > 0 && (
-        <Link href={`/tags/${tags[0].slug}`} className="mb-1 text-brand font-semibold hover:underline -order-1">
-          {tags[0].name}
-        </Link>
+        <div className="-order-1 text-sm text-brand font-semibold tracking-wide">
+          <Link href={`/tags/${tags[0].slug}`} className="hover:underline">
+            {tags[0].name}
+          </Link>
+        </div>
       )}
-      {excerpt && <p className="mt-2 text-lg text-gray-500">{excerpt}</p>}
-      <div className="mt-6 text-sm">
-        <span className="text-gray-500">
-          <Date dateString={date} />
-        </span>
+      {excerpt && <p className="mt-2 text-gray-500">{excerpt}</p>}
+      <div className="mt-6 text-xs text-gray-500 font-light tracking-wide">
+        <Date dateString={date}/>
       </div>
     </div>
   )

@@ -22,7 +22,7 @@
 .portableText h4, 
 .portableText h5, 
 .portableText h6 {
-  @apply text-gray-800 font-bold;
+  @apply text-gray-900 font-bold;
 }
 .portableText h1 { @apply mt-12 mb-4 leading-snug text-5xl; }
 .portableText h2 { @apply mt-12 mb-4 leading-snug text-3xl; }

@@ -8,7 +8,7 @@ export default function PostHeader(
   const { title, coverImage, date, excerpt, author, slug, tags } = props.post
   return (
     <div className="mt-8 flex flex-col">
-      <h1 className="text-5xl text-gray-800 font-bold leading-tight tracking-tight">
+      <h1 className="text-5xl text-gray-900 font-bold leading-tight">
         {title}
       </h1>
       {/* <div className="hidden md:mb-12 md:block">
@@ -27,7 +27,7 @@ export default function PostHeader(
         </Link>
       )}
       {excerpt && <p className="mt-2 text-xl text-gray-500 leading-normal">{excerpt}</p>}
-      <div className="mt-6 text-sm text-gray-500">
+      <div className="mt-6 text-sm text-gray-500 font-light tracking-wide">
         <Date dateString={date} />
       </div>
     </div>
