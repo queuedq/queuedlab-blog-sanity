@@ -15,10 +15,7 @@ export function RichTextEditor(props) {
           "mod+opt+4": (event, editor) => { PortableTextEditor.toggleBlockStyle(editor, "h4") },
           "mod+opt+5": (event, editor) => { PortableTextEditor.toggleBlockStyle(editor, "h5") },
           "mod+opt+6": (event, editor) => { PortableTextEditor.toggleBlockStyle(editor, "h6") },
-          "mod+opt+0": (event, editor) => {
-            const block = PortableTextEditor.focusBlock(editor)
-            PortableTextEditor.toggleBlockStyle(editor, block.style as string)
-          },
+          "mod+opt+0": (event, editor) => { PortableTextEditor.toggleBlockStyle(editor, "normal") },
         }
       }}
     />
