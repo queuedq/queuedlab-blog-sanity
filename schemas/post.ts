@@ -3,7 +3,7 @@ import { format, parseISO } from 'date-fns'
 import { defineField, defineType } from 'sanity'
 
 import authorType from './author'
-import CompactTextArea from './components/CompactTextArea'
+import CompactTextArea from './components/input/CompactTextArea'
 import richTextType from './rich-text/richText'
 import tagType from './tag'
 

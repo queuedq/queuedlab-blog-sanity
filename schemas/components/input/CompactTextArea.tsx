@@ -15,7 +15,7 @@ export default function CompactTextArea(props) {
     onChange(nextValue ? set(nextValue) : unset())
 	}, [onChange])
 
-  // https://www.sanity.io/ui/docs/primitive/text-area
+  // https://www.sanity.io/ui/docs/primitive/text-areax
   return (
     <TextArea
       {...elementProps}

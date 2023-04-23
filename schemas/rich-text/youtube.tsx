@@ -2,7 +2,7 @@ import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { defineField, defineType } from 'sanity'
 
-import YouTubePreview from '../components/YouTubePreview'
+import YouTubePreview from '../components/preview/YouTubePreview'
 
 const icon = (<FontAwesomeIcon icon={faYoutube} size="2xs" style={{ fontSize: '1em' }} />)
 

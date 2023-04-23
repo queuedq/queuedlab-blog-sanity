@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { RichTextEditor } from 'schemas/components/RichTextEditor'
+import { RichTextEditor } from 'schemas/components/input/RichTextEditor'
 
 import FigureType from './figure'
 import HorizontalRuleType from './horizontalRule'
