@@ -71,6 +71,7 @@ function handlePaste (input) {
           // code block
           // TODO: deal with bug that removes contiguous whitespaces and line breaks
           // (currently impossible with htmlToBlocks() in sanity@3.5.0)
+          // https://github.com/sanity-io/sanity/issues/1814
           deserialize(el, next, block) {
             if (
               !el ||
