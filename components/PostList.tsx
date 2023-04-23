@@ -6,16 +6,7 @@ export default function PostList({ posts }: { posts: Post[] }) {
     <section>
       <div className="mb-2">
         {posts.map((post) => (
-          <PostPreview
-            key={post._id}
-            title={post.title}
-            coverImage={post.coverImage}
-            date={post.date}
-            author={post.author}
-            slug={post.slug}
-            excerpt={post.excerpt}
-            tags={post.tags}
-          />
+          <PostPreview key={post._id} post={post} />
         ))}
       </div>
     </section>

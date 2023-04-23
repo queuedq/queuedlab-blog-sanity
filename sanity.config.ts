@@ -11,7 +11,7 @@ import { settingsPlugin, settingsStructure } from 'plugins/settings'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
-import { latexInput } from "sanity-plugin-latex-input";
+import { latexInput } from "sanity-plugin-latex-input"
 import { media } from 'sanity-plugin-media'
 import * as schemas from 'schemas'
 
@@ -49,7 +49,8 @@ const config = defineConfig({
     
     // Media browser
     media(),
-    // Rich text plugins
+
+    // Schema / Input
     codeInput({
       codeModes: [
         {

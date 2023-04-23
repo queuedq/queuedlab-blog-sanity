@@ -1,10 +1,10 @@
-import { TagIcon } from '@sanity/icons'
+import { TiersIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
-  name: 'postTag',
-  title: 'Tag',
-  icon: TagIcon,
+  name: 'postCategory',
+  title: 'Category',
+  icon: TiersIcon,
   type: 'document',
   fields: [
     defineField({

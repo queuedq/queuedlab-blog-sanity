@@ -1,4 +1,5 @@
 export {default as author} from 'schemas/author'
+export {default as category} from 'schemas/category'
 export {default as post} from 'schemas/post'
 export {default as figure} from 'schemas/rich-text/figure'
 export {default as horizontalRule} from 'schemas/rich-text/horizontalRule'

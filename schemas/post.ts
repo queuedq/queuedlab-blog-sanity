@@ -2,10 +2,11 @@ import { BookIcon } from '@sanity/icons'
 import { format, parseISO } from 'date-fns'
 import { defineField, defineType } from 'sanity'
 
-import authorType from './author'
+import author from './author'
+import category from './category'
 import CompactTextArea from './components/input/CompactTextArea'
-import richTextType from './rich-text/richText'
-import tagType from './tag'
+import richText from './rich-text/richText'
+import tag from './tag'
 
 /**
  * This file is the schema definition for a post.
@@ -51,9 +52,20 @@ export default defineType({
       }
     }),
     defineField({
+      name: 'categories',
+      title: 'Categories',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: category.name }],
+        },
+      ],
+    }),
+    defineField({
       name: 'content',
       title: 'Content',
-      type: richTextType.name,
+      type: richText.name,
     }),
     defineField({
       name: 'coverImage',
@@ -70,24 +82,21 @@ export default defineType({
       initialValue: () => new Date().toISOString(),
     }),
     defineField({
-      name: 'tags',
-      title: 'Tags',
+      name: 'tag',
+      title: 'Tag',
       type: 'array',
       of: [
         {
           type: 'reference',
-          to: [{ type: tagType.name }],
+          to: [{ type: tag.name }],
         },
       ],
-      // TODO: Use custom component?
-      // See https://www.sanity.io/docs/your-first-input-component
-      // or use an existing plugin https://www.sanity.io/plugins
     }),
     defineField({
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: [{ type: authorType.name }],
+      to: [{ type: author.name }],
     }),
   ],
   preview: {

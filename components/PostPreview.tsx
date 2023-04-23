@@ -2,15 +2,19 @@ import Date from 'components/PostDate'
 import type { Post } from 'lib/sanity.queries'
 import Link from 'next/link'
 
-export default function PostPreview({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  author,
-  slug,
-  tags,
-}: Omit<Post, '_id'>) {
+interface PostPreviewProps {
+  post: Post
+}
+
+export default function PostPreview({ post }: PostPreviewProps) {
+  const {
+    title,
+    slug,
+    categories,
+    excerpt,
+    date,
+  } = post;
+
   return (
     <div className="flex flex-col pt-8 pb-8">
       {/* TODO: show cover image */}
@@ -27,17 +31,17 @@ export default function PostPreview({
           {title}
         </Link>
       </h3>
-      {/* TODO: add tag page */}
-      {tags && tags.length > 0 && (
+      {/* TODO: add category/tag page */}
+      {categories && categories.length > 0 && (
         <div className="-order-1 text-sm text-brand font-semibold tracking-wide">
-          <Link href={`/tags/${tags[0].slug}`} className="hover:underline">
-            {tags[0].name}
+          <Link href={`/categories/${categories[0]?.slug}`} className="hover:underline">
+            {categories[0]?.name}
           </Link>
         </div>
       )}
       {excerpt && <p className="mt-2 text-gray-500">{excerpt}</p>}
       <div className="mt-4 text-xs text-gray-500 font-light tracking-wide">
-        <Date dateString={date}/>
+        <Date dateString={date} />
       </div>
     </div>
   )
