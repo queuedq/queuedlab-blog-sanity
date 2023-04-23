@@ -3,6 +3,7 @@ import { format, parseISO } from 'date-fns'
 import { defineField, defineType } from 'sanity'
 
 import authorType from './author'
+import CompactTextArea from './components/CompactTextArea'
 import richTextType from './rich-text/richText'
 import tagType from './tag'
 
@@ -42,14 +43,17 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'content',
-      title: 'Content',
-      type: richTextType.name,
-    }),
-    defineField({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
+      components: {
+        input: CompactTextArea,
+      }
+    }),
+    defineField({
+      name: 'content',
+      title: 'Content',
+      type: richTextType.name,
     }),
     defineField({
       name: 'coverImage',
