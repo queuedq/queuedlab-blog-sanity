@@ -12,7 +12,7 @@ export default function PostPreview({
   tags,
 }: Omit<Post, '_id'>) {
   return (
-    <div className="flex flex-col pt-6 pb-6">
+    <div className="flex flex-col pt-8 pb-8">
       {/* TODO: show cover image */}
       {/* <div className="mb-5">
         <CoverImage
@@ -36,7 +36,7 @@ export default function PostPreview({
         </div>
       )}
       {excerpt && <p className="mt-2 text-gray-500">{excerpt}</p>}
-      <div className="mt-6 text-xs text-gray-500 font-light tracking-wide">
+      <div className="mt-4 text-xs text-gray-500 font-light tracking-wide">
         <Date dateString={date}/>
       </div>
     </div>
