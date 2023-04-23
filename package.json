@@ -21,7 +21,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@portabletext/react": "^2.0.0",
-    "@sanity/code-input": "^4.0.0",
+    "@sanity/code-input": "^4.1.0",
     "@sanity/image-url": "^1.0.2",
     "@sanity/portable-text-editor": "^3.9.0",
     "@sanity/vision": "^3.2.4",
