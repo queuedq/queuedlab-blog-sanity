@@ -1,9 +1,7 @@
-import Container from 'components/BlogContainer'
 import BlogHeader from 'components/BlogHeader'
 import Layout from 'components/BlogLayout'
 import IndexPageHead from 'components/IndexPageHead'
 import PostList from 'components/PostList'
-import IntroTemplate from 'intro-template'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
 import Head from 'next/head'
@@ -25,11 +23,8 @@ export default function IndexPage(props: IndexPageProps) {
         <IndexPageHead settings={settings} />
       </Head>
       <Layout preview={preview} loading={loading}>
-        <Container>
-          <BlogHeader title={title} level={1} />
-          <PostList posts={posts} />
-        </Container>
-        <IntroTemplate />
+        <BlogHeader title={title} level={1} />
+        <PostList posts={posts} />
       </Layout>
     </>
   )

@@ -11,9 +11,11 @@ export default function BlogLayout({
 }) {
   return (
     <>
-      <div className="mx-auto max-w-3xl min-h-screen">
+      <div className="flex flex-col min-h-screen">
         <AlertBanner preview={preview} loading={loading} />
-        <main>{children}</main>
+        <div className="container max-w-3xl mx-auto px-5">
+          <main>{children}</main>
+        </div>
       </div>
     </>
   )
