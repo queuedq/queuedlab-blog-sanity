@@ -1,5 +1,5 @@
 import BlogHeader from 'components/layout/BlogHeader'
-import Layout from 'components/layout/BlogLayout'
+import Layout from 'components/layout/Layout'
 import PostBody from 'components/post/PostBody'
 import PostHeader from 'components/post/PostHeader'
 import PostList from 'components/post/PostList'

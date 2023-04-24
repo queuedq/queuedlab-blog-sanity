@@ -1,6 +1,6 @@
 import { toPlainText } from '@portabletext/react'
 import BlogHeader from 'components/layout/BlogHeader'
-import Layout from 'components/layout/BlogLayout'
+import Layout from 'components/layout/Layout'
 import PostList from 'components/post/PostList'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
