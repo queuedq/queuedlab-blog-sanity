@@ -41,7 +41,7 @@ export default function PostPreview({ post }: PostPreviewProps) {
         </div>
       )}
       {excerpt && <p className="mt-2 text-gray-500">{excerpt}</p>}
-      <div className="mt-4 text-xs text-gray-500 font-light tracking-wide">
+      <div className="mt-3 text-xs text-gray-500 font-light tracking-wide">
         <Date dateString={date} />
       </div>
     </div>
