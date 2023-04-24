@@ -1,4 +1,12 @@
-import AlertBanner from 'components/layout/AlertBanner'
+import AlertBanner from './AlertBanner'
+import Footer from './Footer'
+
+
+const Container = ({ children }) => (
+  <div className="container max-w-3xl mx-auto px-5">
+    {children}
+  </div>
+)
 
 export default function Layout({
   preview,
@@ -11,10 +19,17 @@ export default function Layout({
 }) {
   return (
     <>
-      <div className="flex flex-col min-h-screen">
+      <div className="min-h-screen">
         <AlertBanner preview={preview} loading={loading} />
-        <div className="container max-w-3xl mx-auto px-5">
-          <main>{children}</main>
+        <Container>
+          <main className="mb-8">
+            {children}
+          </main>
+        </Container>
+        <div className="sticky top-[100vh]">
+          <Container>
+            <Footer />
+          </Container>
         </div>
       </div>
     </>
