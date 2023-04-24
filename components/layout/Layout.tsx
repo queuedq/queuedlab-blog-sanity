@@ -26,6 +26,7 @@ export default function Layout({
             {children}
           </main>
         </Container>
+        {/* Sticky footer: https://css-tricks.com/a-clever-sticky-footer-technique/ */}
         <div className="sticky top-[100vh]">
           <Container>
             <Footer />
