@@ -1,5 +1,5 @@
 import { PreviewSuspense } from '@sanity/preview-kit'
-import PostPage from 'components/PostPage'
+import PostPage from 'components/pages/PostPage'
 import {
   getAllPostsSlugs,
   getPostAndMoreStories,
@@ -9,7 +9,7 @@ import { Post, Settings } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'
 
-const PreviewPostPage = lazy(() => import('components/PreviewPostPage'))
+const PreviewPostPage = lazy(() => import('components/pages/PreviewPostPage'))
 
 interface PageProps {
   post: Post

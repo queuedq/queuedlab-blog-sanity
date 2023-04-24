@@ -1,13 +1,14 @@
-import BlogHeader from 'components/BlogHeader'
-import Layout from 'components/BlogLayout'
-import PostBody from 'components/PostBody'
-import PostHeader from 'components/PostHeader'
-import PostList from 'components/PostList'
-import PostPageHead from 'components/PostPageHead'
+import BlogHeader from 'components/layout/BlogHeader'
+import Layout from 'components/layout/BlogLayout'
+import PostBody from 'components/post/PostBody'
+import PostHeader from 'components/post/PostHeader'
+import PostList from 'components/post/PostList'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
 import Head from 'next/head'
 import { notFound } from 'next/navigation'
+
+import PostPageHead from './PostPageHead'
 
 export interface PostPageProps {
   preview?: boolean

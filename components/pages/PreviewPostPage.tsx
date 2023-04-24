@@ -1,6 +1,7 @@
-import PostPage, { PostPageProps } from 'components/PostPage'
 import { usePreview } from 'lib/sanity.preview'
 import { type Post, postAndMoreStoriesQuery } from 'lib/sanity.queries'
+
+import PostPage, { PostPageProps } from './PostPage'
 
 export default function PreviewPostPage({
   token,

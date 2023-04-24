@@ -7,8 +7,9 @@
  * https://portabletext.org/
  *
  */
+import RichText from 'components/rich-text/RichText'
+
 import styles from './PostBody.module.css'
-import RichText from './rich-text/RichText'
 
 export default function PostBody({ content }) {
   return (

@@ -1,10 +1,11 @@
-import BlogHeader from 'components/BlogHeader'
-import Layout from 'components/BlogLayout'
-import IndexPageHead from 'components/IndexPageHead'
-import PostList from 'components/PostList'
+import BlogHeader from 'components/layout/BlogHeader'
+import Layout from 'components/layout/BlogLayout'
+import PostList from 'components/post/PostList'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
 import Head from 'next/head'
+
+import IndexPageHead from './IndexPageHead'
 
 export interface IndexPageProps {
   preview?: boolean

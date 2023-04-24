@@ -1,6 +1,7 @@
-import Date from 'components/PostDate'
 import type { Post } from 'lib/sanity.queries'
 import Link from 'next/link'
+
+import Date from './PostDate'
 
 interface PostHeaderProps {
   post: Post
