@@ -17,7 +17,7 @@ export default function PostPreview({ post }: PostPreviewProps) {
   } = post;
 
   return (
-    <div className="flex flex-col pt-8 pb-8">
+    <div className="flex flex-col">
       {/* TODO: show cover image */}
       {/* <div className="mb-5">
         <CoverImage

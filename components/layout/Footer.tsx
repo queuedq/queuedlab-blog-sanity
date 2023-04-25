@@ -43,7 +43,7 @@ const links = [
 // TODO: Make it pretty on mobile
 export default function Footer() {
   return (
-    <footer className="py-8">
+    <footer className="mt-16 py-8">
       <div>
         {links.map(link => (
           <UserLink key={link.name} link={link} />

@@ -30,7 +30,7 @@ export default function Layout({
             <BlogHeader title={title} level={headerLevel} />
             <Navbar />
           </div>
-          <div>
+          <div className="mb-16">
             <CategoryMenu />
           </div>
         </Container>
