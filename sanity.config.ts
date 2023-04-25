@@ -3,6 +3,7 @@
  */
 import { StreamLanguage } from '@codemirror/language'
 import { codeInput } from '@sanity/code-input'
+import { colorInput } from '@sanity/color-input'
 import { visionTool } from '@sanity/vision'
 import { apiVersion, dataset, previewSecretId, projectId } from 'lib/sanity.api'
 import { previewDocumentNode } from 'plugins/previewPane'
@@ -64,6 +65,7 @@ const config = defineConfig({
       ],
     }),    
     latexInput(),
+    colorInput(),
   ],
 })
 

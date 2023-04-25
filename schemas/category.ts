@@ -23,5 +23,13 @@ export default defineType({
       },
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: 'color',
+      title: 'Color',
+      type: 'color',
+      options: {
+        disableAlpha: true
+      }
+    }),
   ],
 })

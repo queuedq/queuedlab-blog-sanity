@@ -1,6 +1,8 @@
 import { CogIcon } from '@sanity/icons'
 import * as demo from 'lib/demo.data'
 import { defineArrayMember, defineField, defineType } from 'sanity'
+import category from 'schemas/category'
+import { referenceArray } from 'schemas/utils/utils'
 
 import OpenGraphInput from './OpenGraphInput'
 
@@ -73,5 +75,12 @@ export default defineType({
         }),
       ],
     }),
+    // TODO: use orderable document list instead
+    // https://www.sanity.io/plugins/orderable-document-list
+    defineField({
+      name: 'category_list',
+      title: 'Blog header category list',
+      ...referenceArray(category.name),
+    })
   ],
 })
