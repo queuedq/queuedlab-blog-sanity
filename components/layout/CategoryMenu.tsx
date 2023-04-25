@@ -9,7 +9,7 @@ export default function CategoryMenu() {
   if (!headerCategories) return null
 
   return (
-    <nav className="mb-8 flex flex-wrap gap-x-4 text-sm font-semibold text-gray-400 sm:gap-x-8 ">
+    <nav className="flex flex-wrap gap-x-5 text-sm font-semibold text-gray-400">
       <Link href="/" className="text-gray-900">
         All Posts
       </Link>
@@ -17,7 +17,7 @@ export default function CategoryMenu() {
         <Link
           key={category.slug}
           href={`/categories/${category.slug}`}
-          className="[&:not(:hover)]:!text-gray-500"
+          className="[&:not(:hover)]:!text-gray-400"
           style={{ color: category.color.hex }}
         >
           {category.name}

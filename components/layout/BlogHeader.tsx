@@ -26,8 +26,10 @@ function BlogTitle() {
 export default function BlogHeader() {
   return (
     <header>
-      <div className="mt-8 mb-3 flex items-baseline justify-between border-b border-gray-300 pb-3">
-        <BlogTitle />
+      <div className="flex items-baseline gap-8 pt-8 pb-5">
+        <div className="border-r border-gray-300 pr-4">
+          <BlogTitle />
+        </div>
         <Navbar />
       </div>
       <div className="mb-16">
