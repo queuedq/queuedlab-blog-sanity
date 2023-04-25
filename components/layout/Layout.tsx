@@ -1,46 +1,28 @@
 import AlertBanner from './AlertBanner'
 import BlogHeader from './BlogHeader'
-import CategoryMenu from './CategoryMenu'
 import Container from './Container'
 import Footer from './Footer'
-import Navbar from './Navbar'
 
 interface LayoutProps {
   preview: boolean
   loading?: boolean
-  title: string
-  headerLevel: 1 | 2
   children: React.ReactNode
 }
 
-export default function Layout({
-  preview,
-  loading,
-  title,
-  headerLevel,
-  children,
-}: LayoutProps) {
+export default function Layout({ preview, loading, children }: LayoutProps) {
   return (
-    <>
-      <div className="min-h-screen">
-        <AlertBanner preview={preview} loading={loading} />
+    <div className="min-h-screen">
+      <AlertBanner preview={preview} loading={loading} />
+      <Container>
+        <BlogHeader />
+      </Container>
+      <main className="mb-8">{children}</main>
+      {/* Sticky footer: https://css-tricks.com/a-clever-sticky-footer-technique/ */}
+      <div className="sticky top-[100vh]">
         <Container>
-          <div className="mt-8 mb-3 flex items-baseline justify-between border-b border-gray-300 pb-3">
-            <BlogHeader title={title} level={headerLevel} />
-            <Navbar />
-          </div>
-          <div className="mb-16">
-            <CategoryMenu />
-          </div>
+          <Footer />
         </Container>
-        <main className="mb-8">{children}</main>
-        {/* Sticky footer: https://css-tricks.com/a-clever-sticky-footer-technique/ */}
-        <div className="sticky top-[100vh]">
-          <Container>
-            <Footer />
-          </Container>
-        </div>
       </div>
-    </>
+    </div>
   )
 }

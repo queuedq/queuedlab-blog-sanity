@@ -7,6 +7,7 @@ import type { Post, Settings } from 'lib/sanity.queries'
 import Head from 'next/head'
 
 import BlogMeta from './BlogMeta'
+import BlogContext from 'components/BlogContext'
 
 interface IndexPageHeadProps {
   settings: Settings
@@ -52,18 +53,20 @@ export interface IndexPageProps {
 
 export default function IndexPage(props: IndexPageProps) {
   const { preview, loading, posts, settings } = props
-  const { title = demo.title } = settings || {}
+  settings.title = settings.title ?? demo.title
 
   return (
-    <>
+    <BlogContext.Provider
+      value={{ preview, loading, settings, currentPage: 'index' }}
+    >
       <Head>
         <IndexPageHead settings={settings} />
       </Head>
-      <Layout preview={preview} loading={loading} title={title} headerLevel={1}>
+      <Layout preview={preview} loading={loading}>
         <Container>
           <PostList posts={posts} />
         </Container>
       </Layout>
-    </>
+    </BlogContext.Provider>
   )
 }

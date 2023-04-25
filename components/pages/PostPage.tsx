@@ -1,9 +1,8 @@
-import BlogHeader from 'components/layout/BlogHeader'
+import BlogContext from 'components/BlogContext'
 import Container from 'components/layout/Container'
 import Layout from 'components/layout/Layout'
 import PostBody from 'components/post/PostBody'
 import PostHeader from 'components/post/PostHeader'
-import PostList from 'components/post/PostList'
 import * as demo from 'lib/demo.data'
 import { urlForImage } from 'lib/sanity.image'
 import type { Post, Settings } from 'lib/sanity.queries'
@@ -58,12 +57,14 @@ export default function PostPage(props: PostPageProps) {
   }
 
   return (
-    <>
+    <BlogContext.Provider
+      value={{ preview, loading, settings, currentPage: 'post' }}
+    >
       <Head>
         <PostPageHead settings={settings} post={post} />
       </Head>
 
-      <Layout preview={preview} loading={loading} title={title} headerLevel={2}>
+      <Layout preview={preview} loading={loading}>
         <Container>
           {preview && !post ? (
             <div>Loading…</div>
@@ -78,6 +79,6 @@ export default function PostPage(props: PostPageProps) {
           )}
         </Container>
       </Layout>
-    </>
+    </BlogContext.Provider>
   )
 }

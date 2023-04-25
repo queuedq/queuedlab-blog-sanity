@@ -1,30 +1,38 @@
+import BlogContext from 'components/BlogContext'
 import Link from 'next/link'
+import { useContext } from 'react'
 
-export default function BlogHeader({
-  title,
-  level,
-}: {
-  title: string
-  level: 1 | 2
-}) {
-  switch (level) {
-    case 1:
-      return <h1 className="text-xl font-light">{title}</h1>
+import CategoryMenu from './CategoryMenu'
+import Navbar from './Navbar'
 
-    case 2:
+function BlogTitle() {
+  const { currentPage, settings } = useContext(BlogContext)
+
+  switch (currentPage) {
+    case 'index':
+      return <h1 className="text-xl font-light">{settings.title}</h1>
+
+    default:
       return (
         <div className="text-xl font-light">
           <Link href="/" className="hover:underline">
-            {title}
+            {settings.title}
           </Link>
         </div>
       )
-
-    default:
-      throw new Error(
-        `Invalid level: ${
-          JSON.stringify(level) || typeof level
-        }, only 1 or 2 are allowed`
-      )
   }
+}
+
+export default function BlogHeader() {
+  return (
+    <header>
+      <div className="mt-8 mb-3 flex items-baseline justify-between border-b border-gray-300 pb-3">
+        <BlogTitle />
+        <Navbar />
+      </div>
+      <div className="mb-16">
+        <CategoryMenu />
+      </div>
+    </header>
+  )
 }

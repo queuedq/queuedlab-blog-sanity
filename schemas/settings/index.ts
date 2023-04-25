@@ -78,7 +78,7 @@ export default defineType({
     // TODO: use orderable document list instead
     // https://www.sanity.io/plugins/orderable-document-list
     defineField({
-      name: 'category_list',
+      name: 'headerCategories',
       title: 'Blog header category list',
       ...referenceArray(category.name),
     }),

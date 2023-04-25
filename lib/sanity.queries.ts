@@ -13,7 +13,11 @@ const postFields = groq`
   "tags": tags[]->{name, "slug": slug.current},
 `
 
-export const settingsQuery = groq`*[_type == "settings"][0]`
+export const settingsQuery = groq`
+*[_type == "settings"][0] {
+  ...,
+  "headerCategories": headerCategories[]->{name, "slug": slug.current, color},
+}`
 
 export const indexQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
@@ -77,4 +81,5 @@ export interface Settings {
   ogImage?: {
     title?: string
   }
+  headerCategories?: Category[]
 }
