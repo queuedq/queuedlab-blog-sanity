@@ -1,5 +1,7 @@
 import AlertBanner from './AlertBanner'
+import BlogHeader from './BlogHeader'
 import Footer from './Footer'
+import Navbar from './Navbar'
 
 
 const Container = ({ children }) => (
@@ -8,20 +10,29 @@ const Container = ({ children }) => (
   </div>
 )
 
+interface LayoutProps {
+  preview: boolean
+  loading?: boolean
+  title: string
+  headerLevel: 1 | 2
+  children: React.ReactNode
+}
+
 export default function Layout({
   preview,
   loading,
+  title,
+  headerLevel,
   children,
-}: {
-  preview: boolean
-  loading?: boolean
-  children: React.ReactNode
-}) {
+}: LayoutProps ) {
   return (
     <>
       <div className="min-h-screen">
         <AlertBanner preview={preview} loading={loading} />
         <Container>
+          <Navbar
+            header={<BlogHeader title={title} level={headerLevel} />}
+          />
           <main className="mb-8">
             {children}
           </main>

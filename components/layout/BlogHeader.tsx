@@ -10,22 +10,18 @@ export default function BlogHeader({
   switch (level) {
     case 1:
       return (
-        <header>
-          <h1 className="pt-8 pb-8 text-xl font-light">
-            {title}
-          </h1>
-        </header>
+        <h1 className="text-xl font-light">
+          {title}
+        </h1>
       )
 
     case 2:
       return (
-        <header>
-          <div className="pt-8 pb-8 text-xl font-light">
-            <Link href="/" className="hover:underline">
-              {title}
-            </Link>
-          </div>
-        </header>
+        <div className="text-xl font-light">
+          <Link href="/" className="hover:underline">
+            {title}
+          </Link>
+        </div>
       )
 
     default:

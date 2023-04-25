@@ -64,8 +64,7 @@ export default function PostPage(props: PostPageProps) {
         <PostPageHead settings={settings} post={post} />
       </Head>
 
-      <Layout preview={preview} loading={loading}>
-        <BlogHeader title={title} level={2} />
+      <Layout preview={preview} loading={loading} title={title} headerLevel={2}>
         {preview && !post ? (
           <div>Loading…</div>
         ) : (

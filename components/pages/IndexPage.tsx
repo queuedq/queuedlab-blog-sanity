@@ -57,8 +57,7 @@ export default function IndexPage(props: IndexPageProps) {
       <Head>
         <IndexPageHead settings={settings} />
       </Head>
-      <Layout preview={preview} loading={loading}>
-        <BlogHeader title={title} level={1} />
+      <Layout preview={preview} loading={loading} title={title} headerLevel={1}>
         <PostList posts={posts} />
       </Layout>
     </>
