@@ -1,14 +1,10 @@
 import AlertBanner from './AlertBanner'
 import BlogHeader from './BlogHeader'
+import CategoryMenu from './CategoryMenu'
+import Container from './Container'
 import Footer from './Footer'
 import Navbar from './Navbar'
 
-
-const Container = ({ children }) => (
-  <div className="container max-w-3xl mx-auto px-5">
-    {children}
-  </div>
-)
 
 interface LayoutProps {
   preview: boolean
@@ -30,13 +26,17 @@ export default function Layout({
       <div className="min-h-screen">
         <AlertBanner preview={preview} loading={loading} />
         <Container>
-          <Navbar
-            header={<BlogHeader title={title} level={headerLevel} />}
-          />
-          <main className="mb-8">
-            {children}
-          </main>
+          <div className="flex justify-between items-baseline mt-8 mb-3 pb-3 border-b border-gray-300">
+            <BlogHeader title={title} level={headerLevel} />
+            <Navbar />
+          </div>
+          <div>
+            <CategoryMenu />
+          </div>
         </Container>
+        <main className="mb-8">
+          {children}
+        </main>
         {/* Sticky footer: https://css-tricks.com/a-clever-sticky-footer-technique/ */}
         <div className="sticky top-[100vh]">
           <Container>

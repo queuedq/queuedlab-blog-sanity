@@ -1,4 +1,5 @@
 import BlogHeader from 'components/layout/BlogHeader'
+import Container from 'components/layout/Container'
 import Layout from 'components/layout/Layout'
 import PostBody from 'components/post/PostBody'
 import PostHeader from 'components/post/PostHeader'
@@ -65,17 +66,19 @@ export default function PostPage(props: PostPageProps) {
       </Head>
 
       <Layout preview={preview} loading={loading} title={title} headerLevel={2}>
-        {preview && !post ? (
-          <div>Loading…</div>
-        ) : (
-          <>
-            <article>
-              <PostHeader post={post} />
-              <PostBody content={post.content} />
-            </article>
-            {/* {morePosts?.length > 0 && <PostList posts={morePosts} />} */}
-          </>
-        )}
+        <Container>
+          {preview && !post ? (
+            <div>Loading…</div>
+          ) : (
+            <>
+              <article>
+                <PostHeader post={post} />
+                <PostBody content={post.content} />
+              </article>
+              {/* {morePosts?.length > 0 && <PostList posts={morePosts} />} */}
+            </>
+          )}
+        </Container>
       </Layout>
     </>
   )

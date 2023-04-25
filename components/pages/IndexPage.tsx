@@ -1,5 +1,5 @@
 import { toPlainText } from '@portabletext/react'
-import BlogHeader from 'components/layout/BlogHeader'
+import Container from 'components/layout/Container'
 import Layout from 'components/layout/Layout'
 import PostList from 'components/post/PostList'
 import * as demo from 'lib/demo.data'
@@ -58,7 +58,9 @@ export default function IndexPage(props: IndexPageProps) {
         <IndexPageHead settings={settings} />
       </Head>
       <Layout preview={preview} loading={loading} title={title} headerLevel={1}>
-        <PostList posts={posts} />
+        <Container>
+          <PostList posts={posts} />
+        </Container>
       </Layout>
     </>
   )
