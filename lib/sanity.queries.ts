@@ -1,3 +1,4 @@
+import { ColorValue } from '@sanity/color-input'
 import { groq } from 'next-sanity'
 
 const postFields = groq`
@@ -8,7 +9,7 @@ const postFields = groq`
   coverImage,
   "slug": slug.current,
   "author": author->{name, picture},
-  "categories": categories[]->{name, "slug": slug.current},
+  "categories": categories[]->{name, "slug": slug.current, color},
   "tags": tags[]->{name, "slug": slug.current},
 `
 
@@ -62,6 +63,7 @@ export interface Post {
 export interface Category {
   name?: string
   slug?: string
+  color?: ColorValue
 }
 
 export interface Tag {

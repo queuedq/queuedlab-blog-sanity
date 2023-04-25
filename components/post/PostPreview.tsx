@@ -2,22 +2,17 @@ import type { Post } from 'lib/sanity.queries'
 import Link from 'next/link'
 
 import Date from './PostDate'
+import style from './PostPreview.module.css'
 
 interface PostPreviewProps {
   post: Post
 }
 
 export default function PostPreview({ post }: PostPreviewProps) {
-  const {
-    title,
-    slug,
-    categories,
-    excerpt,
-    date,
-  } = post;
+  const { title, slug, categories, excerpt, date } = post;
 
   return (
-    <div className="flex flex-col">
+    <div className={`${style.preview} group flex flex-col py-8`}>
       {/* TODO: show cover image */}
       {/* <div className="mb-5">
         <CoverImage
@@ -34,7 +29,10 @@ export default function PostPreview({ post }: PostPreviewProps) {
       </h3>
       {/* TODO: add category/tag page */}
       {categories && categories.length > 0 && (
-        <div className="-order-1 text-sm text-brand font-semibold tracking-wide">
+        <div
+          className={`${style.category} -order-1 text-sm text-gray-500 font-semibold tracking-wide`}
+          style={{ color: categories[0]?.color.hex }}
+        >
           <Link href={`/categories/${categories[0]?.slug}`} className="hover:underline">
             {categories[0]?.name}
           </Link>
