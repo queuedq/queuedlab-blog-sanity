@@ -8,19 +8,11 @@ interface PostHeaderProps {
 }
 
 export default function PostHeader({ post }: PostHeaderProps) {
-  const {
-    title,
-    coverImage,
-    date,
-    excerpt,
-    author,
-    slug,
-    categories
-  } = post
+  const { title, coverImage, date, excerpt, author, slug, categories } = post
 
   return (
     <div className="mt-8 flex flex-col">
-      <h1 className="text-5xl text-gray-900 font-bold leading-tight">
+      <h1 className="text-5xl font-bold leading-tight text-gray-900">
         {title}
       </h1>
       {/* <div className="hidden md:mb-12 md:block">
@@ -34,14 +26,19 @@ export default function PostHeader({ post }: PostHeaderProps) {
       </div> */}
       {/* TODO: add category/tag page */}
       {categories && categories.length > 0 && (
-        <div className="-order-1 text-lg text-brand font-semibold tracking-wide">
-          <Link href={`/categories/${categories[0].slug}`} className="hover:underline">
+        <div className="-order-1 text-lg font-semibold tracking-wide text-brand">
+          <Link
+            href={`/categories/${categories[0].slug}`}
+            className="hover:underline"
+          >
             {categories[0].name}
           </Link>
         </div>
       )}
-      {excerpt && <p className="mt-2 text-xl text-gray-500 leading-normal">{excerpt}</p>}
-      <div className="mt-4 text-sm text-gray-500 font-light tracking-wide">
+      {excerpt && (
+        <p className="mt-2 text-xl leading-normal text-gray-500">{excerpt}</p>
+      )}
+      <div className="mt-4 text-sm font-light tracking-wide text-gray-500">
         <Date dateString={date} />
       </div>
     </div>

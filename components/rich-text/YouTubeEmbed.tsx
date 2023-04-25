@@ -6,7 +6,7 @@ export default function YouTubeEmbed({ value }) {
 
   if (!id) {
     return (
-      <p className="text-center text-red-500 font-bold">
+      <p className="text-center font-bold text-red-500">
         Missing YouTube video URL
       </p>
     )
@@ -17,7 +17,7 @@ export default function YouTubeEmbed({ value }) {
       title="YouTube Embed"
       src={url}
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      className="w-full aspect-video"
+      className="aspect-video w-full"
     />
   )
 }

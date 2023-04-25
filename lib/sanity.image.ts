@@ -12,5 +12,5 @@ export const urlForImage = (source: any) =>
 
 // https://www.sanity.io/plugins/next-sanity-image
 export const useNextSanityImage = (image: SanityImageObject) => {
-	return _useNextSanityImage(client, image)
+  return _useNextSanityImage(client, image)
 }

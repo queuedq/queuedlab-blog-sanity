@@ -12,7 +12,7 @@ import { settingsPlugin, settingsStructure } from 'plugins/settings'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
-import { latexInput } from "sanity-plugin-latex-input"
+import { latexInput } from 'sanity-plugin-latex-input'
 import { media } from 'sanity-plugin-media'
 import * as schemas from 'schemas'
 
@@ -47,7 +47,7 @@ const config = defineConfig({
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
-    
+
     // Media browser
     media(),
 
@@ -56,14 +56,17 @@ const config = defineConfig({
       codeModes: [
         {
           name: 'c',
-          loader: () => import('@codemirror/legacy-modes/mode/clike').then(({c}) => StreamLanguage.define(c)),
+          loader: () =>
+            import('@codemirror/legacy-modes/mode/clike').then(({ c }) =>
+              StreamLanguage.define(c)
+            ),
         },
         {
           name: 'cpp',
-          loader: () => import('@codemirror/lang-cpp').then(({cpp}) => cpp()),
+          loader: () => import('@codemirror/lang-cpp').then(({ cpp }) => cpp()),
         },
       ],
-    }),    
+    }),
     latexInput(),
     colorInput(),
   ],

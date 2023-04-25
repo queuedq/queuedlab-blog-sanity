@@ -21,13 +21,11 @@ const components = {
     horizontalRule: () => <hr />,
     latex: Latex,
     youtube: YouTubeEmbed,
-  }
+  },
 }
 
 export default function RichText({ content }) {
   // console.log(content)
 
-  return (
-    <PortableText value={content} components={components} />
-  )
+  return <PortableText value={content} components={components} />
 }

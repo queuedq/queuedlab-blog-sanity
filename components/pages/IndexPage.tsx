@@ -8,7 +8,6 @@ import Head from 'next/head'
 
 import BlogMeta from './BlogMeta'
 
-
 interface IndexPageHeadProps {
   settings: Settings
 }
@@ -25,7 +24,11 @@ function IndexPageHead({ settings }: IndexPageHeadProps) {
     <>
       <title>{title}</title>
       <BlogMeta />
-      <meta key="description" name="description" content={toPlainText(description)} />
+      <meta
+        key="description"
+        name="description"
+        content={toPlainText(description)}
+      />
       <meta
         property="og:image"
         // Because OG images must have a absolute URL, we use the
@@ -39,7 +42,6 @@ function IndexPageHead({ settings }: IndexPageHeadProps) {
     </>
   )
 }
-
 
 export interface IndexPageProps {
   preview?: boolean

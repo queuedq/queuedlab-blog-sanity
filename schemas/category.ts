@@ -28,8 +28,8 @@ export default defineType({
       title: 'Color',
       type: 'color',
       options: {
-        disableAlpha: true
-      }
+        disableAlpha: true,
+      },
     }),
   ],
 })

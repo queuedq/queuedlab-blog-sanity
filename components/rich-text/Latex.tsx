@@ -1,6 +1,6 @@
 import 'katex/dist/katex.min.css'
 
-import { BlockMath,InlineMath } from 'react-katex'
+import { BlockMath, InlineMath } from 'react-katex'
 
 export default function Latex({ value, isInline }) {
   return isInline ? (

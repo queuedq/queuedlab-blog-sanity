@@ -12,7 +12,6 @@ import { notFound } from 'next/navigation'
 
 import BlogMeta from './BlogMeta'
 
-
 interface PostPageHeadProps {
   settings: Settings
   post: Post
@@ -37,7 +36,6 @@ function PostPageHead({ settings, post }: PostPageHeadProps) {
     </>
   )
 }
-
 
 export interface PostPageProps {
   preview?: boolean

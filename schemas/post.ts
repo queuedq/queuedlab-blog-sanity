@@ -49,7 +49,7 @@ export default defineType({
       type: 'text',
       components: {
         input: CompactTextArea,
-      }
+      },
     }),
     defineField({
       name: 'categories',

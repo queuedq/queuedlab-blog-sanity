@@ -9,23 +9,35 @@ export function RichTextEditor(props) {
       onPaste={handlePaste}
       hotkeys={{
         custom: {
-          "mod+opt+1": (event, editor) => { PortableTextEditor.toggleBlockStyle(editor, "h1") },
-          "mod+opt+2": (event, editor) => { PortableTextEditor.toggleBlockStyle(editor, "h2") },
-          "mod+opt+3": (event, editor) => { PortableTextEditor.toggleBlockStyle(editor, "h3") },
-          "mod+opt+4": (event, editor) => { PortableTextEditor.toggleBlockStyle(editor, "h4") },
-          "mod+opt+5": (event, editor) => { PortableTextEditor.toggleBlockStyle(editor, "h5") },
-          "mod+opt+6": (event, editor) => { PortableTextEditor.toggleBlockStyle(editor, "h6") },
-          "mod+opt+0": (event, editor) => { PortableTextEditor.toggleBlockStyle(editor, "normal") },
-        }
+          'mod+opt+1': (event, editor) => {
+            PortableTextEditor.toggleBlockStyle(editor, 'h1')
+          },
+          'mod+opt+2': (event, editor) => {
+            PortableTextEditor.toggleBlockStyle(editor, 'h2')
+          },
+          'mod+opt+3': (event, editor) => {
+            PortableTextEditor.toggleBlockStyle(editor, 'h3')
+          },
+          'mod+opt+4': (event, editor) => {
+            PortableTextEditor.toggleBlockStyle(editor, 'h4')
+          },
+          'mod+opt+5': (event, editor) => {
+            PortableTextEditor.toggleBlockStyle(editor, 'h5')
+          },
+          'mod+opt+6': (event, editor) => {
+            PortableTextEditor.toggleBlockStyle(editor, 'h6')
+          },
+          'mod+opt+0': (event, editor) => {
+            PortableTextEditor.toggleBlockStyle(editor, 'normal')
+          },
+        },
       }}
     />
   )
 }
 
-function handlePaste (input) {
+function handlePaste(input) {
   return undefined
-
-
 
   // https://www.sanity.io/docs/customizing-the-portable-text-editor
   const { event, schemaTypes, path } = input
@@ -49,7 +61,7 @@ function handlePaste (input) {
         normalizeBlock({
           _type: 'block',
           // @ts-ignore
-          children: [{_type: 'span', text}],
+          children: [{ _type: 'span', text }],
         }),
       ],
       path,
@@ -57,7 +69,9 @@ function handlePaste (input) {
   }
 
   // check if schema has the code type
-  const hasCodeType = schemaTypes.portableText.of.map(({ name }) => name).includes('code')
+  const hasCodeType = schemaTypes.portableText.of
+    .map(({ name }) => name)
+    .includes('code')
   if (!hasCodeType) {
     console.log(
       'Run `sanity install @sanity/code-input, and add `type: "code"` to your schema.'
@@ -87,7 +101,7 @@ function handlePaste (input) {
                 ? code.childNodes
                 : el.childNodes
             let text = ''
-            childNodes.forEach(node => {
+            childNodes.forEach((node) => {
               console.log(node)
               text += node.textContent
             })
@@ -104,4 +118,3 @@ function handlePaste (input) {
   }
   return undefined
 }
-

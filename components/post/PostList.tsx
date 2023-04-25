@@ -5,7 +5,7 @@ import PostPreview from './PostPreview'
 export default function PostList({ posts }: { posts: Post[] }) {
   return (
     <section>
-      <div className="flex flex-col -mt-8 -mb-8">
+      <div className="-mt-8 -mb-8 flex flex-col">
         {posts.map((post) => (
           <PostPreview key={post._id} post={post} />
         ))}

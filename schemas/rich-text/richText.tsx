@@ -16,9 +16,7 @@ export default defineType({
     defineField({
       name: 'block',
       type: 'block',
-      of: [
-        { type: 'latex', icon: mathInlineIcon, title: 'Inline Math' },
-      ],
+      of: [{ type: 'latex', icon: mathInlineIcon, title: 'Inline Math' }],
     }),
     defineField({
       name: 'code',
@@ -31,33 +29,33 @@ export default defineType({
           // the original list) results in the language list only containing C and C++...
           // It seems like @sanity/code-input does not support "extending" the original list.
           // Also I don't understand why C and C++ are not supported by default in the first place...
-          {title: 'Batch file', value: 'batchfile'},
-          {title: 'C', value: 'c'}, // added
-          {title: 'C++', value: 'cpp'}, // added
-          {title: 'C#', value: 'csharp'},
-          {title: 'CSS', value: 'css'},
-          {title: 'Go', value: 'golang'},
-          {title: 'GROQ', value: 'groq'},
-          {title: 'HTML', value: 'html'},
-          {title: 'Java', value: 'java'},
-          {title: 'JavaScript', value: 'javascript'},
-          {title: 'JSON', value: 'json'},
-          {title: 'JSX', value: 'jsx'},
-          {title: 'Markdown', value: 'markdown'},
-          {title: 'MySQL', value: 'mysql'},
-          {title: 'PHP', value: 'php'},
-          {title: 'Plain text', value: 'text'},
-          {title: 'Python', value: 'python'},
-          {title: 'Ruby', value: 'ruby'},
-          {title: 'SASS', value: 'sass'},
-          {title: 'SCSS', value: 'scss'},
-          {title: 'sh', value: 'sh'},
-          {title: 'TSX', value: 'tsx'},
-          {title: 'TypeScript', value: 'typescript'},
-          {title: 'XML', value: 'xml'},
-          {title: 'YAML', value: 'yaml'},
-        ]
-      }
+          { title: 'Batch file', value: 'batchfile' },
+          { title: 'C', value: 'c' }, // added
+          { title: 'C++', value: 'cpp' }, // added
+          { title: 'C#', value: 'csharp' },
+          { title: 'CSS', value: 'css' },
+          { title: 'Go', value: 'golang' },
+          { title: 'GROQ', value: 'groq' },
+          { title: 'HTML', value: 'html' },
+          { title: 'Java', value: 'java' },
+          { title: 'JavaScript', value: 'javascript' },
+          { title: 'JSON', value: 'json' },
+          { title: 'JSX', value: 'jsx' },
+          { title: 'Markdown', value: 'markdown' },
+          { title: 'MySQL', value: 'mysql' },
+          { title: 'PHP', value: 'php' },
+          { title: 'Plain text', value: 'text' },
+          { title: 'Python', value: 'python' },
+          { title: 'Ruby', value: 'ruby' },
+          { title: 'SASS', value: 'sass' },
+          { title: 'SCSS', value: 'scss' },
+          { title: 'sh', value: 'sh' },
+          { title: 'TSX', value: 'tsx' },
+          { title: 'TypeScript', value: 'typescript' },
+          { title: 'XML', value: 'xml' },
+          { title: 'YAML', value: 'yaml' },
+        ],
+      },
     }),
     defineField({
       name: 'figure',

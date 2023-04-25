@@ -8,7 +8,7 @@ import js from 'refractor/lang/javascript'
 Refractor.registerLanguage(cpp)
 Refractor.registerLanguage(js)
 
-export default function BlockCode({value}) {
+export default function BlockCode({ value }) {
   return (
     <Refractor
       language={value.language}

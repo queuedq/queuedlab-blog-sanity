@@ -7,9 +7,11 @@
 export function referenceArray(type: string) {
   return {
     type: 'array',
-    of: [{
-      type: 'reference',
-      to: [{ type }],
-    }],
+    of: [
+      {
+        type: 'reference',
+        to: [{ type }],
+      },
+    ],
   }
 }

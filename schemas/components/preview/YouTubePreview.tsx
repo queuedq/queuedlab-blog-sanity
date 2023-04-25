@@ -8,7 +8,7 @@ export default function YouTubePreview(props) {
   let content
   if (!id) {
     content = (
-      <div className="flex w-full h-full items-center justify-center text-red-500 font-bold">
+      <div className="flex h-full w-full items-center justify-center font-bold text-red-500">
         <div>Enter YouTube video URL</div>
       </div>
     )
@@ -18,7 +18,7 @@ export default function YouTubePreview(props) {
         title="YouTube Preview"
         src={embedUrl}
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        className="w-full h-full"
+        className="h-full w-full"
       />
     )
   }
@@ -26,9 +26,7 @@ export default function YouTubePreview(props) {
   return (
     <div>
       {renderDefault({ ...props, title: 'YouTube Embed' })}
-      <div className="mt-1 aspect-video">
-        {content}
-      </div>
+      <div className="mt-1 aspect-video">{content}</div>
     </div>
   )
 }

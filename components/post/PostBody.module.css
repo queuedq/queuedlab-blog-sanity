@@ -16,65 +16,89 @@
 }
 
 /* headings */
-.portableText h1, 
-.portableText h2, 
-.portableText h3, 
-.portableText h4, 
-.portableText h5, 
+.portableText h1,
+.portableText h2,
+.portableText h3,
+.portableText h4,
+.portableText h5,
 .portableText h6 {
-  @apply text-gray-900 font-bold;
+  @apply font-bold text-gray-900;
 }
-.portableText h1 { @apply mt-12 mb-4 leading-snug text-5xl; }
-.portableText h2 { @apply mt-12 mb-4 leading-snug text-3xl; }
-.portableText h3 { @apply mt-8 mb-4 leading-normal text-2xl; }
-.portableText h4 { @apply mt-8 mb-4 leading-normal text-xl; }
-.portableText h5 { @apply mt-8 mb-4 leading-normal text-base; }
-.portableText h6 { @apply mt-8 mb-4 leading-normal text-sm; }
+.portableText h1 {
+  @apply mt-12 mb-4 text-5xl leading-snug;
+}
+.portableText h2 {
+  @apply mt-12 mb-4 text-3xl leading-snug;
+}
+.portableText h3 {
+  @apply mt-8 mb-4 text-2xl leading-normal;
+}
+.portableText h4 {
+  @apply mt-8 mb-4 text-xl leading-normal;
+}
+.portableText h5 {
+  @apply mt-8 mb-4 text-base leading-normal;
+}
+.portableText h6 {
+  @apply mt-8 mb-4 text-sm leading-normal;
+}
 
 /* link */
 .portableText a {
-  @apply text-brand-500 border-b border-brand-300;
+  @apply border-b border-brand-300 text-brand-500;
   @apply transition-all duration-100 ease-in-out;
 }
 .portableText a:hover {
-  @apply bg-brand-50 text-brand-600 border-brand-400;
+  @apply border-brand-400 bg-brand-50 text-brand-600;
 }
 
 /* inline code */
 .portableText :not(pre) code {
   @apply mx-0.5 px-1 pt-0.5 pb-px;
-  @apply border border-brand-200 rounded bg-brand-50 text-sm;
+  @apply rounded border border-brand-200 bg-brand-50 text-sm;
 }
 
 /* block code */
-.portableText pre { @apply rounded; }
+.portableText pre {
+  @apply rounded;
+}
 
 /* unordered list */
-.portableText ul { @apply ml-8; }
-.portableText li>ul { @apply my-0; }
-.portableText ul>li,
-.portableText ul>li p {
+.portableText ul {
+  @apply ml-8;
+}
+.portableText li > ul {
+  @apply my-0;
+}
+.portableText ul > li,
+.portableText ul > li p {
   @apply relative my-2;
 }
-.portableText ul>li::before {
-  content: "•";
-  @apply absolute -left-4 -translate-x-1/2 my-auto;
-  @apply font-bold text-brand tracking-tight rounded-full;
+.portableText ul > li::before {
+  content: '•';
+  @apply absolute -left-4 my-auto -translate-x-1/2;
+  @apply rounded-full font-bold tracking-tight text-brand;
 }
 
 /* ordered list */
-.portableText ol { @apply ml-8; }
-.portableText li>ol { @apply my-0; }
-.portableText ol { counter-reset: ol-counter; }
-.portableText ol>li,
-.portableText ol>li p {
+.portableText ol {
+  @apply ml-8;
+}
+.portableText li > ol {
+  @apply my-0;
+}
+.portableText ol {
+  counter-reset: ol-counter;
+}
+.portableText ol > li,
+.portableText ol > li p {
   counter-increment: ol-counter;
   @apply relative my-2;
 }
-.portableText ol>li::before {
-  content: counter(ol-counter) ". ";
-  @apply absolute top-0 bottom-0 -left-2 -translate-x-full my-auto;
-  @apply font-semibold text-brand tracking-tight tabular-nums;
+.portableText ol > li::before {
+  content: counter(ol-counter) '. ';
+  @apply absolute top-0 bottom-0 -left-2 my-auto -translate-x-full;
+  @apply font-semibold tabular-nums tracking-tight text-brand;
 }
 
 /* horizontal rule */
@@ -84,7 +108,7 @@
 
 /* blockquote */
 .portableText blockquote {
-  @apply pl-4 border-l-4 border-gray-500 text-gray-500 italic;
+  @apply border-l-4 border-gray-500 pl-4 italic text-gray-500;
 }
 
 /* figure */

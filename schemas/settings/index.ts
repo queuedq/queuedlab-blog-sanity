@@ -81,6 +81,6 @@ export default defineType({
       name: 'category_list',
       title: 'Blog header category list',
       ...referenceArray(category.name),
-    })
+    }),
   ],
 })

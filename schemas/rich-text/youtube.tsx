@@ -4,7 +4,9 @@ import { defineField, defineType } from 'sanity'
 
 import YouTubePreview from '../components/preview/YouTubePreview'
 
-const icon = (<FontAwesomeIcon icon={faYoutube} size="2xs" style={{ fontSize: '1em' }} />)
+const icon = (
+  <FontAwesomeIcon icon={faYoutube} size="2xs" style={{ fontSize: '1em' }} />
+)
 
 export default defineType({
   name: 'youtube',

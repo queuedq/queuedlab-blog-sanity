@@ -4,7 +4,6 @@ import { faRss } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 
-
 const UserLink = ({ link }) => {
   return (
     <Link href={link.href} className="mr-4 text-gray-500 hover:underline">
@@ -13,7 +12,6 @@ const UserLink = ({ link }) => {
     </Link>
   )
 }
-
 
 // TODO: Use blog setting from Sanity
 const links = [
@@ -45,7 +43,7 @@ export default function Footer() {
   return (
     <footer className="mt-16 py-8">
       <div>
-        {links.map(link => (
+        {links.map((link) => (
           <UserLink key={link.name} link={link} />
         ))}
       </div>

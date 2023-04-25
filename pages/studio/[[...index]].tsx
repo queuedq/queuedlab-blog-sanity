@@ -1,5 +1,5 @@
-import {NextStudio} from 'next-sanity/studio'
-import {ReactElement} from 'react'
+import { NextStudio } from 'next-sanity/studio'
+import { ReactElement } from 'react'
 
 import config from '../../sanity.config'
 

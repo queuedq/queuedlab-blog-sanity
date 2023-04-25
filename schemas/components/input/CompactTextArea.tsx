@@ -4,23 +4,16 @@ import { useCallback } from 'react'
 import { set, unset } from 'sanity'
 
 export default function CompactTextArea(props) {
-  const {
-    elementProps,
-    onChange,
-    value = ''
-  } = props
+  const { elementProps, onChange, value = '' } = props
 
-  const handleChange = useCallback((event) => {
-    const nextValue = event.currentTarget.value
-    onChange(nextValue ? set(nextValue) : unset())
-	}, [onChange])
+  const handleChange = useCallback(
+    (event) => {
+      const nextValue = event.currentTarget.value
+      onChange(nextValue ? set(nextValue) : unset())
+    },
+    [onChange]
+  )
 
   // https://www.sanity.io/ui/docs/primitive/text-areax
-  return (
-    <TextArea
-      {...elementProps}
-      onChange={handleChange}
-      value={value}
-    />
-  )
+  return <TextArea {...elementProps} onChange={handleChange} value={value} />
 }
