@@ -45,17 +45,17 @@
 
 /* link */
 .portableText a {
-  @apply border-b border-brand-300 text-brand-500;
-  @apply transition-all duration-100 ease-in-out;
+  @apply m-px border-b border-dotted border-slate-600 p-px text-slate-600;
+  @apply transition-all duration-200 ease-in-out;
 }
 .portableText a:hover {
-  @apply border-brand-400 bg-brand-50 text-brand-600;
+  @apply border-blue-600 bg-blue-50 text-blue-600;
 }
 
 /* inline code */
 .portableText :not(pre) code {
   @apply mx-0.5 px-1 pt-0.5 pb-px;
-  @apply rounded border border-brand-200 bg-brand-50 text-sm;
+  @apply rounded border border-slate-300 bg-slate-100 text-sm text-slate-700;
 }
 
 /* block code */
@@ -77,7 +77,7 @@
 .portableText ul > li::before {
   content: '•';
   @apply absolute -left-4 my-auto -translate-x-1/2;
-  @apply rounded-full font-bold tracking-tight text-brand;
+  @apply rounded-full font-bold tracking-tight text-slate-500;
 }
 
 /* ordered list */
@@ -98,20 +98,20 @@
 .portableText ol > li::before {
   content: counter(ol-counter) '. ';
   @apply absolute top-0 bottom-0 -left-2 my-auto -translate-x-full;
-  @apply font-semibold tabular-nums tracking-tight text-brand;
+  @apply font-semibold tabular-nums tracking-tight text-slate-500;
 }
 
 /* horizontal rule */
 .portableText hr {
-  @apply my-8 border-t-gray-200;
+  @apply mx-auto my-8 w-16 border-t-gray-300;
 }
 
 /* blockquote */
 .portableText blockquote {
-  @apply border-l-4 border-gray-500 pl-4 italic text-gray-500;
+  @apply border-l-4 border-slate-500 pl-4 italic text-slate-500;
 }
 
 /* figure */
 .portableText figure figcaption {
-  @apply mt-4 text-center text-gray-500;
+  @apply mt-4 text-center text-slate-500;
 }
