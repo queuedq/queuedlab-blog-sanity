@@ -13,16 +13,27 @@ const postFields = groq`
   "tags": tags[]->{name, "slug": slug.current},
 `
 
+// settings query
+
 export const settingsQuery = groq`
 *[_type == "settings"][0] {
   ...,
   "headerCategories": headerCategories[]->{name, "slug": slug.current, color},
 }`
 
+// posts query
+
 export const indexQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`
+
+export const postsByCategoryQuery = groq`
+*[_type == "post" && $category in categories[]->slug.current] | order(date desc, _updatedAt desc) {
+  ${postFields}
+}`
+
+// post query
 
 export const postAndMoreStoriesQuery = groq`
 {
@@ -36,14 +47,19 @@ export const postAndMoreStoriesQuery = groq`
   }
 }`
 
+export const postBySlugQuery = groq`
+*[_type == "post" && slug.current == $slug][0] {
+  ${postFields}
+}`
+
+// slugs query (for getStaticPaths)
+
 export const postSlugsQuery = groq`
 *[_type == "post" && defined(slug.current)][].slug.current
 `
 
-export const postBySlugQuery = groq`
-*[_type == "post" && slug.current == $slug][0] {
-  ${postFields}
-}
+export const categorySlugsQuery = groq`
+*[_type == "postCategory" && defined(slug.current)][].slug.current
 `
 
 export interface Author {

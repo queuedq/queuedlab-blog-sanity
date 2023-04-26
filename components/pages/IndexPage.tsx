@@ -3,7 +3,6 @@ import BlogContext from 'components/BlogContext'
 import Container from 'components/layout/Container'
 import Layout from 'components/layout/Layout'
 import PostList from 'components/post/PostList'
-import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
 import Head from 'next/head'
 
@@ -14,12 +13,8 @@ interface IndexPageHeadProps {
 }
 
 function IndexPageHead({ settings }: IndexPageHeadProps) {
-  const {
-    title = demo.title,
-    description = demo.description,
-    ogImage = {},
-  } = settings
-  const ogImageTitle = ogImage?.title || demo.ogImageTitle
+  const { title, description, ogImage = {} } = settings
+  const ogImageTitle = ogImage?.title
 
   return (
     <>
@@ -49,15 +44,15 @@ export interface IndexPageProps {
   loading?: boolean
   posts: Post[]
   settings: Settings
+  currentCategory: string
 }
 
 export default function IndexPage(props: IndexPageProps) {
-  const { preview, loading, posts, settings } = props
-  settings.title = settings.title ?? demo.title
+  const { preview, loading, posts, settings, currentCategory } = props
 
   return (
     <BlogContext.Provider
-      value={{ preview, loading, settings, currentPage: 'index' }}
+      value={{ preview, loading, settings, currentCategory }}
     >
       <Head>
         <IndexPageHead settings={settings} />

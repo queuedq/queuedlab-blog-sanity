@@ -1,10 +1,14 @@
+import * as demo from 'lib/demo.data'
 import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api'
 import {
   type Post,
   type Settings,
+  Category,
+  categorySlugsQuery,
   indexQuery,
   postAndMoreStoriesQuery,
   postBySlugQuery,
+  postsByCategoryQuery,
   postSlugsQuery,
   settingsQuery,
 } from 'lib/sanity.queries'
@@ -17,12 +21,24 @@ export const client = projectId
   ? createClient({ projectId, dataset, apiVersion, useCdn })
   : null
 
+// settings
+
 export async function getSettings(): Promise<Settings> {
   if (client) {
-    return (await client.fetch(settingsQuery)) || {}
+    const settings = (await client.fetch(settingsQuery)) || {}
+    return {
+      title: demo.title,
+      description: demo.description,
+      ogImage: {
+        title: demo.ogImageTitle,
+      },
+      ...settings,
+    }
   }
   return {}
 }
+
+// posts
 
 export async function getAllPosts(): Promise<Post[]> {
   if (client) {
@@ -31,13 +47,14 @@ export async function getAllPosts(): Promise<Post[]> {
   return []
 }
 
-export async function getAllPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
+export async function getPostsByCategory(category: string): Promise<Post[]> {
   if (client) {
-    const slugs = (await client.fetch<string[]>(postSlugsQuery)) || []
-    return slugs.map((slug) => ({ slug }))
+    return (await client.fetch(postsByCategoryQuery, { category })) || []
   }
   return []
 }
+
+// post
 
 export async function getPostBySlug(slug: string): Promise<Post> {
   if (client) {
@@ -61,4 +78,22 @@ export async function getPostAndMoreStories(
     return await client.fetch(postAndMoreStoriesQuery, { slug })
   }
   return { post: null, morePosts: [] }
+}
+
+// slugs
+
+export async function getAllPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
+  if (client) {
+    const slugs = (await client.fetch<string[]>(postSlugsQuery)) || []
+    return slugs.map((slug) => ({ slug }))
+  }
+  return []
+}
+
+export async function getAllCategorySlugs(): Promise<Pick<Category, 'slug'>[]> {
+  if (client) {
+    const slugs = (await client.fetch<string[]>(categorySlugsQuery)) || []
+    return slugs.map((slug) => ({ slug }))
+  }
+  return []
 }

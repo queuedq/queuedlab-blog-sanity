@@ -1,10 +1,14 @@
 import BlogContext from 'components/BlogContext'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useContext } from 'react'
 
 export default function CategoryMenu() {
-  const { settings, currentPage } = useContext(BlogContext)
+  const { settings, currentCategory } = useContext(BlogContext)
+  const router = useRouter()
   const { headerCategories } = settings
+
+  console.log(router)
 
   if (!headerCategories) return null
 
@@ -13,13 +17,13 @@ export default function CategoryMenu() {
       name: 'All',
       href: '/',
       color: '#111827', // gray-900
-      selected: currentPage == 'index',
+      selected: currentCategory == '_index',
     },
     ...headerCategories.map((category) => ({
       name: category.name,
       href: `/categories/${category.slug}`,
       color: category.color.hex,
-      selected: false,
+      selected: currentCategory == category.slug,
     })),
   ]
 

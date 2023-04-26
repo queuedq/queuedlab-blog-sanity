@@ -1,6 +1,10 @@
 import { PreviewSuspense } from '@sanity/preview-kit'
 import IndexPage from 'components/pages/IndexPage'
-import { getAllPosts, getSettings } from 'lib/sanity.client'
+import {
+  getAllCategorySlugs,
+  getPostsByCategory,
+  getSettings,
+} from 'lib/sanity.client'
 import { Post, Settings } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'
@@ -12,6 +16,7 @@ interface PageProps {
   settings: Settings
   preview: boolean
   token: string | null
+  slug: string
 }
 
 interface Query {
@@ -23,9 +28,7 @@ interface PreviewData {
 }
 
 export default function Page(props: PageProps) {
-  const { posts, settings, preview, token } = props
-
-  // console.log(posts)
+  const { posts, settings, preview, token, slug } = props
 
   if (preview) {
     return (
@@ -36,7 +39,7 @@ export default function Page(props: PageProps) {
             preview
             posts={posts}
             settings={settings}
-            currentCategory="_index"
+            currentCategory={slug}
           />
         }
       >
@@ -45,9 +48,7 @@ export default function Page(props: PageProps) {
     )
   }
 
-  return (
-    <IndexPage posts={posts} settings={settings} currentCategory="_index" />
-  )
+  return <IndexPage posts={posts} settings={settings} currentCategory={slug} />
 }
 
 export const getStaticProps: GetStaticProps<
@@ -55,11 +56,11 @@ export const getStaticProps: GetStaticProps<
   Query,
   PreviewData
 > = async (ctx) => {
-  const { preview = false, previewData = {} } = ctx
+  const { preview = false, previewData = {}, params = {} } = ctx
 
   const [settings, posts = []] = await Promise.all([
     getSettings(),
-    getAllPosts(),
+    getPostsByCategory(params.slug),
   ])
 
   return {
@@ -68,6 +69,16 @@ export const getStaticProps: GetStaticProps<
       settings,
       preview,
       token: previewData.token ?? null,
+      slug: params.slug,
     },
+  }
+}
+
+export const getStaticPaths = async () => {
+  const slugs = await getAllCategorySlugs()
+
+  return {
+    paths: slugs?.map(({ slug }) => `/categories/${slug}`) || [],
+    fallback: false,
   }
 }
