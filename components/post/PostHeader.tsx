@@ -24,14 +24,16 @@ export default function PostHeader({ post }: PostHeaderProps) {
       <div className="mb-6 block md:hidden">
         {author && <Avatar name={author.name} picture={author.picture} />}
       </div> */}
-      {/* TODO: add category/tag page */}
       {categories && categories.length > 0 && (
-        <div className="-order-1 text-lg font-semibold tracking-wide text-brand">
+        <div
+          className="-order-1 font-semibold tracking-wide"
+          style={{ color: categories[0]?.color.hex }}
+        >
           <Link
-            href={`/categories/${categories[0].slug}`}
+            href={`/categories/${categories[0]?.slug}`}
             className="hover:underline"
           >
-            {categories[0].name}
+            {categories[0]?.name}
           </Link>
         </div>
       )}

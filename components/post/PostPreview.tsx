@@ -27,7 +27,6 @@ export default function PostPreview({ post }: PostPreviewProps) {
           {title}
         </Link>
       </h3>
-      {/* TODO: add category/tag page */}
       {categories && categories.length > 0 && (
         <div
           className={`${style.category} -order-1 text-sm font-semibold tracking-wide text-slate-500`}
