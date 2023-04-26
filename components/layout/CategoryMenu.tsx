@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import BlogContext from 'components/BlogContext'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -32,11 +33,14 @@ export default function CategoryMenu() {
       {categories.map(({ name, href, color, selected }, index) => (
         <div
           key={name}
-          className="after:mx-2.5 after:font-thin [&:not(:last-child)]:after:content-['/']"
+          className="after:mx-2.5 after:font-thin [&:not(:last-child)]:after:content-['/'] "
         >
           <Link
             href={href}
-            className={selected ? null : '[&:not(:hover)]:!text-slate-400'}
+            className={classNames(
+              'transition-all duration-200 ease-in-out',
+              selected ? null : '[&:not(:hover)]:!text-slate-400'
+            )}
             style={{ color }}
           >
             {name}

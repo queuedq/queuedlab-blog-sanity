@@ -29,7 +29,7 @@ export default function PostPreview({ post }: PostPreviewProps) {
       </h3>
       {categories && categories.length > 0 && (
         <div
-          className={`${style.category} -order-1 text-sm font-semibold tracking-wide text-slate-500`}
+          className={`${style.category} ease-in-outs -order-1 text-sm font-semibold tracking-wide text-slate-500 transition-all duration-200`}
           style={{ color: categories[0]?.color.hex }}
         >
           <Link
