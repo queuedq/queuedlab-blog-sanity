@@ -60,7 +60,7 @@
 
 /* block code */
 .portableText pre {
-  @apply rounded;
+  @apply rounded text-sm;
 }
 
 /* unordered list */
