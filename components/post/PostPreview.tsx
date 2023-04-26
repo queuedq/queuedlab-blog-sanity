@@ -30,7 +30,7 @@ export default function PostPreview({ post }: PostPreviewProps) {
       {/* TODO: add category/tag page */}
       {categories && categories.length > 0 && (
         <div
-          className={`${style.category} -order-1 text-sm font-semibold tracking-wide text-gray-500`}
+          className={`${style.category} -order-1 text-sm font-semibold tracking-wide text-slate-500`}
           style={{ color: categories[0]?.color.hex }}
         >
           <Link
