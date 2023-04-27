@@ -12,7 +12,7 @@ export default function PostPreview({ post }: PostPreviewProps) {
   const { title, slug, categories, excerpt, date } = post
 
   return (
-    <div className={`${style.preview} group flex flex-col py-8`}>
+    <div className={`${style.preview} flex flex-col py-8`}>
       {/* TODO: show cover image */}
       {/* <div className="mb-5">
         <CoverImage
@@ -28,13 +28,11 @@ export default function PostPreview({ post }: PostPreviewProps) {
         </Link>
       </h3>
       {categories && categories.length > 0 && (
-        <div
-          className={`${style.category} ease-in-outs -order-1 text-sm font-semibold tracking-wide text-slate-500 transition-all duration-200`}
-          style={{ color: categories[0]?.color.hex }}
-        >
+        <div className="-order-1 text-sm font-semibold tracking-wide text-slate-500">
           <Link
             href={`/categories/${categories[0]?.slug}`}
-            className="hover:underline"
+            className={`${style.category} transition-all duration-100 ease-in-out hover:underline`}
+            style={{ color: categories[0]?.color.hex }}
           >
             {categories[0]?.name}
           </Link>

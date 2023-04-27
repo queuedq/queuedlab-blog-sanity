@@ -46,7 +46,7 @@
 /* link */
 .portableText a {
   @apply m-px border-b border-dotted border-slate-600 p-px text-slate-600;
-  @apply transition-all duration-200 ease-in-out;
+  @apply transition-all duration-100 ease-in-out;
 }
 .portableText a:hover {
   @apply border-blue-600 bg-blue-50 text-blue-600;

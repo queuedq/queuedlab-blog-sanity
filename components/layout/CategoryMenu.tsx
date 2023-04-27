@@ -38,7 +38,7 @@ export default function CategoryMenu() {
           <Link
             href={href}
             className={classNames(
-              'transition-all duration-200 ease-in-out',
+              'transition-all duration-100 ease-in-out',
               selected ? null : '[&:not(:hover)]:!text-slate-400'
             )}
             style={{ color }}
