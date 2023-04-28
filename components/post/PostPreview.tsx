@@ -28,7 +28,7 @@ export default function PostPreview({ post }: PostPreviewProps) {
         </Link>
       </h3>
       {categories && categories.length > 0 && (
-        <div className="-order-1 text-sm font-semibold tracking-wide text-slate-500">
+        <div className="-order-1 text-sm font-semibold tracking-wide text-gray-500">
           <Link
             href={`/categories/${categories[0]?.slug}`}
             className={`${style.category} transition-all duration-100 ease-in-out hover:underline`}
