@@ -6,10 +6,10 @@ import CategoryMenu from './CategoryMenu'
 import Navbar from './Navbar'
 
 function BlogTitle() {
-  const { currentPage, settings } = useContext(BlogContext)
+  const { currentCategory, settings } = useContext(BlogContext)
 
-  switch (currentPage) {
-    case 'index':
+  switch (currentCategory) {
+    case '_index':
       return (
         <h1 className="text-xl font-light">
           <Link href="/" className="hover:underline">
