@@ -1,15 +1,11 @@
 import classNames from 'classnames'
 import BlogContext from 'components/BlogContext'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { useContext } from 'react'
 
 export default function CategoryMenu() {
   const { settings, currentCategory } = useContext(BlogContext)
-  const router = useRouter()
   const { headerCategories } = settings
-
-  console.log(router)
 
   if (!headerCategories) return null
 
