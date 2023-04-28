@@ -29,7 +29,7 @@ export default function CategoryMenu() {
       {categories.map(({ name, href, color, selected }, index) => (
         <div
           key={name}
-          className="after:mx-2.5 after:font-thin [&:not(:last-child)]:after:content-['/'] "
+          className="after:mx-2.5 after:font-thin after:text-slate-700 [&:not(:last-child)]:after:content-['/'] "
         >
           <Link
             href={href}

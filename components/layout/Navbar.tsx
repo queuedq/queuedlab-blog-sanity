@@ -5,7 +5,7 @@ import Link from 'next/link'
 // TODO: Highlight current page link
 export default function Navbar() {
   return (
-    <nav className="flex gap-x-5 text-sm">
+    <nav className="flex gap-x-5 text-sm text-gray-700">
       <Link href="/" className="hover:underline">
         Blog
       </Link>

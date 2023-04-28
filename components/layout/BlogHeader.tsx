@@ -11,7 +11,7 @@ function BlogTitle() {
   switch (currentCategory) {
     case '_index':
       return (
-        <h1 className="text-xl font-light">
+        <h1 className="text-xl font-light text-gray-700">
           <Link href="/" className="hover:underline">
             {settings.title}
           </Link>
