@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     './components/**/*.{js,ts,jsx,tsx}',
@@ -8,6 +10,9 @@ module.exports = {
     './schemas/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    fontFamily: {
+      sans: ['Pretendard Variable', ...defaultTheme.fontFamily.sans]
+    },
     extend: {
       colors: {
         brand: '#8a2ae2',
