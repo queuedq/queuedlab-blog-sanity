@@ -12,5 +12,12 @@ export default function PreviewIndexPage({ token }: { token: null | string }) {
   const posts: Post[] = usePreview(token, indexQuery) || []
   const settings: Settings = usePreview(token, settingsQuery) || {}
 
-  return <IndexPage preview posts={posts} settings={settings} />
+  return (
+    <IndexPage
+      preview
+      posts={posts}
+      settings={settings}
+      currentCategory="_index"
+    />
+  )
 }
