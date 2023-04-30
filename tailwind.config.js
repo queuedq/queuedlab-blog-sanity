@@ -11,7 +11,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ['Pretendard Variable', ...defaultTheme.fontFamily.sans]
+      sans: ['Pretendard Variable', ...defaultTheme.fontFamily.sans],
     },
     extend: {
       colors: {
