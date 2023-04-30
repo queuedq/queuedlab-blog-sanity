@@ -98,4 +98,5 @@ export interface Settings {
     title?: string
   }
   headerCategories?: Category[]
+  copyrightNotice?: string
 }

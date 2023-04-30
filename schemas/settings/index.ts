@@ -12,6 +12,10 @@ export default defineType({
   type: 'document',
   icon: CogIcon,
   preview: { select: { title: 'title', subtitle: 'description' } },
+  groups: [
+    { name: 'general', title: 'General Info' },
+    { name: 'header_footer', title: 'Header & Footer' },
+  ],
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,
   fields: [
@@ -22,6 +26,7 @@ export default defineType({
       type: 'string',
       initialValue: demo.title,
       validation: (rule) => rule.required(),
+      group: 'general',
     }),
     defineField({
       name: 'description',
@@ -56,6 +61,7 @@ export default defineType({
         }),
       ],
       validation: (rule) => rule.max(155).required(),
+      group: 'general',
     }),
     defineField({
       name: 'ogImage',
@@ -74,13 +80,21 @@ export default defineType({
           initialValue: demo.ogImageTitle,
         }),
       ],
+      group: 'general',
     }),
     // TODO: use orderable document list instead
     // https://www.sanity.io/plugins/orderable-document-list
     defineField({
       name: 'headerCategories',
-      title: 'Blog header category list',
+      title: 'Blog Header Category List',
       ...referenceArray(category.name),
+      group: 'header_footer',
+    }),
+    defineField({
+      name: 'copyrightNotice',
+      title: 'Copyright Notice',
+      type: 'string',
+      group: 'header_footer',
     }),
   ],
 })
