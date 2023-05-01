@@ -13,11 +13,11 @@ import { Settings, settingsQuery } from 'lib/sanity.queries'
 export default async function og(req: NextRequest, res: NextResponse) {
   const fonts = [
     new URL(
-      'public/fonts/pretendard/woff/Pretendard-Regular.woff',
+      'public/fonts/pretendard/woff/Pretendard-Regular.subset.woff',
       import.meta.url
     ),
     new URL(
-      'public/fonts/pretendard/woff/Pretendard-Bold.woff',
+      'public/fonts/pretendard/woff/Pretendard-Bold.subset.woff',
       import.meta.url
     ),
   ]

@@ -19,11 +19,11 @@ async function init(): Promise<SatoriOptions['fonts']> {
 
   const fonts = [
     new URL(
-      'public/fonts/pretendard/woff/Pretendard-Regular.woff',
+      'public/fonts/pretendard/woff/Pretendard-Regular.subset.woff',
       import.meta.url
     ),
     new URL(
-      'public/fonts/pretendard/woff/Pretendard-Bold.woff',
+      'public/fonts/pretendard/woff/Pretendard-Bold.subset.woff',
       import.meta.url
     ),
   ]
