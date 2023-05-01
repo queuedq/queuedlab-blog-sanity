@@ -42,7 +42,7 @@ export default function PostHeader({ post }: PostHeaderProps) {
           {excerpt}
         </p>
       )}
-      <div className="mt-3 text-sm font-light tracking-wide text-gray-500">
+      <div className="mt-3 text-sm tracking-wide text-gray-500">
         <Date dateString={date} />
       </div>
     </div>
