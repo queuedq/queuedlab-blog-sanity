@@ -17,11 +17,25 @@ async function init(): Promise<SatoriOptions['fonts']> {
     )
   }
 
-  const fontData = await fetch(
-    new URL('public/Inter-Bold.woff', import.meta.url)
-  ).then((res) => res.arrayBuffer())
+  const fonts = [
+    new URL(
+      'public/fonts/pretendard/woff/Pretendard-Regular.woff',
+      import.meta.url
+    ),
+    new URL(
+      'public/fonts/pretendard/woff/Pretendard-Bold.woff',
+      import.meta.url
+    ),
+  ]
 
-  return [{ name: 'Inter', data: fontData, style: 'normal', weight: 700 }]
+  const [fontRegular, fontBold] = await Promise.all(
+    fonts.map((font) => fetch(font).then((res) => res.arrayBuffer()))
+  )
+
+  return [
+    { name: 'Pretendard', data: fontRegular, style: 'normal', weight: 400 },
+    { name: 'Pretendard', data: fontBold, style: 'normal', weight: 700 },
+  ]
 }
 
 // preload fonts and polyfill

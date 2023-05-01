@@ -1,5 +1,5 @@
 import 'tailwindcss/tailwind.css'
-import 'public/fonts/pretendard/pretendardvariable-dynamic-subset.css'
+import 'public/fonts/pretendard-variable/pretendardvariable-dynamic-subset.css'
 
 import { AppProps } from 'next/app'
 

@@ -11,9 +11,21 @@ import * as demo from 'lib/demo.data'
 import { Settings, settingsQuery } from 'lib/sanity.queries'
 
 export default async function og(req: NextRequest, res: NextResponse) {
-  const font = fetch(new URL('public/Inter-Bold.woff', import.meta.url)).then(
-    (res) => res.arrayBuffer()
+  const fonts = [
+    new URL(
+      'public/fonts/pretendard/woff/Pretendard-Regular.woff',
+      import.meta.url
+    ),
+    new URL(
+      'public/fonts/pretendard/woff/Pretendard-Bold.woff',
+      import.meta.url
+    ),
+  ]
+
+  const [fontRegular, fontBold] = await Promise.all(
+    fonts.map((font) => fetch(font).then((res) => res.arrayBuffer()))
   )
+
   const { searchParams } = new URL(req.url)
 
   let title = searchParams.get('title')
@@ -34,12 +46,8 @@ export default async function og(req: NextRequest, res: NextResponse) {
       width,
       height,
       fonts: [
-        {
-          name: 'Inter',
-          data: await font,
-          style: 'normal',
-          weight: 700,
-        },
+        { name: 'Pretendard', data: fontRegular, style: 'normal', weight: 400 },
+        { name: 'Pretendard', data: fontBold, style: 'normal', weight: 700 },
       ],
     }
   )
