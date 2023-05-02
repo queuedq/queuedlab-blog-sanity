@@ -18,7 +18,6 @@ async function init(): Promise<SatoriOptions['fonts']> {
   }
 
   // Cannot use many fonts due to Edge Runtime size limit
-  // Maybe it's ok in this preview component, but I'm not sure
   const fonts = [
     new URL(
       'public/fonts/pretendard/woff/Pretendard-Bold.subset.woff',
@@ -30,9 +29,7 @@ async function init(): Promise<SatoriOptions['fonts']> {
     fonts.map((font) => fetch(font).then((res) => res.arrayBuffer()))
   )
 
-  return [
-    { name: 'Pretendard', data: fontBold, style: 'normal', weight: 700 },
-  ]
+  return [{ name: 'Pretendard', data: fontBold, style: 'normal', weight: 700 }]
 }
 
 // preload fonts and polyfill

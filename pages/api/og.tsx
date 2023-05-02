@@ -13,7 +13,9 @@ import { Settings, settingsQuery } from 'lib/sanity.queries'
 export default async function og(req: NextRequest, res: NextResponse) {
   // TODO: Maybe separate this API into another service like AWS Lambda,
   // so that I can use more generous limit?
-  const fonts = [ // Cannot use many fonts due to Edge Runtime size limit
+
+  // Cannot use many fonts due to Edge Runtime size limit
+  const fonts = [
     new URL(
       'public/fonts/pretendard/woff/Pretendard-Bold.subset.woff',
       import.meta.url
