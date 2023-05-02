@@ -18,7 +18,7 @@ interface PostPageHeadProps {
 function PostPageHead({ settings, post }: PostPageHeadProps) {
   const title = settings.title
   return (
-    <>
+    <Head>
       <title>{post.title ? `${post.title} | ${title}` : title}</title>
       <BlogMeta />
       {post.coverImage?.asset?._ref && (
@@ -31,7 +31,7 @@ function PostPageHead({ settings, post }: PostPageHeadProps) {
             .url()}
         />
       )}
-    </>
+    </Head>
   )
 }
 
@@ -56,10 +56,7 @@ export default function PostPage(props: PostPageProps) {
 
   return (
     <BlogContext.Provider value={{ preview, loading, settings }}>
-      <Head>
-        <PostPageHead settings={settings} post={post} />
-      </Head>
-
+      <PostPageHead settings={settings} post={post} />
       <Layout preview={preview} loading={loading}>
         <Container>
           {preview && !post ? (

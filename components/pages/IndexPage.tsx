@@ -17,7 +17,7 @@ function IndexPageHead({ settings }: IndexPageHeadProps) {
   const ogImageTitle = ogImage?.title
 
   return (
-    <>
+    <Head>
       <title>{title}</title>
       <BlogMeta />
       <meta
@@ -35,7 +35,7 @@ function IndexPageHead({ settings }: IndexPageHeadProps) {
           process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : ''
         }/api/og?${new URLSearchParams({ title: ogImageTitle })}`}
       />
-    </>
+    </Head>
   )
 }
 
@@ -54,9 +54,7 @@ export default function IndexPage(props: IndexPageProps) {
     <BlogContext.Provider
       value={{ preview, loading, settings, currentCategory }}
     >
-      <Head>
-        <IndexPageHead settings={settings} />
-      </Head>
+      <IndexPageHead settings={settings} />
       <Layout preview={preview} loading={loading}>
         <Container>
           <PostList posts={posts} />
