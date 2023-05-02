@@ -11,18 +11,16 @@ import * as demo from 'lib/demo.data'
 import { Settings, settingsQuery } from 'lib/sanity.queries'
 
 export default async function og(req: NextRequest, res: NextResponse) {
-  const fonts = [
-    new URL(
-      'public/fonts/pretendard/woff/Pretendard-Regular.subset.woff',
-      import.meta.url
-    ),
+  // TODO: Maybe separate this API into another service like AWS Lambda,
+  // so that I can use more generous limit?
+  const fonts = [ // Cannot use many fonts due to Edge Runtime size limit
     new URL(
       'public/fonts/pretendard/woff/Pretendard-Bold.subset.woff',
       import.meta.url
     ),
   ]
 
-  const [fontRegular, fontBold] = await Promise.all(
+  const [fontBold] = await Promise.all(
     fonts.map((font) => fetch(font).then((res) => res.arrayBuffer()))
   )
 
@@ -46,7 +44,6 @@ export default async function og(req: NextRequest, res: NextResponse) {
       width,
       height,
       fonts: [
-        { name: 'Pretendard', data: fontRegular, style: 'normal', weight: 400 },
         { name: 'Pretendard', data: fontBold, style: 'normal', weight: 700 },
       ],
     }
