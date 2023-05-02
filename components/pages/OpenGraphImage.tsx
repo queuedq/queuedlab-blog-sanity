@@ -31,7 +31,7 @@ export function OpenGraphImage(props: { title: string }) {
           fontSize: 80,
           fontWeight: 'bold',
           lineHeight: 1.5,
-          whiteSpace: 'pre-wrap',
+          maxWidth: '100%',
         }}
       >
         <div style={{ background: '#fff' }}>{title}</div>
