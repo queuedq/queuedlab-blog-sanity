@@ -21,7 +21,7 @@ function PostPageHead({ settings, post }: PostPageHeadProps) {
     <Head>
       <title>{post.title ? `${post.title} | ${title}` : title}</title>
       <BlogMeta />
-      {post.coverImage?.asset?._ref && (
+      {/* {post.coverImage?.asset?._ref && (
         <meta
           property="og:image"
           content={urlForImage(post.coverImage)
@@ -30,7 +30,17 @@ function PostPageHead({ settings, post }: PostPageHeadProps) {
             .fit('crop')
             .url()}
         />
-      )}
+      )} */}{/* LATER: Use cover image for OG image */}
+      <meta
+        property="og:image"
+        // Because OG images must have a absolute URL, we use the
+        // `VERCEL_URL` environment variable to get the deployment’s URL.
+        // More info:
+        // https://vercel.com/docs/concepts/projects/environment-variables
+        content={`${
+          process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : ''
+        }/api/og?${new URLSearchParams({ title: post.title })}`}
+      />
     </Head>
   )
 }
