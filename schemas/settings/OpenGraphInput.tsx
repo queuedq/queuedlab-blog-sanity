@@ -1,5 +1,5 @@
 import { Skeleton, Stack } from '@sanity/ui'
-import { height, width } from 'components/OpenGraphImage'
+import { height, width } from 'components/pages/OpenGraphImage'
 import React, { lazy, Suspense, useDeferredValue } from 'react'
 import { type ObjectInputProps } from 'sanity'
 import styled from 'styled-components'
