@@ -64,6 +64,14 @@ export default defineType({
       group: 'general',
     }),
     defineField({
+      name: 'domain',
+      title: 'Site Domain',
+      description:
+        'Domain or base URL for the site, without "https://" and trailing \'/\'.',
+      type: 'string',
+      group: 'general',
+    }),
+    defineField({
       name: 'ogImage',
       title: 'Open Graph Image',
       description:

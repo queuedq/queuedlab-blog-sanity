@@ -4,6 +4,7 @@ import {
   type Post,
   type Settings,
   allPostsQuery,
+  allPostsWithContentQuery,
   Category,
   categorySlugsQuery,
   postAndMoreStoriesQuery,
@@ -43,6 +44,13 @@ export async function getSettings(): Promise<Settings> {
 export async function getAllPosts(): Promise<Post[]> {
   if (client) {
     return (await client.fetch(allPostsQuery)) || []
+  }
+  return []
+}
+
+export async function getAllPostsWithContent(): Promise<Post[]> {
+  if (client) {
+    return (await client.fetch(allPostsWithContentQuery)) || []
   }
   return []
 }

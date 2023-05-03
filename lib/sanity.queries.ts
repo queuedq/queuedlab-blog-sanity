@@ -28,6 +28,12 @@ export const allPostsQuery = groq`
   ${postFields}
 }`
 
+export const allPostsWithContentQuery = groq`
+*[_type == "post"] | order(date desc, _updatedAt desc) {
+  ${postFields}
+  content,
+}`
+
 export const postsByCategoryQuery = groq`
 *[_type == "post" && $category in categories[]->slug.current] | order(date desc, _updatedAt desc) {
   ${postFields}
@@ -94,6 +100,7 @@ export interface Tag {
 export interface Settings {
   title?: string
   description?: any[]
+  domain?: string
   ogImage?: {
     title?: string
   }
