@@ -1,12 +1,9 @@
-// TODO: Separate links on left/right
-
 import RssIcon from 'assets/noun-rss-32528.svg'
 import BlogContext from 'components/BlogContext'
 import { feedUrl } from 'lib/urls'
 import Link from 'next/link'
 import { useContext } from 'react'
 
-// TODO: Make it pretty on mobile
 export default function Footer() {
   const { settings } = useContext(BlogContext)
   const { domain, copyrightNotice } = settings
