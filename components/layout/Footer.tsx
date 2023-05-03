@@ -9,7 +9,7 @@ export default function Footer() {
   const { domain, copyrightNotice } = settings
 
   return (
-    <footer className="mt-16 flex justify-between pb-8 text-sm text-gray-500">
+    <footer className="mt-16 flex flex-wrap justify-between pb-8 text-sm text-gray-500">
       <div>{copyrightNotice}</div>
       <div>
         <Link href={feedUrl(domain)} className="hover:underline">

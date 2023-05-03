@@ -32,7 +32,7 @@ function BlogTitle() {
 export default function BlogHeader() {
   return (
     <header>
-      <div className="mb-4 flex items-baseline justify-between pt-8">
+      <div className="mb-4 flex flex-wrap items-baseline justify-between pt-8">
         <BlogTitle />
         <Navbar />
       </div>
