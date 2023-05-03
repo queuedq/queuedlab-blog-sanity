@@ -60,6 +60,6 @@ export default async function feedApi(
     })
   })
 
-  res.setHeader('Content-Type', 'text/xml')
+  res.setHeader('Content-Type', 'text/xml; charset=utf-8')
   res.send(feed.atom1())
 }
