@@ -19,7 +19,6 @@ function IndexPageHead({ settings }: IndexPageHeadProps) {
   return (
     <Head>
       <title>{title}</title>
-      <BlogMeta />
       <meta
         key="description"
         name="description"
@@ -55,6 +54,7 @@ export default function IndexPage(props: IndexPageProps) {
       value={{ preview, loading, settings, currentCategory }}
     >
       <IndexPageHead settings={settings} />
+      <BlogMeta settings={settings} />
       <Layout preview={preview} loading={loading}>
         <Container>
           <PostList posts={posts} />

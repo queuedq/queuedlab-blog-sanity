@@ -1,10 +1,13 @@
-/**
- * All the shared stuff that goes into <head> on `(blog)` routes, can be be imported by `head.tsx` files in the /app dir or wrapped in a <Head> component in the /pages dir.
- */
+import { Settings } from 'lib/sanity.queries'
+import { feedUrl } from 'lib/urls'
+import Head from 'next/head'
 
-export default function BlogMeta() {
+export default function BlogMeta({ settings }: { settings: Settings }) {
+  // `next/head` does not support subcomponent,
+  // so we need to wrap the components in <Head> instead of <>.
+  // https://github.com/vercel/next.js/issues/9126#issuecomment-543783543
   return (
-    <>
+    <Head>
       <meta name="viewport" content="width=device-width,initial-scale=1.0" />
       <link
         rel="apple-touch-icon"
@@ -28,6 +31,13 @@ export default function BlogMeta() {
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#ffffff" />
-    </>
+      {/* RSS feed */}
+      <link
+        type="application/atom+xml"
+        rel="alternate"
+        href={feedUrl(settings.domain)}
+        title={settings.title}
+      />
+    </Head>
   )
 }

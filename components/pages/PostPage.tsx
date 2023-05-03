@@ -3,7 +3,6 @@ import Container from 'components/layout/Container'
 import Layout from 'components/layout/Layout'
 import PostBody from 'components/post/PostBody'
 import PostHeader from 'components/post/PostHeader'
-import { urlForImage } from 'lib/sanity.image'
 import type { Post, Settings } from 'lib/sanity.queries'
 import Head from 'next/head'
 import { notFound } from 'next/navigation'
@@ -20,7 +19,6 @@ function PostPageHead({ settings, post }: PostPageHeadProps) {
   return (
     <Head>
       <title>{post.title ? `${post.title} | ${title}` : title}</title>
-      <BlogMeta />
       {/* {post.coverImage?.asset?._ref && (
         <meta
           property="og:image"
@@ -68,6 +66,7 @@ export default function PostPage(props: PostPageProps) {
   return (
     <BlogContext.Provider value={{ preview, loading, settings }}>
       <PostPageHead settings={settings} post={post} />
+      <BlogMeta settings={settings} />
       <Layout preview={preview} loading={loading}>
         <Container>
           {preview && !post ? (
