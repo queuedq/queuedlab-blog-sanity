@@ -23,7 +23,7 @@ export const settingsQuery = groq`
 
 // posts query
 
-export const indexQuery = groq`
+export const allPostsQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`

@@ -3,9 +3,9 @@ import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api'
 import {
   type Post,
   type Settings,
+  allPostsQuery,
   Category,
   categorySlugsQuery,
-  indexQuery,
   postAndMoreStoriesQuery,
   postBySlugQuery,
   postsByCategoryQuery,
@@ -42,7 +42,7 @@ export async function getSettings(): Promise<Settings> {
 
 export async function getAllPosts(): Promise<Post[]> {
   if (client) {
-    return (await client.fetch(indexQuery)) || []
+    return (await client.fetch(allPostsQuery)) || []
   }
   return []
 }
