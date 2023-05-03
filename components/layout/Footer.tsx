@@ -1,16 +1,29 @@
 // TODO: Separate links on left/right
 
+import RssIcon from 'assets/noun-rss-32528.svg'
 import BlogContext from 'components/BlogContext'
+import { feedUrl } from 'lib/urls'
+import Link from 'next/link'
 import { useContext } from 'react'
 
 // TODO: Make it pretty on mobile
 export default function Footer() {
   const { settings } = useContext(BlogContext)
-  const { copyrightNotice } = settings
+  const { domain, copyrightNotice } = settings
 
   return (
-    <footer className="mt-16 pb-8 text-sm text-gray-500">
+    <footer className="mt-16 flex justify-between pb-8 text-sm text-gray-500">
       <div>{copyrightNotice}</div>
+      <div>
+        <Link href={feedUrl(domain)} className="hover:underline">
+          <RssIcon
+            width={14}
+            height={14}
+            className="mr-1 inline fill-gray-500"
+          />
+          Feed
+        </Link>
+      </div>
     </footer>
   )
 }
