@@ -30,7 +30,8 @@ function PostPageHead({ settings, post }: PostPageHeadProps) {
             .fit('crop')
             .url()}
         />
-      )} */}{/* LATER: Use cover image for OG image */}
+      )} */}
+      {/* LATER: Use cover image for OG image */}
       <meta
         property="og:image"
         // Because OG images must have a absolute URL, we use the
