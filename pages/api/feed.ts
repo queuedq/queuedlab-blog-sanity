@@ -3,7 +3,7 @@ import { toHTML } from '@portabletext/to-html'
 import { parseISO } from 'date-fns'
 import { Feed } from 'feed'
 import { getAllPostsWithContent, getSettings } from 'lib/sanity.client'
-import { ogImageUrl, pageUrl } from 'lib/urls'
+import { feedUrl, ogImageUrl, pageUrl } from 'lib/urls'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function feedApi(
@@ -26,7 +26,7 @@ export default async function feedApi(
     favicon: `https://${settings.domain}/favicon/favicon.ico`,
     copyright: `${settings.copyrightNotice}`,
     feedLinks: {
-      atom: 'https://example.com/feed',
+      atom: feedUrl(settings.domain),
     },
     author: {
       name: settings.title,
