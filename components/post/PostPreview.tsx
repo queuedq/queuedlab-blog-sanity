@@ -25,7 +25,7 @@ export default function PostPreview({ post }: PostPreviewProps) {
       <h3 className="text-2xl font-bold text-gray-900 antialiased">
         <Link
           href={`/posts/${slug}`}
-          className="border-b border-dotted border-gray-900 border-opacity-0 transition-all duration-100 ease-in-out hover:border-opacity-100"
+          className="border-b border-gray-600 border-opacity-0 transition-all duration-100 ease-in-out hover:border-opacity-100"
         >
           {title}
         </Link>
