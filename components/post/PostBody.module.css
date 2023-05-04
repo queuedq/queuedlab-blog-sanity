@@ -45,11 +45,11 @@
 
 /* link */
 .portableText a {
-  @apply m-px border-b border-dotted border-sky-600 p-px text-sky-600;
+  @apply m-px border-b border-dotted border-[#2070da] p-px text-[#2070da];
   @apply transition-all duration-100 ease-in-out;
 }
 .portableText a:hover {
-  @apply border-sky-700 bg-blue-100 bg-opacity-70 text-sky-700;
+  @apply border-blue-700 bg-blue-100 bg-opacity-70 text-blue-700;
 }
 
 /* inline code */
