@@ -9,7 +9,7 @@ export default function Navbar() {
       <Link href="/" className="hover:underline">
         Blog
       </Link>
-      <Link href="about" className="hover:underline">
+      <Link href="/about" className="hover:underline">
         About
       </Link>
     </nav>

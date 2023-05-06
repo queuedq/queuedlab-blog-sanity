@@ -33,7 +33,7 @@ const config = defineConfig({
     deskTool({
       structure: deskStructure({
         singletonTypes: [schemas.settings],
-        primaryTypes: [schemas.post, schemas.category],
+        primaryTypes: [schemas.post, schemas.page, schemas.category],
       }),
       // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
       defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),

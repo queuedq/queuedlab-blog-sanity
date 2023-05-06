@@ -13,6 +13,13 @@ const postFields = groq`
   "tags": tags[]->{name, "slug": slug.current},
 `
 
+const pageFields = groq`
+  _id,
+  title,
+  coverImage,
+  "slug": slug.current,
+`
+
 // settings query
 
 export const settingsQuery = groq`
@@ -39,7 +46,7 @@ export const postsByCategoryQuery = groq`
   ${postFields}
 }`
 
-// post query
+// post & page query
 
 export const postAndMoreStoriesQuery = groq`
 {
@@ -58,10 +65,20 @@ export const postBySlugQuery = groq`
   ${postFields}
 }`
 
+export const pageQuery = groq`
+*[_type == "page" && slug.current == $slug][0] {
+  content,
+  ${pageFields}
+}`
+
 // slugs query (for getStaticPaths)
 
 export const postSlugsQuery = groq`
 *[_type == "post" && defined(slug.current)][].slug.current
+`
+
+export const pageSlugsQuery = groq`
+*[_type == "page" && defined(slug.current)][].slug.current
 `
 
 export const categorySlugsQuery = groq`
@@ -84,6 +101,14 @@ export interface Post {
   content?: any
   categories?: Category[]
   tags?: Tag[]
+}
+
+export interface Page {
+  _id: string
+  slug?: string
+  title?: string
+  content?: string
+  coverImage?: any
 }
 
 export interface Category {

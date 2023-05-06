@@ -7,8 +7,10 @@ import {
   allPostsWithContentQuery,
   Category,
   categorySlugsQuery,
+  Page,
+  pageQuery,
+  pageSlugsQuery,
   postAndMoreStoriesQuery,
-  postBySlugQuery,
   postsByCategoryQuery,
   postSlugsQuery,
   settingsQuery,
@@ -62,13 +64,11 @@ export async function getPostsByCategory(category: string): Promise<Post[]> {
   return []
 }
 
-// post
+// post & page
 
-export async function getPostBySlug(slug: string): Promise<Post> {
-  if (client) {
-    return (await client.fetch(postBySlugQuery, { slug })) || ({} as any)
-  }
-  return {} as any
+export async function getPage(slug: string): Promise<Page> {
+  // TODO: use token for preview?
+  return await client?.fetch(pageQuery, { slug })
 }
 
 export async function getPostAndMoreStories(
@@ -89,6 +89,10 @@ export async function getPostAndMoreStories(
 }
 
 // slugs
+
+export async function getAllPageSlugs(): Promise<string[]> {
+  return (await client?.fetch(pageSlugsQuery)) ?? []
+}
 
 export async function getAllPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
   if (client) {
