@@ -6,9 +6,10 @@ import { codeInput } from '@sanity/code-input'
 import { colorInput } from '@sanity/color-input'
 import { visionTool } from '@sanity/vision'
 import { apiVersion, dataset, previewSecretId, projectId } from 'lib/sanity.api'
+import { deskStructure } from 'plugins/deskStructure'
 import { previewDocumentNode } from 'plugins/previewPane'
 import { productionUrl } from 'plugins/productionUrl'
-import { settingsPlugin, settingsStructure } from 'plugins/settings'
+import { singletonPlugin } from 'plugins/singleton'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
@@ -30,12 +31,15 @@ const config = defineConfig({
   },
   plugins: [
     deskTool({
-      structure: settingsStructure(schemas.settings),
+      structure: deskStructure({
+        singletonTypes: [schemas.settings],
+        primaryTypes: [schemas.post, schemas.category],
+      }),
       // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
       defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    settingsPlugin({ type: schemas.settings.name }),
+    singletonPlugin([schemas.settings.name]),
     // Add the "Open preview" action
     productionUrl({
       apiVersion,
