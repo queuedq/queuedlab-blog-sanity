@@ -1,7 +1,7 @@
 import BlogContext from 'components/BlogContext'
 import Container from 'components/layout/Container'
 import Layout from 'components/layout/Layout'
-import PostBody from 'components/post/PostBody'
+import ContentBody from 'components/post/ContentBody'
 import PostHeader from 'components/post/PostHeader'
 import type { Post, Settings } from 'lib/sanity.queries'
 import Head from 'next/head'
@@ -75,7 +75,7 @@ export default function PostPage(props: PostPageProps) {
             <>
               <article>
                 <PostHeader post={post} />
-                <PostBody content={post.content} />
+                <ContentBody content={post.content} />
               </article>
               {/* {morePosts?.length > 0 && <PostList posts={morePosts} />} */}
             </>

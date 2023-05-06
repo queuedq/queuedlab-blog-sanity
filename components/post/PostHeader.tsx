@@ -11,7 +11,7 @@ export default function PostHeader({ post }: PostHeaderProps) {
   const { title, coverImage, date, excerpt, author, slug, categories } = post
 
   return (
-    <div className="mt-8 flex flex-col">
+    <div className="mt-16 mb-16 flex flex-col">
       <h1 className="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl">
         {title}
       </h1>

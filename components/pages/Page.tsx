@@ -1,8 +1,8 @@
 import BlogContext from 'components/BlogContext'
 import Container from 'components/layout/Container'
 import Layout from 'components/layout/Layout'
-import PostBody from 'components/post/PostBody'
-import type { Page, Post, Settings } from 'lib/sanity.queries'
+import ContentBody from 'components/post/ContentBody'
+import type { Page, Settings } from 'lib/sanity.queries'
 import Head from 'next/head'
 import { notFound } from 'next/navigation'
 
@@ -52,10 +52,10 @@ export default function Page(props: PageProps) {
           ) : (
             <>
               <article>
-                <h1 className="mt-8 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl">
+                <h1 className="mt-16 mb-6 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl">
                   {page.title}
                 </h1>
-                <PostBody content={page.content} />
+                <ContentBody content={page.content} />
               </article>
             </>
           )}
