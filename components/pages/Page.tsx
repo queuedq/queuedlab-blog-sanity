@@ -3,6 +3,7 @@ import Container from 'components/layout/Container'
 import Layout from 'components/layout/Layout'
 import ContentBody from 'components/post/ContentBody'
 import type { Page, Settings } from 'lib/types'
+import { ogImageUrl } from 'lib/urls'
 import Head from 'next/head'
 import { notFound } from 'next/navigation'
 
@@ -14,16 +15,11 @@ interface PageHeadProps {
 }
 
 function PageHead({ settings, page }: PageHeadProps) {
-  const title = settings.title
+  const { title, domain } = settings
   return (
     <Head>
       <title>{page.title ? `${page.title} | ${title}` : title}</title>
-      <meta
-        property="og:image"
-        content={`${
-          process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : ''
-        }/api/og?${new URLSearchParams({ title: settings.title })}`}
-      />
+      <meta property="og:image" content={ogImageUrl(domain, title)} />
     </Head>
   )
 }

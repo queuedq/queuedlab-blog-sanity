@@ -1,4 +1,4 @@
-// TODO: use this function in index and post pages
+// OG images must have an absolute URL
 export const ogImageUrl = (domain, title) =>
   `https://${domain}/api/og?${new URLSearchParams({ title })}`
 

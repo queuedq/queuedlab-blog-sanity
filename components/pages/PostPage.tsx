@@ -4,6 +4,7 @@ import Layout from 'components/layout/Layout'
 import ContentBody from 'components/post/ContentBody'
 import PostHeader from 'components/post/PostHeader'
 import type { Post, Settings } from 'lib/types'
+import { ogImageUrl } from 'lib/urls'
 import Head from 'next/head'
 import { notFound } from 'next/navigation'
 
@@ -15,7 +16,7 @@ interface PostPageHeadProps {
 }
 
 function PostPageHead({ settings, post }: PostPageHeadProps) {
-  const title = settings.title
+  const { title, domain } = settings
   return (
     <Head>
       <title>{post.title ? `${post.title} | ${title}` : title}</title>
@@ -30,16 +31,7 @@ function PostPageHead({ settings, post }: PostPageHeadProps) {
         />
       )} */}
       {/* LATER: Use cover image for OG image */}
-      <meta
-        property="og:image"
-        // Because OG images must have a absolute URL, we use the
-        // `VERCEL_URL` environment variable to get the deployment’s URL.
-        // More info:
-        // https://vercel.com/docs/concepts/projects/environment-variables
-        content={`${
-          process.env.VERCEL_URL ? 'https://' + process.env.VERCEL_URL : ''
-        }/api/og?${new URLSearchParams({ title: post.title })}`}
-      />
+      <meta property="og:image" content={ogImageUrl(domain, title)} />
     </Head>
   )
 }
