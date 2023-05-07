@@ -1,9 +1,8 @@
 import { ImageResponse } from '@vercel/og'
 import { height, OpenGraphImage, width } from 'components/pages/OpenGraphImage'
-import { settingsQuery } from 'lib/client'
+import { getSettings } from 'lib/client'
 import * as demo from 'lib/demo.data'
 import { apiVersion, dataset, projectId } from 'lib/sanity.api'
-import type { Settings } from 'lib/types'
 import type { NextRequest, NextResponse } from 'next/server'
 import type { PageConfig } from 'next/types'
 import { createClient } from 'next-sanity'
@@ -36,7 +35,7 @@ export default async function og(req: NextRequest, res: NextResponse) {
       apiVersion,
       useCdn: false,
     })
-    const settings = (await client.fetch<Settings>(settingsQuery)) || {}
+    const settings = await getSettings(client)
     title = settings?.ogImage?.title
   }
 

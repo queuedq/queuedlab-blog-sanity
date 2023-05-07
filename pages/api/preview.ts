@@ -1,3 +1,4 @@
+import { getPostBySlug } from 'lib/client'
 import {
   apiVersion,
   dataset,
@@ -5,7 +6,6 @@ import {
   projectId,
   useCdn,
 } from 'lib/sanity.api'
-import { postBySlugQuery } from 'lib/client'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { PageConfig } from 'next/types'
 import { createClient } from 'next-sanity'
@@ -73,9 +73,7 @@ export default async function preview(
     token:
       process.env.SANITY_API_READ_TOKEN || process.env.SANITY_API_WRITE_TOKEN,
   })
-  const post = await client.fetch(postBySlugQuery, {
-    slug: req.query.slug,
-  })
+  const post = await getPostBySlug(req.query.slug as string, client)
 
   // If the slug doesn't exist prevent preview mode from being enabled
   if (!post) {

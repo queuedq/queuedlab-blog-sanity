@@ -1,12 +1,12 @@
 import * as demo from 'lib/demo.data'
 import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api'
 import type { Category, Page, Post, Settings } from 'lib/types'
-import { createClient, groq } from 'next-sanity'
+import { createClient, groq, SanityClient } from 'next-sanity'
 
 /**
  * Checks if it's safe to create a client instance, as `@sanity/client` will throw an error if `projectId` is false
  */
-export const client = projectId
+export const defaultClient = projectId
   ? createClient({ projectId, dataset, apiVersion, useCdn })
   : null
 
@@ -32,13 +32,13 @@ const pageFields = groq`
 
 // Settings queries
 
-export const settingsQuery = groq`
+const settingsQuery = groq`
 *[_type == "settings"][0] {
   ...,
   "headerPages": headerPages[]->{title, "slug": slug.current},
   "headerCategories": headerCategories[]->{name, "slug": slug.current, color},
 }`
-export async function getSettings(): Promise<Settings> {
+export async function getSettings(client = defaultClient): Promise<Settings> {
   if (client) {
     const settings = (await client.fetch(settingsQuery)) || {}
     return {
@@ -55,29 +55,32 @@ export async function getSettings(): Promise<Settings> {
 
 // Posts queries
 
-export const allPostsQuery = groq`
+const allPostsQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`
-export async function getAllPosts(): Promise<Post[]> {
-  return (await client?.fetch(allPostsQuery)) || []
+export async function getAllPosts(client = defaultClient) {
+  return (await client?.fetch<Post[]>(allPostsQuery)) || []
 }
 
-export const allPostsWithContentQuery = groq`
+const allPostsWithContentQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
   content,
 }`
-export async function getAllPostsWithContent(): Promise<Post[]> {
-  return (await client?.fetch(allPostsWithContentQuery)) || []
+export async function getAllPostsWithContent(client = defaultClient) {
+  return (await client?.fetch<Post[]>(allPostsWithContentQuery)) || []
 }
 
-export const postsByCategoryQuery = groq`
+const postsByCategoryQuery = groq`
 *[_type == "post" && $category in categories[]->slug.current] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`
-export async function getPostsByCategory(category: string): Promise<Post[]> {
-  return (await client?.fetch(postsByCategoryQuery, { category })) || []
+export async function getPostsByCategory(
+  category: string,
+  client = defaultClient
+) {
+  return (await client?.fetch<Post[]>(postsByCategoryQuery, { category })) || []
 }
 
 // Post & Page queries
@@ -87,8 +90,8 @@ export const pageQuery = groq`
   content,
   ${pageFields}
 }`
-export async function getPage(slug: string): Promise<Page> {
-  return await client?.fetch(pageQuery, { slug }) // TODO: use token for preview?
+export async function getPage(slug: string, client = defaultClient) {
+  return await client?.fetch<Page>(pageQuery, { slug }) // TODO: use token for preview?
 }
 
 export const postAndMoreStoriesQuery = groq`
@@ -104,8 +107,9 @@ export const postAndMoreStoriesQuery = groq`
 }`
 export async function getPostAndMoreStories(
   slug: string,
-  token?: string | null
-): Promise<{ post: Post; morePosts: Post[] }> {
+  token?: string | null,
+  client = defaultClient
+) {
   if (projectId) {
     const client = createClient({
       projectId,
@@ -114,29 +118,35 @@ export async function getPostAndMoreStories(
       useCdn,
       token: token || undefined,
     })
-    return await client.fetch(postAndMoreStoriesQuery, { slug })
+    return await client.fetch<{ post?: Post; morePosts?: Post[] }>(
+      postAndMoreStoriesQuery,
+      { slug }
+    )
   }
-  return { post: null, morePosts: [] }
+  return { post: undefined, morePosts: [] }
 }
 
-export const postBySlugQuery = groq`
+const postBySlugQuery = groq`
 *[_type == "post" && slug.current == $slug][0] {
   ${postFields}
 }`
+export async function getPostBySlug(slug: string, client = defaultClient) {
+  return await client?.fetch<Post>(postBySlugQuery, { slug })
+}
 
 // Slug queries (for getStaticPaths)
 
-export const postSlugsQuery = groq`
-*[_type == "post" && defined(slug.current)][].slug.current
-`
-export async function getAllPageSlugs(): Promise<string[]> {
-  return (await client?.fetch(pageSlugsQuery)) || []
-}
-
-export const pageSlugsQuery = groq`
+const pageSlugsQuery = groq`
 *[_type == "page" && defined(slug.current)][].slug.current
 `
-export async function getAllPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
+export async function getAllPageSlugs(client = defaultClient) {
+  return (await client?.fetch<string[]>(pageSlugsQuery)) || []
+}
+
+const postSlugsQuery = groq`
+*[_type == "post" && defined(slug.current)][].slug.current
+`
+export async function getAllPostsSlugs(client = defaultClient) {
   if (client) {
     const slugs = (await client.fetch<string[]>(postSlugsQuery)) || []
     return slugs.map((slug) => ({ slug }))
@@ -144,10 +154,10 @@ export async function getAllPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
   return []
 }
 
-export const categorySlugsQuery = groq`
+const categorySlugsQuery = groq`
 *[_type == "postCategory" && defined(slug.current)][].slug.current
 `
-export async function getAllCategorySlugs(): Promise<Pick<Category, 'slug'>[]> {
+export async function getAllCategorySlugs(client = defaultClient) {
   if (client) {
     const slugs = (await client.fetch<string[]>(categorySlugsQuery)) || []
     return slugs.map((slug) => ({ slug }))
