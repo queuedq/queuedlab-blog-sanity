@@ -1,13 +1,46 @@
+import { toPlainText } from '@portabletext/react'
 import { Settings } from 'lib/types'
 import { feedUrl } from 'lib/urls'
 import Head from 'next/head'
 
-export default function BlogMeta({ settings }: { settings: Settings }) {
+export default function OpenGraph({
+  title,
+  description,
+  url,
+  ogImage,
+  settings,
+}: {
+  title: string
+  description: any
+  url: string
+  ogImage: string
+  settings: Settings
+}) {
+  const { domain } = settings
+  const descriptionText = toPlainText(description)
+
   // `next/head` does not support subcomponent,
   // so we need to wrap the components in <Head> instead of <>.
   // https://github.com/vercel/next.js/issues/9126#issuecomment-543783543
   return (
     <Head>
+      {/* General */}
+      <title>{title}</title>
+      <meta key="description" name="description" content={descriptionText} />
+      <meta property="og:title" content={title} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:url" content={url} />
+      <meta property="og:description" content={descriptionText} />
+
+      {/* Feed */}
+      <link
+        type="application/atom+xml"
+        rel="alternate"
+        href={feedUrl(settings.domain)}
+        title={settings.title}
+      />
+
+      {/* Misc */}
       <meta name="viewport" content="width=device-width,initial-scale=1.0" />
       <link
         rel="apple-touch-icon"
@@ -31,13 +64,6 @@ export default function BlogMeta({ settings }: { settings: Settings }) {
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#ffffff" />
-      {/* RSS feed */}
-      <link
-        type="application/atom+xml"
-        rel="alternate"
-        href={feedUrl(settings.domain)}
-        title={settings.title}
-      />
     </Head>
   )
 }

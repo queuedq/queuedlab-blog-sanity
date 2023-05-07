@@ -4,25 +4,9 @@ import Layout from 'components/layout/Layout'
 import ContentBody from 'components/post/ContentBody'
 import type { Page, Settings } from 'lib/types'
 import { ogImageUrl } from 'lib/urls'
-import Head from 'next/head'
 import { notFound } from 'next/navigation'
 
-import BlogMeta from './BlogMeta'
-
-interface PageHeadProps {
-  settings: Settings
-  page: Page
-}
-
-function PageHead({ settings, page }: PageHeadProps) {
-  const { title, domain } = settings
-  return (
-    <Head>
-      <title>{page.title ? `${page.title} | ${title}` : title}</title>
-      <meta property="og:image" content={ogImageUrl(domain, title)} />
-    </Head>
-  )
-}
+import Metadata from './Metadata'
 
 export interface PageProps {
   preview?: boolean
@@ -33,14 +17,23 @@ export interface PageProps {
 
 export default function Page(props: PageProps) {
   const { preview, loading, page, settings } = props
+  const { title: blogTitle, description: blogDescription, domain } = settings
   const slug = page?.slug
 
   if (!slug && !preview) notFound()
 
   return (
     <BlogContext.Provider value={{ preview, loading, settings }}>
-      <PageHead settings={settings} page={page} />
-      <BlogMeta settings={settings} />
+      {/* Head */}
+      <Metadata
+        title={page.title ? `${page.title} | ${blogTitle}` : blogTitle}
+        description={blogDescription}
+        url={`https://${domain}/${slug}`} // TODO: use `lib/urls`
+        ogImage={ogImageUrl(domain, page.title)}
+        settings={settings}
+      />
+
+      {/* Body */}
       <Layout preview={preview} loading={loading}>
         <Container>
           {preview && !page ? (
