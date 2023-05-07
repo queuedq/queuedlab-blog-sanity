@@ -29,6 +29,7 @@ export const client = projectId
 export async function getSettings(): Promise<Settings> {
   if (client) {
     const settings = (await client.fetch(settingsQuery)) || {}
+    console.log(settings)
     return {
       title: demo.title,
       description: demo.description,

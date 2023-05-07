@@ -2,6 +2,7 @@ import { CogIcon } from '@sanity/icons'
 import * as demo from 'lib/demo.data'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import category from 'schemas/category'
+import page from 'schemas/page'
 import { referenceArray } from 'schemas/utils/utils'
 
 import OpenGraphInput from './OpenGraphInput'
@@ -93,8 +94,14 @@ export default defineType({
     // TODO: use orderable document list instead
     // https://www.sanity.io/plugins/orderable-document-list
     defineField({
+      name: 'headerPages',
+      title: 'Header Page List',
+      ...referenceArray(page.name),
+      group: 'header_footer',
+    }),
+    defineField({
       name: 'headerCategories',
-      title: 'Blog Header Category List',
+      title: 'Header Category List',
       ...referenceArray(category.name),
       group: 'header_footer',
     }),

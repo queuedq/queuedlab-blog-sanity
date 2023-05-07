@@ -1,17 +1,21 @@
+import BlogContext from 'components/BlogContext'
 import Link from 'next/link'
+import { useContext } from 'react'
 
-// TODO: Get link list from settings
-// TODO: Add about page
-// TODO: Highlight current page link
 export default function Navbar() {
+  const { settings } = useContext(BlogContext)
+
   return (
     <nav className="flex gap-x-5 text-sm text-gray-700">
-      <Link href="/" className="hover:underline">
-        Blog
-      </Link>
-      <Link href="/about" className="hover:underline">
-        About
-      </Link>
+      {settings.headerPages?.map((page) => (
+        <Link
+          key={page.slug}
+          href={`/${page.slug}`}
+          className="hover:underline"
+        >
+          {page.title}
+        </Link>
+      ))}
     </nav>
   )
 }

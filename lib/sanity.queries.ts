@@ -25,6 +25,7 @@ const pageFields = groq`
 export const settingsQuery = groq`
 *[_type == "settings"][0] {
   ...,
+  "headerPages": headerPages[]->{title, "slug": slug.current},
   "headerCategories": headerCategories[]->{name, "slug": slug.current, color},
 }`
 
@@ -129,6 +130,7 @@ export interface Settings {
   ogImage?: {
     title?: string
   }
+  headerPages?: Page[]
   headerCategories?: Category[]
   copyrightNotice?: string
 }
