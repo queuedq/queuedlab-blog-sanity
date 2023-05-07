@@ -1,4 +1,4 @@
-import { Settings } from 'lib/sanity.queries'
+import { Settings } from 'lib/types'
 import { createContext } from 'react'
 
 export interface BlogContextType {

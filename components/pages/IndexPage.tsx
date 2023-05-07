@@ -3,7 +3,7 @@ import BlogContext from 'components/BlogContext'
 import Container from 'components/layout/Container'
 import Layout from 'components/layout/Layout'
 import PostList from 'components/post/PostList'
-import type { Post, Settings } from 'lib/sanity.queries'
+import type { Post, Settings } from 'lib/types'
 import Head from 'next/head'
 
 import BlogMeta from './BlogMeta'

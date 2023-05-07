@@ -3,7 +3,7 @@ import Container from 'components/layout/Container'
 import Layout from 'components/layout/Layout'
 import ContentBody from 'components/post/ContentBody'
 import PostHeader from 'components/post/PostHeader'
-import type { Post, Settings } from 'lib/sanity.queries'
+import type { Post, Settings } from 'lib/types'
 import Head from 'next/head'
 import { notFound } from 'next/navigation'
 

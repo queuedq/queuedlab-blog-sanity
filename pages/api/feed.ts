@@ -2,7 +2,7 @@ import { toPlainText } from '@portabletext/react'
 import { toHTML } from '@portabletext/to-html'
 import { parseISO } from 'date-fns'
 import { Feed } from 'feed'
-import { getAllPostsWithContent, getSettings } from 'lib/sanity.client'
+import { getAllPostsWithContent, getSettings } from 'lib/client'
 import { feedUrl, ogImageUrl, postUrl } from 'lib/urls'
 import { NextApiRequest, NextApiResponse } from 'next'
 

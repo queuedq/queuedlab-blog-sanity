@@ -4,8 +4,8 @@ import {
   getAllCategorySlugs,
   getPostsByCategory,
   getSettings,
-} from 'lib/sanity.client'
-import { Post, Settings } from 'lib/sanity.queries'
+} from 'lib/client'
+import { Post, Settings } from 'lib/types'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'
 

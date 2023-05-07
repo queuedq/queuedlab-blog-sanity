@@ -4,7 +4,7 @@ import {
   type Settings,
   allPostsQuery,
   settingsQuery,
-} from 'lib/sanity.queries'
+} from 'lib/types'
 
 import IndexPage from './IndexPage'
 

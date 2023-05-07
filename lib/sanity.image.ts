@@ -3,7 +3,7 @@ import { SanityImageObject } from '@sanity/image-url/lib/types/types'
 import { dataset, projectId } from 'lib/sanity.api'
 import { useNextSanityImage as _useNextSanityImage } from 'next-sanity-image'
 
-import { client } from './sanity.client'
+import { client } from './client'
 
 const imageBuilder = createImageUrlBuilder({ projectId, dataset })
 

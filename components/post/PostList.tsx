@@ -1,4 +1,4 @@
-import type { Post } from 'lib/sanity.queries'
+import type { Post } from 'lib/types'
 
 import PostPreview from './PostPreview'
 

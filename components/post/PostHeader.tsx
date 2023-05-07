@@ -1,4 +1,4 @@
-import type { Post } from 'lib/sanity.queries'
+import type { Post } from 'lib/types'
 import Link from 'next/link'
 
 import Date from './PostDate'

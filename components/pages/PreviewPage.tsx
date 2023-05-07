@@ -1,9 +1,10 @@
+import { pageQuery } from 'lib/client'
 import { usePreview } from 'lib/sanity.preview'
-import { type Page as PageType, pageQuery } from 'lib/sanity.queries'
+import type { Page as PageType } from 'lib/types'
 
 import Page, { PageProps } from './Page'
 
-export default function PreviewPostPage({
+export default function PreviewPage({
   token,
   page,
   settings,

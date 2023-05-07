@@ -1,4 +1,4 @@
-import { Settings } from 'lib/sanity.queries'
+import { Settings } from 'lib/types'
 import { feedUrl } from 'lib/urls'
 import Head from 'next/head'
 

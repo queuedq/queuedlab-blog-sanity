@@ -2,7 +2,7 @@ import BlogContext from 'components/BlogContext'
 import Container from 'components/layout/Container'
 import Layout from 'components/layout/Layout'
 import ContentBody from 'components/post/ContentBody'
-import type { Page, Settings } from 'lib/sanity.queries'
+import type { Page, Settings } from 'lib/types'
 import Head from 'next/head'
 import { notFound } from 'next/navigation'
 

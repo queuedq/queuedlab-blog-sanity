@@ -1,14 +1,14 @@
 import { ImageResponse } from '@vercel/og'
+import { height, OpenGraphImage, width } from 'components/pages/OpenGraphImage'
+import { settingsQuery } from 'lib/client'
+import * as demo from 'lib/demo.data'
 import { apiVersion, dataset, projectId } from 'lib/sanity.api'
+import type { Settings } from 'lib/types'
 import type { NextRequest, NextResponse } from 'next/server'
 import type { PageConfig } from 'next/types'
 import { createClient } from 'next-sanity'
 
 export const config: PageConfig = { runtime: 'edge' }
-
-import { height, OpenGraphImage, width } from 'components/pages/OpenGraphImage'
-import * as demo from 'lib/demo.data'
-import { Settings, settingsQuery } from 'lib/sanity.queries'
 
 export default async function og(req: NextRequest, res: NextResponse) {
   // TODO: Maybe separate this API into another service like AWS Lambda,
