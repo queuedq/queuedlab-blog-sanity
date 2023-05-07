@@ -35,7 +35,7 @@ export const singletonPlugin = (types: string[]) => {
 // A singleton not using `documentListItem`, eg no built-in preview
 export const singletonListItem = (
   S: StructureBuilder,
-  typeDef: DocumentDefinition,
+  typeDef: DocumentDefinition
 ) =>
   S.listItem()
     .title(typeDef.title)

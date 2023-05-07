@@ -1,10 +1,6 @@
 import { PreviewSuspense } from '@sanity/preview-kit'
 import Page from 'components/pages/Page'
-import {
-  getAllPageSlugs,
-  getPage,
-  getSettings,
-} from 'lib/sanity.client'
+import { getAllPageSlugs, getPage, getSettings } from 'lib/sanity.client'
 import type { Page as PageType, Settings } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'

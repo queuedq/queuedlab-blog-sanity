@@ -10,7 +10,9 @@ export default function PreviewPostPage({
 }: {
   token: null | string
 } & PageProps) {
-  const pagePreview: PageType | null = usePreview(token, pageQuery, { slug: page.slug })
+  const pagePreview: PageType | null = usePreview(token, pageQuery, {
+    slug: page.slug,
+  })
 
   return <Page preview page={pagePreview} settings={settings} />
 }
