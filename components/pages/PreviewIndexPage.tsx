@@ -1,10 +1,6 @@
+import { allPostsQuery, settingsQuery } from 'lib/client'
 import { usePreview } from 'lib/sanity.preview'
-import {
-  type Post,
-  type Settings,
-  allPostsQuery,
-  settingsQuery,
-} from 'lib/types'
+import { type Post, type Settings } from 'lib/types'
 
 import IndexPage from './IndexPage'
 

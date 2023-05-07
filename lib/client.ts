@@ -1,7 +1,7 @@
 import * as demo from 'lib/demo.data'
 import { apiVersion, dataset, projectId, useCdn } from 'lib/sanity.api'
-import type { Category, Page, Post, Settings } from 'lib/types'
-import { createClient, groq, SanityClient } from 'next-sanity'
+import type { Page, Post, Settings } from 'lib/types'
+import { createClient, groq } from 'next-sanity'
 
 /**
  * Checks if it's safe to create a client instance, as `@sanity/client` will throw an error if `projectId` is false
@@ -32,7 +32,7 @@ const pageFields = groq`
 
 // Settings queries
 
-const settingsQuery = groq`
+export const settingsQuery = groq`
 *[_type == "settings"][0] {
   ...,
   "headerPages": headerPages[]->{title, "slug": slug.current},
@@ -55,7 +55,7 @@ export async function getSettings(client = defaultClient): Promise<Settings> {
 
 // Posts queries
 
-const allPostsQuery = groq`
+export const allPostsQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`
