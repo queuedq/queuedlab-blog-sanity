@@ -3,7 +3,7 @@ import { toHTML } from '@portabletext/to-html'
 import { parseISO } from 'date-fns'
 import { Feed } from 'feed'
 import { getAllPostsWithContent, getSettings } from 'lib/sanity.client'
-import { feedUrl, ogImageUrl, pageUrl } from 'lib/urls'
+import { feedUrl, ogImageUrl, postUrl } from 'lib/urls'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function feedApi(
@@ -41,8 +41,8 @@ export default async function feedApi(
   posts.forEach((post) => {
     feed.addItem({
       title: post.title,
-      id: pageUrl(settings.domain, post.slug),
-      link: pageUrl(settings.domain, post.slug),
+      id: postUrl(settings.domain, post.slug),
+      link: postUrl(settings.domain, post.slug),
       description: post.excerpt,
       content: toHTML(post.content), // TODO: support custom component rendering
       author: [

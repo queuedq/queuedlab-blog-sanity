@@ -2,6 +2,6 @@
 export const ogImageUrl = (domain, title) =>
   `https://${domain}/api/og?${new URLSearchParams({ title })}`
 
-export const pageUrl = (domain, slug) => `https://${domain}/posts/${slug}`
+export const postUrl = (domain, slug) => `https://${domain}/posts/${slug}`
 
 export const feedUrl = (domain) => `https://${domain}/api/feed`
