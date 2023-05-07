@@ -1,4 +1,3 @@
-import { toPlainText } from '@portabletext/react'
 import { toHTML } from '@portabletext/to-html'
 import { parseISO } from 'date-fns'
 import { Feed } from 'feed'
@@ -19,7 +18,7 @@ export default async function feedApi(
   // https://github.com/jpmonette/feed
   const feed = new Feed({
     title: settings.title,
-    description: toPlainText(settings.description),
+    description: settings.description,
     id: `https://${settings.domain}/`,
     link: `https://${settings.domain}/`,
     image: ogImageUrl(settings.domain, settings.title),

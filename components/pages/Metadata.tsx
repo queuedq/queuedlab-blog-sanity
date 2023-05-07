@@ -1,4 +1,3 @@
-import { toPlainText } from '@portabletext/react'
 import { Settings } from 'lib/types'
 import { feedUrl } from 'lib/urls'
 import Head from 'next/head'
@@ -11,13 +10,11 @@ export default function Metadata({
   settings,
 }: {
   title: string
-  description: any
+  description: string
   url: string
   ogImage: string
   settings: Settings
 }) {
-  const descriptionText = toPlainText(description)
-
   // `next/head` does not support subcomponent,
   // so we need to wrap the components in <Head> instead of <>.
   // https://github.com/vercel/next.js/issues/9126#issuecomment-543783543
@@ -25,12 +22,12 @@ export default function Metadata({
     <Head>
       {/* General */}
       <title>{title}</title>
-      <meta key="description" name="description" content={descriptionText} />
+      <meta key="description" name="description" content={description} />
       <meta property="og:title" content={title} />
       <meta property="og:type" content="website" />
       <meta property="og:image" content={ogImage} />
       <meta property="og:url" content={url} />
-      <meta property="og:description" content={descriptionText} />
+      <meta property="og:description" content={description} />
 
       {/* Feed */}
       <link

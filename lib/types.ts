@@ -39,7 +39,7 @@ export interface Tag {
 
 export interface Settings {
   title?: string
-  description?: any[]
+  description?: string
   domain?: string
   ogImage?: {
     title?: string

@@ -1,6 +1,6 @@
 import { CogIcon } from '@sanity/icons'
 import * as demo from 'lib/demo.data'
-import { defineArrayMember, defineField, defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 import category from 'schemas/category'
 import page from 'schemas/page'
 import { referenceArray } from 'schemas/utils/utils'
@@ -34,33 +34,8 @@ export default defineType({
       description:
         'Used both for the <meta> description tag for SEO, and the blog subheader.',
       title: 'Descriprion',
-      type: 'array',
+      type: 'string',
       initialValue: demo.description,
-      of: [
-        defineArrayMember({
-          type: 'block',
-          options: {},
-          styles: [],
-          lists: [],
-          marks: {
-            decorators: [],
-            annotations: [
-              defineField({
-                type: 'object',
-                name: 'link',
-                fields: [
-                  {
-                    type: 'string',
-                    name: 'href',
-                    title: 'URL',
-                    validation: (rule) => rule.required(),
-                  },
-                ],
-              }),
-            ],
-          },
-        }),
-      ],
       validation: (rule) => rule.max(155).required(),
       group: 'general',
     }),
