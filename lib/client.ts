@@ -94,18 +94,13 @@ export async function getPage(slug: string, client = defaultClient) {
   return await client?.fetch<Page>(pageQuery, { slug }) // TODO: use token for preview?
 }
 
-export const postAndMoreStoriesQuery = groq`
-{
-  "post": *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) [0] {
-    content,
-    ${postFields}
-  },
-  "morePosts": *[_type == "post" && slug.current != $slug] | order(date desc, _updatedAt desc) [0...2] {
-    content,
-    ${postFields}
-  }
-}`
-export async function getPostAndMoreStories(
+export const postQuery = groq`
+*[_type == "post" && slug.current == $slug] | order(_updatedAt desc) [0] {
+  content,
+  ${postFields}
+}
+`
+export async function getPost(
   slug: string,
   token?: string | null,
   client = defaultClient
@@ -118,12 +113,9 @@ export async function getPostAndMoreStories(
       useCdn,
       token: token || undefined,
     })
-    return await client.fetch<{ post?: Post; morePosts?: Post[] }>(
-      postAndMoreStoriesQuery,
-      { slug }
-    )
+    return await client.fetch<Post>(postQuery, { slug })
   }
-  return { post: undefined, morePosts: [] }
+  return undefined
 }
 
 const postBySlugQuery = groq`

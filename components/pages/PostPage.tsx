@@ -48,14 +48,11 @@ export interface PostPageProps {
   preview?: boolean
   loading?: boolean
   post: Post
-  morePosts: Post[]
   settings: Settings
 }
 
-const NO_POSTS: Post[] = []
-
 export default function PostPage(props: PostPageProps) {
-  const { preview, loading, morePosts = NO_POSTS, post, settings } = props
+  const { preview, loading, post, settings } = props
 
   const slug = post?.slug
 
@@ -77,7 +74,6 @@ export default function PostPage(props: PostPageProps) {
                 <PostHeader post={post} />
                 <ContentBody content={post.content} />
               </article>
-              {/* {morePosts?.length > 0 && <PostList posts={morePosts} />} */}
             </>
           )}
         </Container>

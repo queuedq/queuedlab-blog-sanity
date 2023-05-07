@@ -1,10 +1,6 @@
 import { PreviewSuspense } from '@sanity/preview-kit'
 import PostPage from 'components/pages/PostPage'
-import {
-  getAllPostsSlugs,
-  getPostAndMoreStories,
-  getSettings,
-} from 'lib/client'
+import { getAllPostsSlugs, getPost, getSettings } from 'lib/client'
 import { Post, Settings } from 'lib/types'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'
@@ -12,8 +8,7 @@ import { lazy } from 'react'
 const PreviewPostPage = lazy(() => import('components/pages/PreviewPostPage'))
 
 interface PageProps {
-  post: Post
-  morePosts: Post[]
+  post?: Post
   settings?: Settings
   preview: boolean
   token: string | null
@@ -28,32 +23,19 @@ interface PreviewData {
 }
 
 export default function ProjectSlugRoute(props: PageProps) {
-  const { settings, post, morePosts, preview, token } = props
+  const { settings, post, preview, token } = props
 
   if (preview) {
     return (
       <PreviewSuspense
-        fallback={
-          <PostPage
-            loading
-            preview
-            post={post}
-            morePosts={morePosts}
-            settings={settings}
-          />
-        }
+        fallback={<PostPage loading preview post={post} settings={settings} />}
       >
-        <PreviewPostPage
-          token={token}
-          post={post}
-          morePosts={morePosts}
-          settings={settings}
-        />
+        <PreviewPostPage token={token} post={post} settings={settings} />
       </PreviewSuspense>
     )
   }
 
-  return <PostPage post={post} morePosts={morePosts} settings={settings} />
+  return <PostPage post={post} settings={settings} />
 }
 
 export const getStaticProps: GetStaticProps<
@@ -65,9 +47,9 @@ export const getStaticProps: GetStaticProps<
 
   const token = previewData.token
 
-  const [settings, { post, morePosts }] = await Promise.all([
+  const [settings, post] = await Promise.all([
     getSettings(),
-    getPostAndMoreStories(params.slug, token),
+    getPost(params.slug, token),
   ])
 
   if (!post) {
@@ -79,7 +61,6 @@ export const getStaticProps: GetStaticProps<
   return {
     props: {
       post,
-      morePosts,
       settings,
       preview,
       token: previewData.token ?? null,
