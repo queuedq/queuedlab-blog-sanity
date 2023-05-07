@@ -3,7 +3,7 @@ import { Settings } from 'lib/types'
 import { feedUrl } from 'lib/urls'
 import Head from 'next/head'
 
-export default function OpenGraph({
+export default function Metadata({
   title,
   description,
   url,

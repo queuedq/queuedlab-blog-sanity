@@ -18,7 +18,7 @@ export interface PostPageProps {
 
 export default function PostPage(props: PostPageProps) {
   const { preview, loading, post, settings } = props
-  const { title: blogTitle, description: blogDescription, domain } = settings
+  const { title: blogTitle, domain } = settings
   const slug = post?.slug
 
   if (!slug && !preview) {
@@ -30,7 +30,7 @@ export default function PostPage(props: PostPageProps) {
       {/* Head */}
       <Metadata
         title={post.title ? `${post.title} | ${blogTitle}` : blogTitle}
-        description={blogDescription}
+        description={post.excerpt}
         url={`https://${domain}/posts/${slug}`} // TODO: use `lib/urls`
         ogImage={ogImageUrl(domain, post.title)}
         settings={settings}
