@@ -16,7 +16,6 @@ export default function OpenGraph({
   ogImage: string
   settings: Settings
 }) {
-  const { domain } = settings
   const descriptionText = toPlainText(description)
 
   // `next/head` does not support subcomponent,
@@ -28,6 +27,7 @@ export default function OpenGraph({
       <title>{title}</title>
       <meta key="description" name="description" content={descriptionText} />
       <meta property="og:title" content={title} />
+      <meta property="og:type" content="website" />
       <meta property="og:image" content={ogImage} />
       <meta property="og:url" content={url} />
       <meta property="og:description" content={descriptionText} />
