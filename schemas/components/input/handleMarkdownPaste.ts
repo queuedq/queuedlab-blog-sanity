@@ -1,5 +1,6 @@
 import { OnPasteFn } from '@sanity/portable-text-editor'
 import remarkHtml from 'remark-html'
+import remarkMath from 'remark-math'
 import remarkParse from 'remark-parse'
 import { unified } from 'unified'
 
@@ -22,7 +23,8 @@ async function markdownToHtml(markdownContent: string) {
   // https://github.com/remarkjs/remark-math/tree/main
   const PT = await unified()
     .use(remarkParse)
-    .use(remarkHtml)
+    .use(remarkMath)
+    .use(remarkHtml, { sanitize: false })
     .process(markdownContent)
   return PT
 }

@@ -32,6 +32,34 @@ export const parseHtml = (html, schemaTypes) => {
           return block({ _type: 'code', code: text })
         },
       },
+      {
+        deserialize(el, next, block) {
+          if (el?.nodeName?.toLowerCase() !== 'span') return undefined
+          const classNames = (el as Element).className.split(' ')
+          if (!classNames.includes('math-inline')) return undefined
+
+          let text = ''
+          el.childNodes.forEach((node) => {
+            text += node.textContent
+          })
+
+          return { _type: 'latex', body: text }
+        },
+      },
+      {
+        deserialize(el, next, block) {
+          if (el?.nodeName?.toLowerCase() !== 'div') return undefined
+          const classNames = (el as Element).className.split(' ')
+          if (!classNames.includes('math-display')) return undefined
+
+          let text = ''
+          el.childNodes.forEach((node) => {
+            text += node.textContent
+          })
+
+          return block({ _type: 'latex', body: text })
+        },
+      },
       // TODO: support other custom blocks
     ],
   })
