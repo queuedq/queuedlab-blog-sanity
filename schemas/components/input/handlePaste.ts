@@ -3,6 +3,7 @@ import { OnPasteFn } from '@sanity/portable-text-editor'
 import remarkHtml from 'remark-html'
 import remarkMath from 'remark-math'
 import remarkParse from 'remark-parse'
+import remarkUnwrapImages from 'remark-unwrap-images'
 import { PortableTextBlock } from 'sanity'
 import { unified } from 'unified'
 
@@ -26,7 +27,7 @@ export const handlePaste =
     if (pt) return undefined
 
     if (isMarkdownPaste) {
-      const { value: html } = await markdownToHtml(text)
+      const html = await markdownToHtml(text)
       return htmlPastePatch(html, schemaTypes, path)
     }
 
@@ -57,8 +58,10 @@ async function markdownToHtml(markdownContent: string) {
   // https://github.com/remarkjs/remark-math/tree/main
   const file = await unified()
     .use(remarkParse)
+    .use(remarkUnwrapImages)
     .use(remarkMath)
     .use(remarkHtml, { sanitize: false })
     .process(markdownContent)
-  return file
+  const html = file.value
+  return html
 }

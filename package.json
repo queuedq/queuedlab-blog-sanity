@@ -50,6 +50,7 @@
     "remark-html": "^15.0.2",
     "remark-math": "^5.1.1",
     "remark-parse": "^10.0.1",
+    "remark-unwrap-images": "^3.0.1",
     "sanity": "^3.9.0",
     "sanity-plugin-asset-source-unsplash": "^1.0.6",
     "sanity-plugin-latex-input": "^2.0.4",
