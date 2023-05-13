@@ -59,7 +59,24 @@ export const parseHtml = (html, schemaTypes) => {
           return block({ _type: 'horizontalRule' })
         },
       },
-      // TODO: support other custom blocks
+      {
+        deserialize(el, next, block) {
+          console.log(el)
+          if (el?.nodeName?.toLowerCase() != 'img') return undefined
+          return block({ _type: 'figure' })
+        },
+      },
+      {
+        deserialize(el, next, block) {
+          if (el?.nodeName?.toLowerCase() != 'iframe') return undefined
+
+          // TODO: check if it is actually youtube embed
+          const url = (el as Element).getAttribute('src')
+          if (!url) return undefined
+
+          return block({ _type: 'youtube', url })
+        },
+      },
     ],
   })
 
