@@ -60,6 +60,12 @@ export const parseHtml = (html, schemaTypes) => {
           return block({ _type: 'latex', body: text })
         },
       },
+      {
+        deserialize(el, next, block) {
+          if (el?.nodeName?.toLowerCase() !== 'hr') return undefined
+          return block({ _type: 'horizontalRule' })
+        },
+      },
       // TODO: support other custom blocks
     ],
   })
