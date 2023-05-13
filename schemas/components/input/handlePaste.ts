@@ -55,10 +55,10 @@ const htmlPastePatch = (html, schemaTypes, path) => {
 async function markdownToHtml(markdownContent: string) {
   // Plugin usage example (remark-math)
   // https://github.com/remarkjs/remark-math/tree/main
-  const PT = await unified()
+  const file = await unified()
     .use(remarkParse)
     .use(remarkMath)
     .use(remarkHtml, { sanitize: false })
     .process(markdownContent)
-  return PT
+  return file
 }
