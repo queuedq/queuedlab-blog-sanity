@@ -9,69 +9,54 @@ export const parseHtml = (html, schemaTypes) => {
         // (currently impossible with htmlToBlocks() in sanity@3.5.0)
         // https://github.com/sanity-io/sanity/issues/1814
         deserialize(el, next, block) {
-          if (el?.nodeName?.toLowerCase() !== 'pre') return undefined
-          if (!el?.hasChildNodes()) return undefined
+          if (!isElement(el, 'pre')) return undefined
+          if (!el.hasChildNodes()) return undefined
 
           const code = el.childNodes[0]
-          const childNodes =
-            code && code.nodeName.toLowerCase() === 'code'
-              ? code.childNodes
-              : el.childNodes
-          let text = ''
-          childNodes.forEach((node) => {
-            text += node.textContent
-          })
-
+          if (!isElement(code, 'code')) return undefined
+          
+          const text = el.textContent
           return block({ _type: 'code', code: text })
         },
       },
       {
         deserialize(el, next, block) {
-          if (el?.nodeName?.toLowerCase() !== 'span') return undefined
-          const classNames = (el as Element).className.split(' ')
+          if (!isElement(el, 'span')) return undefined
+          const classNames = el.className.split(' ')
           if (!classNames.includes('math-inline')) return undefined
 
-          let text = ''
-          el.childNodes.forEach((node) => {
-            text += node.textContent
-          })
-
+          const text = el.textContent
           return { _type: 'latex', body: text }
         },
       },
       {
         deserialize(el, next, block) {
-          if (el?.nodeName?.toLowerCase() !== 'div') return undefined
-          const classNames = (el as Element).className.split(' ')
+          if (!isElement(el, 'div')) return undefined
+          const classNames = el.className.split(' ')
           if (!classNames.includes('math-display')) return undefined
 
-          let text = ''
-          el.childNodes.forEach((node) => {
-            text += node.textContent
-          })
-
+          const text = el.textContent
           return block({ _type: 'latex', body: text })
         },
       },
       {
         deserialize(el, next, block) {
-          if (el?.nodeName?.toLowerCase() !== 'hr') return undefined
+          if (!isElement(el, 'hr')) return undefined
           return block({ _type: 'horizontalRule' })
         },
       },
       {
         deserialize(el, next, block) {
-          console.log(el)
-          if (el?.nodeName?.toLowerCase() != 'img') return undefined
+          if (!isElement(el, 'img')) return undefined
           return block({ _type: 'figure' })
         },
       },
       {
         deserialize(el, next, block) {
-          if (el?.nodeName?.toLowerCase() != 'iframe') return undefined
+          if (!isElement(el, 'iframe')) return undefined
 
           // TODO: check if it is actually youtube embed
-          const url = (el as Element).getAttribute('src')
+          const url = el.getAttribute('src')
           if (!url) return undefined
 
           return block({ _type: 'youtube', url })
@@ -81,4 +66,9 @@ export const parseHtml = (html, schemaTypes) => {
   })
 
   return blocks
+}
+
+const isElement = (el: Node, name: string): el is Element => {
+  if (!(el instanceof Element)) return false
+  return el.nodeName.toLowerCase() == name
 }
