@@ -3,9 +3,10 @@ import { OnPasteFn } from '@sanity/portable-text-editor'
 import remarkHtml from 'remark-html'
 import remarkMath from 'remark-math'
 import remarkParse from 'remark-parse'
+import { PortableTextBlock } from 'sanity'
 import { unified } from 'unified'
 
-import { htmlPastePatch } from './htmlParser'
+import { parseHtml } from './htmlParser'
 
 export const handlePaste =
   (isMarkdownPaste): OnPasteFn =>
@@ -45,6 +46,11 @@ export const handlePaste =
       path,
     }
   }
+
+const htmlPastePatch = (html, schemaTypes, path) => {
+  const blocks = parseHtml(html, schemaTypes)
+  return { insert: blocks as PortableTextBlock[], path } // insert patch
+}
 
 async function markdownToHtml(markdownContent: string) {
   // Plugin usage example (remark-math)

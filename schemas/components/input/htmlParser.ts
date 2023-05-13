@@ -1,11 +1,4 @@
 import { htmlToBlocks } from '@sanity/block-tools'
-import { PortableTextBlock } from 'sanity'
-
-export const htmlPastePatch = (html, schemaTypes, path) => {
-  if (!html) return undefined
-  const blocks = parseHtml(html, schemaTypes)
-  return { insert: blocks as PortableTextBlock[], path } // insert patch
-}
 
 export const parseHtml = (html, schemaTypes) => {
   const blocks = htmlToBlocks(html, schemaTypes.portableText, {
