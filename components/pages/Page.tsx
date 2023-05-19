@@ -41,7 +41,7 @@ export default function Page(props: PageProps) {
           ) : (
             <>
               <article>
-                <h1 className="mt-16 mb-6 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl">
+                <h1 className="mt-16 mb-6 text-3xl font-bold leading-tight text-gray-900 sm:text-4xl sm:leading-tight">
                   {page.title}
                 </h1>
                 <ContentBody content={page.content} />

@@ -12,7 +12,7 @@ export default function PostHeader({ post }: PostHeaderProps) {
 
   return (
     <div className="mt-16 mb-16 flex flex-col">
-      <h1 className="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl">
+      <h1 className="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl sm:leading-tight">
         {title}
       </h1>
       {/* <div className="hidden md:mb-12 md:block">
@@ -38,7 +38,7 @@ export default function PostHeader({ post }: PostHeaderProps) {
         </div>
       )}
       {excerpt && (
-        <p className="mt-2 text-lg leading-normal text-gray-500 sm:text-xl">
+        <p className="mt-2 text-lg leading-normal text-gray-500 sm:text-xl sm:leading-normal">
           {excerpt}
         </p>
       )}
