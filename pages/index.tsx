@@ -69,5 +69,6 @@ export const getStaticProps: GetStaticProps<
       preview,
       token: previewData.token ?? null,
     },
+    revalidate: 1,
   }
 }

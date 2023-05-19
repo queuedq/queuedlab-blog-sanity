@@ -71,6 +71,7 @@ export const getStaticProps: GetStaticProps<
       token: previewData.token ?? null,
       slug: params.slug,
     },
+    revalidate: 1,
   }
 }
 
