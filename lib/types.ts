@@ -41,6 +41,7 @@ export interface Settings {
   title?: string
   description?: string
   domain?: string
+  timeZone?: string
   ogImage?: {
     title?: string
   }

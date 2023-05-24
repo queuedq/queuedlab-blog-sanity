@@ -1,4 +1,5 @@
 import { CogIcon } from '@sanity/icons'
+import { getTimeZones } from '@vvo/tzdb'
 import * as demo from 'lib/demo.data'
 import { defineField, defineType } from 'sanity'
 import category from 'schemas/category'
@@ -48,6 +49,18 @@ export default defineType({
       group: 'general',
     }),
     defineField({
+      name: 'timeZone',
+      title: 'Time zone',
+      description: 'Time zone used throughout the website',
+      type: 'string',
+      group: 'general',
+      options: {
+        list: getTimeZones({ includeUtc: true }).map((tz) => {
+          return { title: tz.currentTimeFormat, value: tz.name }
+        }),
+      },
+    }),
+    defineField({
       name: 'ogImage',
       title: 'Open Graph Image',
       description:
@@ -66,6 +79,7 @@ export default defineType({
       ],
       group: 'general',
     }),
+
     // TODO: use orderable document list instead
     // https://www.sanity.io/plugins/orderable-document-list
     defineField({

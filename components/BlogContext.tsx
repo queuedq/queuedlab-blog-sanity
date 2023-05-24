@@ -11,7 +11,9 @@ export interface BlogContextType {
 const defaultBlogContext: BlogContextType = {
   preview: false,
   loading: false,
-  settings: {},
+  settings: {
+    timeZone: 'Etc/UTC',
+  },
 }
 
 export default createContext(defaultBlogContext)
