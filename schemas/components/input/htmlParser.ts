@@ -14,7 +14,7 @@ export const parseHtml = (html, schemaTypes) => {
 
           const code = el.childNodes[0]
           if (!isElement(code, 'code')) return undefined
-          
+
           const text = el.textContent
           return block({ _type: 'code', code: text })
         },

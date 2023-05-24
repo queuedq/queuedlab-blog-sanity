@@ -32,8 +32,7 @@ export default defineType({
     }),
     defineField({
       name: 'description',
-      description:
-        'Used for the <meta> description tag for SEO.',
+      description: 'Used for the <meta> description tag for SEO.',
       title: 'Descriprion',
       type: 'string',
       initialValue: demo.description,
