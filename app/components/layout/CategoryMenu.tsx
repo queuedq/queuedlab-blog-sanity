@@ -1,37 +1,27 @@
-'use client'
 import classNames from 'classnames'
 import { Category } from 'lib/types'
 import Link from 'next/link'
-import { useSelectedLayoutSegments } from 'next/navigation'
-
-function getCurrentCategory(segments: string[]): string | undefined {
-  if (segments.length == 0) return '_index'
-  if (segments[0] == 'categories' && segments.length >= 2) return segments[1]
-  return undefined
-}
 
 interface CategoryMenuProps {
   categories: Category[]
+  currentCategory: string | undefined
 }
 
 export default function CategoryMenu(props: CategoryMenuProps) {
-  const { categories } = props
-
-  const segments = useSelectedLayoutSegments()
-  const currentCategory = getCurrentCategory(segments)
+  const { categories, currentCategory } = props
 
   const categoryInfos = [
     {
       name: 'All',
       href: '/',
       color: '#111827', // gray-900
-      selected: currentCategory == '_index',
+      selected: currentCategory === '_index',
     },
     ...categories.map((category) => ({
       name: category.name,
       href: `/categories/${category.slug}`,
       color: category.color?.hex,
-      selected: currentCategory == category.slug,
+      selected: currentCategory === category.slug,
     })),
   ]
 

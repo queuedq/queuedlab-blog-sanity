@@ -6,7 +6,7 @@ import type { Post } from 'lib/types'
 import { ogImageUrl } from 'lib/urls'
 import { Metadata } from 'next'
 
-import PostHeader from '../../../components/post/PostHeader'
+import PostHeader from '../../../../components/post/PostHeader'
 
 export async function generateMetadata({
   params,
