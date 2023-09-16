@@ -13,7 +13,7 @@ async function init(): Promise<SatoriOptions['fonts']> {
     globalThis.Intl = globalThis.Intl || {}
     //@ts-expect-error
     globalThis.Intl.Segmenter = await createIntlSegmenterPolyfill(
-      fetch(new URL('public/break_iterator.wasm', import.meta.url))
+      fetch(new URL('public/break_iterator.wasm', import.meta.url)),
     )
   }
 
@@ -21,12 +21,12 @@ async function init(): Promise<SatoriOptions['fonts']> {
   const fonts = [
     new URL(
       'public/fonts/pretendard/woff/Pretendard-Bold.subset.woff',
-      import.meta.url
+      import.meta.url,
     ),
   ]
 
   const [fontBold] = await Promise.all(
-    fonts.map((font) => fetch(font).then((res) => res.arrayBuffer()))
+    fonts.map((font) => fetch(font).then((res) => res.arrayBuffer())),
   )
 
   return [{ name: 'Pretendard', data: fontBold, style: 'normal', weight: 700 }]
@@ -70,7 +70,7 @@ export default function OpenGraphPreview(props: Settings['ogImage']) {
         fonts,
       })
     },
-    { suspense: true }
+    { suspense: true },
   )
 
   return <OpenGraphSvg dangerouslySetInnerHTML={{ __html }} />

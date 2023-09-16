@@ -7,7 +7,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function feedApi(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   // TODO: Use only recent posts
   const [settings, posts] = await Promise.all([

@@ -7,7 +7,7 @@ export const config: PageConfig = { runtime: 'nodejs' }
 
 export default function exit(
   _req: NextApiRequest,
-  res: NextApiResponse<void>
+  res: NextApiResponse<void>,
 ): void {
   // Exit the current user from "Preview Mode".
   res.clearPreviewData()

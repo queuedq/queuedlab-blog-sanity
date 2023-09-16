@@ -14,7 +14,7 @@ export const singletonPlugin = (types: string[]) => {
       newDocumentOptions: (prev, { creationContext }) => {
         if (creationContext.type === 'global') {
           return prev.filter(
-            (templateItem) => !types.includes(templateItem.templateId)
+            (templateItem) => !types.includes(templateItem.templateId),
           )
         }
 
@@ -35,7 +35,7 @@ export const singletonPlugin = (types: string[]) => {
 // A singleton not using `documentListItem`, eg no built-in preview
 export const singletonListItem = (
   S: StructureBuilder,
-  typeDef: DocumentDefinition
+  typeDef: DocumentDefinition,
 ) =>
   S.listItem()
     .title(typeDef.title)
@@ -44,5 +44,5 @@ export const singletonListItem = (
       S.editor()
         .id(typeDef.name)
         .schemaType(typeDef.name)
-        .documentId(typeDef.name)
+        .documentId(typeDef.name),
     )

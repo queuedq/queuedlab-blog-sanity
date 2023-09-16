@@ -16,18 +16,18 @@ export const deskStructure = ({
   return (S) => {
     // Singleton list items
     const singletonItems = singletonTypes.map((typeDef) =>
-      singletonListItem(S, typeDef)
+      singletonListItem(S, typeDef),
     )
 
     // Primary list items
     const primaryItems = primaryTypes.map((typeDef) =>
-      S.documentTypeListItem(typeDef.name)
+      S.documentTypeListItem(typeDef.name),
     )
 
     // The default root list items (except custom ones)
     const defaultListItems = S.documentTypeListItems().filter(
       (listItem) =>
-        !hasType(singletonTypes, listItem) && !hasType(primaryTypes, listItem)
+        !hasType(singletonTypes, listItem) && !hasType(primaryTypes, listItem),
     )
 
     return S.list()

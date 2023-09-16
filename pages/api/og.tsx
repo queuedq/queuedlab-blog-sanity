@@ -17,12 +17,12 @@ export default async function og(req: NextRequest, res: NextResponse) {
   const fonts = [
     new URL(
       'public/fonts/pretendard/woff/Pretendard-Bold.subset.woff',
-      import.meta.url
+      import.meta.url,
     ),
   ]
 
   const [fontBold] = await Promise.all(
-    fonts.map((font) => fetch(font).then((res) => res.arrayBuffer()))
+    fonts.map((font) => fetch(font).then((res) => res.arrayBuffer())),
   )
 
   const { searchParams } = new URL(req.url)
@@ -47,6 +47,6 @@ export default async function og(req: NextRequest, res: NextResponse) {
       fonts: [
         { name: 'Pretendard', data: fontBold, style: 'normal', weight: 700 },
       ],
-    }
+    },
   )
 }

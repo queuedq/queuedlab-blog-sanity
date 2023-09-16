@@ -11,7 +11,7 @@ export default function CompactTextArea(props) {
       const nextValue = event.currentTarget.value
       onChange(nextValue ? set(nextValue) : unset())
     },
-    [onChange]
+    [onChange],
   )
 
   // https://www.sanity.io/ui/docs/primitive/text-areax
