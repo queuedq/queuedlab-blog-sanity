@@ -1,5 +1,5 @@
 import { ImageResponse } from '@vercel/og'
-import { height, OpenGraphImage, width } from 'components/pages/OpenGraphImage'
+import { height, OpenGraphImage, width } from 'app/components/OpenGraphImage'
 import { getSettings } from 'lib/client'
 import * as demo from 'lib/demo.data'
 import { apiVersion, dataset, projectId } from 'lib/sanity.api'

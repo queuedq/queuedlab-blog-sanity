@@ -78,7 +78,7 @@ const postsByCategoryQuery = groq`
 }`
 export async function getPostsByCategory(
   category: string,
-  client = defaultClient
+  client = defaultClient,
 ) {
   return (await client?.fetch<Post[]>(postsByCategoryQuery, { category })) || []
 }
@@ -103,7 +103,7 @@ export const postQuery = groq`
 export async function getPost(
   slug: string,
   token?: string | null,
-  client = defaultClient
+  client = defaultClient,
 ) {
   if (projectId) {
     const client = createClient({

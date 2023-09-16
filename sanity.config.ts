@@ -62,7 +62,7 @@ const config = defineConfig({
           name: 'c',
           loader: () =>
             import('@codemirror/legacy-modes/mode/clike').then(({ c }) =>
-              StreamLanguage.define(c)
+              StreamLanguage.define(c),
             ),
         },
         {
