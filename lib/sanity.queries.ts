@@ -1,8 +1,8 @@
 import * as demo from 'lib/demo.data'
 import { createClient, groq } from 'next-sanity'
 
-import { client as defaultClient } from './client'
-import { apiVersion, dataset, projectId, useCdn } from './sanity.api'
+import { apiVersion, dataset, projectId, revalidateSecret } from './sanity.api'
+import { client as defaultClient } from './sanity.client'
 import { Page, Post, Settings } from './types'
 
 // Fields
@@ -96,7 +96,7 @@ export async function getPost(slug: string, token?: string | null) {
       projectId,
       dataset,
       apiVersion,
-      useCdn,
+      useCdn: revalidateSecret ? false : true,
       token: token || undefined,
     })
     return await client.fetch<Post>(postQuery, { slug })

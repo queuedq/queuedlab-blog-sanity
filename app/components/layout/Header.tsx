@@ -1,4 +1,4 @@
-import { getSettings } from 'lib/queries'
+import { getSettings } from 'lib/sanity.queries'
 import Link from 'next/link'
 
 import CategoryMenu from './CategoryMenu'

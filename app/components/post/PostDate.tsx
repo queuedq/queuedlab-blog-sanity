@@ -1,7 +1,7 @@
 import { parseISO } from 'date-fns'
 import enUS from 'date-fns/locale/en-US'
 import { formatInTimeZone } from 'date-fns-tz'
-import { getSettings } from 'lib/queries'
+import { getSettings } from 'lib/sanity.queries'
 
 export interface PostDateProps {
   dateString: string

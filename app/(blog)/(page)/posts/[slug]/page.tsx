@@ -1,7 +1,7 @@
 import ContentBody from 'app/components/ContentBody'
 import Container from 'app/components/layout/Container'
 import { metadata } from 'app/utils/metadata'
-import { getAllPostsSlugs, getPost, getSettings } from 'lib/queries'
+import { getAllPostsSlugs, getPost, getSettings } from 'lib/sanity.queries'
 import type { Post } from 'lib/types'
 import { ogImageUrl } from 'lib/urls'
 import { Metadata } from 'next'

@@ -1,6 +1,6 @@
 import Container from 'app/components/layout/Container'
 import { metadata } from 'app/utils/metadata'
-import { getAllPageSlugs, getPage, getSettings } from 'lib/queries'
+import { getAllPageSlugs, getPage, getSettings } from 'lib/sanity.queries'
 import type { Post } from 'lib/types'
 import { ogImageUrl } from 'lib/urls'
 import { Metadata } from 'next'

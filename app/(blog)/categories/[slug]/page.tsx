@@ -5,7 +5,7 @@ import {
   getAllCategorySlugs,
   getPostsByCategory,
   getSettings
-} from 'lib/queries'
+} from 'lib/sanity.queries'
 import { ogImageUrl } from 'lib/urls'
 import { Metadata } from 'next'
 

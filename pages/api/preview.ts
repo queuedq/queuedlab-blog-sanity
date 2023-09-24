@@ -1,4 +1,4 @@
-import { getPostBySlug } from 'lib/queries'
+import { getPostBySlug } from 'lib/sanity.queries'
 import {
   apiVersion,
   dataset,
