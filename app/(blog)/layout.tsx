@@ -1,4 +1,3 @@
-import './global.css'
 import 'public/fonts/pretendard-variable/pretendardvariable-dynamic-subset.css'
 
 import { getSettings } from 'lib/client'

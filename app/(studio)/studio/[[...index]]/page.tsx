@@ -1,5 +1,3 @@
-import './style.css'
-
 import { Studio } from './Studio'
 
 // Ensures the Studio route is statically generated
