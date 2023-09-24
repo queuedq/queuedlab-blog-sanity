@@ -1,4 +1,4 @@
-import { getPostBySlug } from 'lib/client'
+import { getPostBySlug } from 'lib/queries'
 import {
   apiVersion,
   dataset,

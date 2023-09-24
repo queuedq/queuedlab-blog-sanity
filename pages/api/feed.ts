@@ -1,7 +1,7 @@
 import { toHTML } from '@portabletext/to-html'
 import { parseISO } from 'date-fns'
 import { Feed } from 'feed'
-import { getAllPostsWithContent, getSettings } from 'lib/client'
+import { getAllPostsWithContent, getSettings } from 'lib/queries'
 import { feedUrl, ogImageUrl, postUrl } from 'lib/urls'
 import { NextApiRequest, NextApiResponse } from 'next'
 

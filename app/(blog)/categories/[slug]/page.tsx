@@ -4,8 +4,8 @@ import { metadata } from 'app/utils/metadata'
 import {
   getAllCategorySlugs,
   getPostsByCategory,
-  getSettings,
-} from 'lib/client'
+  getSettings
+} from 'lib/queries'
 import { ogImageUrl } from 'lib/urls'
 import { Metadata } from 'next'
 
@@ -39,5 +39,5 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
 export async function generateStaticParams() {
   const slugs = await getAllCategorySlugs()
-  return slugs
+  return slugs.map((slug) => ({ slug }))
 }

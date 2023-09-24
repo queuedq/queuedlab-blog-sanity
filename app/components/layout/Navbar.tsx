@@ -1,4 +1,4 @@
-import { getSettings } from 'lib/client'
+import { getSettings } from 'lib/queries'
 import Link from 'next/link'
 
 export default async function Navbar() {

@@ -1,6 +1,6 @@
 import 'public/fonts/pretendard-variable/pretendardvariable-dynamic-subset.css'
 
-import { getSettings } from 'lib/client'
+import { getSettings } from 'lib/queries'
 import { feedUrl, ogImageUrl } from 'lib/urls'
 import { Metadata } from 'next'
 

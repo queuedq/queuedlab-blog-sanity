@@ -1,7 +1,7 @@
 import ContentBody from 'app/components/ContentBody'
 import Container from 'app/components/layout/Container'
 import { metadata } from 'app/utils/metadata'
-import { getAllPostsSlugs, getPost, getSettings } from 'lib/client'
+import { getAllPostsSlugs, getPost, getSettings } from 'lib/queries'
 import type { Post } from 'lib/types'
 import { ogImageUrl } from 'lib/urls'
 import { Metadata } from 'next'
@@ -47,5 +47,5 @@ export default async function PostPage({
 
 export async function generateStaticParams() {
   const slugs = await getAllPostsSlugs()
-  return slugs
+  return slugs.map((slug) => ({ slug }))
 }

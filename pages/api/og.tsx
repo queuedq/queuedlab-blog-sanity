@@ -1,6 +1,6 @@
 import { ImageResponse } from '@vercel/og'
 import { height, OpenGraphImage, width } from 'app/components/OpenGraphImage'
-import { getSettings } from 'lib/client'
+import { getSettings } from 'lib/queries'
 import * as demo from 'lib/demo.data'
 import { apiVersion, dataset, projectId } from 'lib/sanity.api'
 import type { NextRequest, NextResponse } from 'next/server'
