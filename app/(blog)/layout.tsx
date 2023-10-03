@@ -1,6 +1,6 @@
 import 'public/fonts/pretendard-variable/pretendardvariable-dynamic-subset.css'
 
-import { getSettings } from 'lib/sanity.queries'
+import { getSettings } from 'lib/sanity.fetch'
 import { feedUrl, ogImageUrl } from 'lib/urls'
 import { Metadata } from 'next'
 

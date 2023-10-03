@@ -1,4 +1,3 @@
-import { getPostBySlug } from 'lib/sanity.queries'
 import {
   apiVersion,
   dataset,
@@ -6,6 +5,7 @@ import {
   projectId,
   useCdn,
 } from 'lib/sanity.api'
+import { getPostBySlug } from 'lib/sanity.fetch'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import type { PageConfig } from 'next/types'
 import { createClient } from 'next-sanity'

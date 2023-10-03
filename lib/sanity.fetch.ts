@@ -1,11 +1,26 @@
 import 'server-only'
 
 import type { QueryParams } from '@sanity/client'
+import * as demo from 'lib/demo.data'
 import { draftMode } from 'next/headers'
 
 import { revalidateSecret } from './sanity.api'
 import { client } from './sanity.client'
+import {
+  allPostsQuery,
+  allPostsWithContentQuery,
+  categorySlugsQuery,
+  pageQuery,
+  pageSlugsQuery,
+  postBySlugQuery,
+  postQuery,
+  postsByCategoryQuery,
+  postSlugsQuery,
+  settingsQuery,
+} from './sanity.queries'
+import { Page, Post, Settings } from './types'
 
+// sanityFetch() reference: https://www.sanity.io/guides/nextjs-app-router-live-preview
 export const token = process.env.SANITY_API_READ_TOKEN
 
 const DEFAULT_PARAMS = {} as QueryParams
@@ -40,4 +55,94 @@ export async function sanityFetch<QueryResponse>({
       tags,
     },
   })
+}
+
+// Queries
+// TODO: set appropriate tag
+
+export async function getSettings(): Promise<Settings> {
+  const settings = await sanityFetch<Settings>({
+    query: settingsQuery,
+    tags: ['settings'],
+  })
+  return {
+    title: demo.title,
+    description: demo.description,
+    ogImage: {
+      title: demo.ogImageTitle,
+    },
+    ...settings,
+  }
+}
+
+export function getAllPosts() {
+  return sanityFetch<Post[]>({
+    query: allPostsQuery,
+    tags: ['post'],
+  })
+}
+
+export function getAllPostsWithContent() {
+  return sanityFetch<Post[]>({
+    query: allPostsWithContentQuery,
+    tags: ['post'],
+  })
+}
+
+export function getPostsByCategory(category: string) {
+  return sanityFetch<Post[]>({
+    query: postsByCategoryQuery,
+    params: { category },
+    tags: ['post'],
+  })
+}
+
+export function getPage(slug: string) {
+  return sanityFetch<Page>({
+    query: pageQuery,
+    params: { slug },
+    tags: ['page'],
+  })
+}
+
+export function getPost(slug: string) {
+  return sanityFetch<Post>({
+    query: postQuery,
+    params: { slug },
+    tags: ['post'],
+  })
+}
+
+export function getPostBySlug(slug: string) {
+  return sanityFetch<Post>({
+    query: postBySlugQuery,
+    params: { slug },
+    tags: ['post'],
+  })
+}
+
+// Slug queries
+
+export function getAllPageSlugs() {
+  return client.fetch<string[]>(
+    pageSlugsQuery,
+    {},
+    { token, perspective: 'published' },
+  )
+}
+
+export function getAllPostsSlugs() {
+  return client.fetch<string[]>(
+    postSlugsQuery,
+    {},
+    { token, perspective: 'published' },
+  )
+}
+
+export function getAllCategorySlugs() {
+  return client.fetch<string[]>(
+    categorySlugsQuery,
+    {},
+    { token, perspective: 'published' },
+  )
 }

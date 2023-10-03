@@ -1,7 +1,6 @@
 import Container from 'app/components/layout/Container'
 import { metadata } from 'app/utils/metadata'
-import { getAllPageSlugs, getPage, getSettings } from 'lib/sanity.queries'
-import type { Post } from 'lib/types'
+import { getAllPageSlugs, getPage, getSettings } from 'lib/sanity.fetch'
 import { ogImageUrl } from 'lib/urls'
 import { Metadata } from 'next'
 
@@ -16,7 +15,7 @@ export async function generateMetadata({
   const settings = await getSettings()
   const { domain, description } = settings
 
-  const page = (await getPage(slug))!
+  const page = await getPage(slug)
 
   return metadata({
     title: page.title!,
@@ -28,7 +27,7 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params
-  const page = (await getPage(slug)) as Post
+  const page = await getPage(slug)
 
   return (
     <Container>

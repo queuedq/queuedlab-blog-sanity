@@ -1,4 +1,4 @@
-import { getSettings } from 'lib/sanity.queries'
+import { getSettings } from 'lib/sanity.fetch'
 import { feedUrl } from 'lib/urls'
 import Link from 'next/link'
 

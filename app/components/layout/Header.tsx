@@ -1,4 +1,4 @@
-import { getSettings } from 'lib/sanity.queries'
+import { getSettings } from 'lib/sanity.fetch'
 import Link from 'next/link'
 
 import CategoryMenu from './CategoryMenu'
@@ -36,7 +36,7 @@ export default async function BlogHeader({
       </div>
       <div className="mb-16">
         <CategoryMenu
-          categories={headerCategories!}
+          categories={headerCategories ?? []}
           currentCategory={category}
         />
       </div>

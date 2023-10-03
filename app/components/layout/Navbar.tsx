@@ -1,4 +1,4 @@
-import { getSettings } from 'lib/sanity.queries'
+import { getSettings } from 'lib/sanity.fetch'
 import Link from 'next/link'
 
 export default async function Navbar() {

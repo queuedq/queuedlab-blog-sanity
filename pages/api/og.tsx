@@ -1,11 +1,9 @@
 import { ImageResponse } from '@vercel/og'
 import { height, OpenGraphImage, width } from 'app/components/OpenGraphImage'
-import { getSettings } from 'lib/sanity.queries'
 import * as demo from 'lib/demo.data'
-import { apiVersion, dataset, projectId } from 'lib/sanity.api'
+import { getSettings } from 'lib/sanity.fetch'
 import type { NextRequest, NextResponse } from 'next/server'
 import type { PageConfig } from 'next/types'
-import { createClient } from 'next-sanity'
 
 export const config: PageConfig = { runtime: 'edge' }
 
@@ -29,14 +27,8 @@ export default async function og(req: NextRequest, res: NextResponse) {
 
   let title = searchParams.get('title')
   if (!title) {
-    const client = createClient({
-      projectId,
-      dataset,
-      apiVersion,
-      useCdn: false,
-    })
-    const settings = await getSettings(client)
-    title = settings?.ogImage?.title
+    const settings = await getSettings()
+    title = settings?.ogImage?.title!
   }
 
   return new ImageResponse(

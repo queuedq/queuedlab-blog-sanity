@@ -4,8 +4,8 @@ import { metadata } from 'app/utils/metadata'
 import {
   getAllCategorySlugs,
   getPostsByCategory,
-  getSettings
-} from 'lib/sanity.queries'
+  getSettings,
+} from 'lib/sanity.fetch'
 import { ogImageUrl } from 'lib/urls'
 import { Metadata } from 'next'
 
