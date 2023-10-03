@@ -2,6 +2,7 @@ import AlertBanner from 'app/components/layout/AlertBanner'
 import Container from 'app/components/layout/Container'
 import Footer from 'app/components/layout/Footer'
 import BlogHeader from 'app/components/layout/Header'
+import { draftMode } from 'next/headers'
 
 interface BlogLayoutProps {
   children: React.ReactNode
@@ -11,7 +12,7 @@ interface BlogLayoutProps {
 export default function BlogLayout({ children, category }: BlogLayoutProps) {
   return (
     <div className="min-h-screen font-sans text-gray-700 underline-offset-[0.15em]">
-      <AlertBanner />
+      <AlertBanner preview={draftMode().isEnabled} />
       <Container>
         <BlogHeader category={category} />
       </Container>
