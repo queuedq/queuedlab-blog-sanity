@@ -1,4 +1,4 @@
-import 'public/fonts/pretendard-variable/pretendardvariable-dynamic-subset.css'
+import '@/public/fonts/pretendard-variable/pretendardvariable-dynamic-subset.css'
 
 import { Metadata } from 'next'
 

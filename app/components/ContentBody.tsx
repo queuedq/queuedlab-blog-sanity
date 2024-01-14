@@ -1,4 +1,4 @@
-import RichText from 'app/components/rich-text/RichText'
+import RichText from '@/app/components/rich-text/RichText'
 
 import styles from './ContentBody.module.css'
 
