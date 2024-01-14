@@ -45,6 +45,7 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (
               preview: getPreviewUrl,
               draftMode: '/api/draft',
             },
+            reload: { button: true },
           })
           .title('Preview'),
       ])
