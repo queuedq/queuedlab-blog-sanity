@@ -1,9 +1,9 @@
 import { type DocumentDefinition } from 'sanity'
-import { type ListItemBuilder, type StructureResolver } from 'sanity/desk'
+import { type ListItemBuilder, type StructureResolver } from 'sanity/structure'
 
 import { singletonListItem } from './singleton'
 
-export const deskStructure = ({
+export const rootStructure = ({
   singletonTypes,
   primaryTypes,
 }: {
@@ -34,9 +34,9 @@ export const deskStructure = ({
       .title('Content')
       .items([
         ...singletonItems,
-        singletonItems.length > 0 ? S.divider() : null,
+        ...(singletonItems.length > 0 ? [S.divider()] : []),
         ...primaryItems,
-        primaryItems.length > 0 ? S.divider() : null,
+        ...(primaryItems.length > 0 ? [S.divider()] : []),
         ...defaultListItems,
       ])
   }

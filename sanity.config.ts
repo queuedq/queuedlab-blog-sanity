@@ -5,13 +5,13 @@ import { StreamLanguage } from '@codemirror/language'
 import { codeInput } from '@sanity/code-input'
 import { colorInput } from '@sanity/color-input'
 import { visionTool } from '@sanity/vision'
-import { apiVersion, dataset, previewSecretId, projectId } from 'lib/sanity.api'
-import { deskStructure } from 'plugins/deskStructure'
-import { previewDocumentNode } from 'plugins/previewPane'
-import { productionUrl } from 'plugins/productionUrl'
+import { apiVersion, dataset, projectId } from 'lib/sanity.api'
+import { defaultDocumentNode } from 'plugins/previewPane'
+import { rootStructure } from 'plugins/rootStructure'
 import { singletonPlugin } from 'plugins/singleton'
 import { defineConfig } from 'sanity'
-import { deskTool } from 'sanity/desk'
+import { presentationTool } from 'sanity/presentation'
+import { structureTool } from 'sanity/structure'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { latexInput } from 'sanity-plugin-latex-input'
 import { media } from 'sanity-plugin-media'
@@ -30,22 +30,20 @@ const config = defineConfig({
     types: Object.values(schemas),
   },
   plugins: [
-    deskTool({
-      structure: deskStructure({
+    structureTool({
+      structure: rootStructure({
         singletonTypes: [schemas.settings],
         primaryTypes: [schemas.post, schemas.page, schemas.category],
       }),
-      // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
-      defaultDocumentNode: previewDocumentNode({ apiVersion, previewSecretId }),
+      defaultDocumentNode, // Responsible for adding a “Preview” tab to the document pane
+    }),
+    presentationTool({
+      previewUrl: {
+        draftMode: { enable: '/api/draft' },
+      },
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
     singletonPlugin([schemas.settings.name]),
-    // Add the "Open preview" action
-    productionUrl({
-      apiVersion,
-      previewSecretId,
-      types: [schemas.post.name, schemas.settings.name],
-    }),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
     // Vision lets you query your content with GROQ in the studio

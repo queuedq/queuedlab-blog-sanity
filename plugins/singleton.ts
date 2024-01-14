@@ -3,7 +3,7 @@
  */
 
 import { type DocumentDefinition } from 'sanity'
-import { type StructureBuilder } from 'sanity/desk'
+import { type StructureBuilder } from 'sanity/structure'
 
 export const singletonPlugin = (types: string[]) => {
   return {
@@ -38,7 +38,7 @@ export const singletonListItem = (
   typeDef: DocumentDefinition,
 ) =>
   S.listItem()
-    .title(typeDef.title)
+    .title(typeDef.title!)
     .icon(typeDef.icon)
     .child(
       S.editor()
