@@ -5,9 +5,7 @@ export const parseHtml = (html, schemaTypes) => {
     rules: [
       {
         // code block
-        // TODO: deal with bug that removes contiguous whitespaces and line breaks
-        // (currently impossible with htmlToBlocks() in sanity@3.5.0)
-        // https://github.com/sanity-io/sanity/issues/1814
+        // TODO: detect language
         deserialize(el, next, block) {
           if (!isElement(el, 'pre')) return undefined
           if (!el.hasChildNodes()) return undefined

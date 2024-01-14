@@ -28,7 +28,7 @@
     "@sanity/code-input": "^4.1.0",
     "@sanity/color-input": "^3.0.2",
     "@sanity/image-url": "^1.0.2",
-    "@sanity/portable-text-editor": "^3.9.0",
+    "@sanity/portable-text-editor": "^3.24.1",
     "@sanity/ui": "^1.9.3",
     "@sanity/vision": "^3.2.4",
     "@svgr/webpack": "^8.1.0",

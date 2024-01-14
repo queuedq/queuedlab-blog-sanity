@@ -1,10 +1,9 @@
-import { normalizeBlock, TypedObject } from '@sanity/block-tools'
 import { OnPasteFn } from '@sanity/portable-text-editor'
 import remarkHtml from 'remark-html'
 import remarkMath from 'remark-math'
 import remarkParse from 'remark-parse'
 import remarkUnwrapImages from 'remark-unwrap-images'
-import { PortableTextBlock } from 'sanity'
+import { TypedObject } from 'sanity'
 import { unified } from 'unified'
 
 import { parseHtml } from './htmlParser'
@@ -33,24 +32,12 @@ export const handlePaste =
 
     if (html) return htmlPastePatch(html, schemaTypes, path)
 
-    // This code deals with Sanity bug that removes contiguous whitespaces and line breaks...
-    // ref: https://github.com/sanity-io/sanity/issues/1814#issuecomment-858799468
-    // It seems that Sanity removes contiguous whitespaces in htmlToBlock().
-    // https://github.com/sanity-io/sanity/issues/3977
-    return {
-      insert: [
-        normalizeBlock({
-          _type: 'block',
-          children: [{ _type: 'span', text }],
-        } as TypedObject),
-      ],
-      path,
-    }
+    return undefined
   }
 
 const htmlPastePatch = (html, schemaTypes, path) => {
   const blocks = parseHtml(html, schemaTypes)
-  return { insert: blocks as PortableTextBlock[], path } // insert patch
+  return { insert: blocks as TypedObject[], path } // insert patch
 }
 
 async function markdownToHtml(markdownContent: string) {
