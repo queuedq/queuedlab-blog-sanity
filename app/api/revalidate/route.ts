@@ -43,6 +43,8 @@ export async function POST(req: NextRequest) {
       return new Response('Bad Request', { status: 400 })
     }
 
+    console.log('Revalidate:', body)
+
     revalidateTag(body._type)
     if (body.slug) {
       revalidateTag(`${body._type}:${body.slug}`)
