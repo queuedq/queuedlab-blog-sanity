@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* https://dev.to/rashidshamloo/preventing-the-layout-shift-caused-by-scrollbars-2flp */
+html {
+  scrollbar-gutter: stable both-edges;
+}
