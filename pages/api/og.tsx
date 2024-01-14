@@ -9,20 +9,20 @@ import { getSettings } from '@/sanity/lib/fetch'
 export const config: PageConfig = { runtime: 'edge' }
 
 export default async function og(req: NextRequest, res: NextResponse) {
-  // TODO: Maybe separate this API into another service like AWS Lambda,
-  // so that I can use more generous limit?
+  // // TODO: Maybe separate this API into another service like AWS Lambda,
+  // // so that I can use more generous limit?
 
-  // Cannot use many fonts due to Edge Runtime size limit
-  const fonts = [
-    new URL(
-      'public/fonts/pretendard/woff/Pretendard-Bold.subset.woff',
-      import.meta.url,
-    ),
-  ]
+  // // Cannot use many fonts due to Edge Runtime size limit
+  // const fonts = [
+  //   new URL(
+  //     'public/fonts/pretendard/woff/Pretendard-Bold.subset.woff',
+  //     import.meta.url,
+  //   ),
+  // ]
 
-  const [fontBold] = await Promise.all(
-    fonts.map((font) => fetch(font).then((res) => res.arrayBuffer())),
-  )
+  // const [fontBold] = await Promise.all(
+  //   fonts.map((font) => fetch(font).then((res) => res.arrayBuffer())),
+  // )
 
   const { searchParams } = new URL(req.url)
 
@@ -37,9 +37,9 @@ export default async function og(req: NextRequest, res: NextResponse) {
     {
       width,
       height,
-      fonts: [
-        { name: 'Pretendard', data: fontBold, style: 'normal', weight: 700 },
-      ],
+      // fonts: [
+      //   { name: 'Pretendard', data: fontBold, style: 'normal', weight: 700 },
+      // ],
     },
   )
 }
