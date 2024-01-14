@@ -15,7 +15,7 @@ export default async function PostDate({ dateString }: PostDateProps) {
   const date = parseISO(dateString)
   return (
     <time className="tabular-nums" dateTime={dateString}>
-      {formatInTimeZone(date, settings.timeZone, 'yyyy.MM.dd', {
+      {formatInTimeZone(date, settings.timeZone ?? 'Etc/UTC', 'yyyy.MM.dd', {
         locale: enUS,
       })}
     </time>

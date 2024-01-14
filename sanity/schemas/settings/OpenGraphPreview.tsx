@@ -14,14 +14,14 @@ async function init(): Promise<SatoriOptions['fonts']> {
     globalThis.Intl = globalThis.Intl || {}
     //@ts-expect-error
     globalThis.Intl.Segmenter = await createIntlSegmenterPolyfill(
-      fetch(new URL('public/break_iterator.wasm', import.meta.url)),
+      fetch(new URL('@/public/break_iterator.wasm', import.meta.url)),
     )
   }
 
   // Cannot use many fonts due to Edge Runtime size limit
   const fonts = [
     new URL(
-      'public/fonts/pretendard/woff/Pretendard-Bold.subset.woff',
+      '@/public/fonts/pretendard/woff/Pretendard-Bold.subset.woff',
       import.meta.url,
     ),
   ]

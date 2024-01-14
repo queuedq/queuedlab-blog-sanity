@@ -32,7 +32,8 @@
     "@sanity/ui": "^1.9.3",
     "@sanity/vision": "^3.2.4",
     "@svgr/webpack": "^8.1.0",
-    "@types/react-dom": "^18.2.7",
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
     "@vercel/og": "^0.0.27",
     "@vvo/tzdb": "^6.108.0",
     "classnames": "^2.3.2",
@@ -61,20 +62,19 @@
     "sanity-plugin-media": "^2.2.2",
     "suspend-react": "^0.0.9",
     "swr": "^2.0.1",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^5.3.3",
     "unified": "^10.1.2"
   },
   "devDependencies": {
-    "@types/react": "^18.2.21",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.49.0",
-    "eslint-config-next": "^13.4.19",
+    "eslint-config-next": "^14.0.4",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "postcss": "^8.4.21",
     "prettier": "^3.0.3",
     "prettier-plugin-packagejson": "^2.4.0",
-    "prettier-plugin-tailwindcss": "^0.2.1",
-    "tailwindcss": "^3.2.4",
-    "typescript": "^5.2.2"
+    "prettier-plugin-tailwindcss": "^0.2.1"
   },
   "engines": {
     "node": ">=16"
