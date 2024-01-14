@@ -1,5 +1,6 @@
-import { Post } from 'lib/types'
 import Link from 'next/link'
+
+import { Post } from '@/types'
 
 import PostDate from './PostDate'
 import style from './PostPreview.module.css'

@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
-import { RichTextEditor } from 'schemas/components/input/RichTextEditor'
 
+import { RichTextEditor } from '../components/input/RichTextEditor'
 import FigureType from './figure'
 import HorizontalRuleType from './horizontalRule'
 import YoutubeType from './youtube'

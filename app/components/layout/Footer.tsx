@@ -1,6 +1,7 @@
-import { getSettings } from 'lib/sanity.fetch'
-import { feedUrl } from 'lib/urls'
 import Link from 'next/link'
+
+import { feedUrl } from '@/app/utils/urls'
+import { getSettings } from '@/sanity/lib/fetch'
 
 import RssIcon from './RssIcon'
 

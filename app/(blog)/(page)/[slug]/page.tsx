@@ -1,8 +1,9 @@
-import Container from 'app/components/layout/Container'
-import { metadata } from 'app/utils/metadata'
-import { getAllPageSlugs, getPage, getSettings } from 'lib/sanity.fetch'
-import { ogImageUrl } from 'lib/urls'
 import { Metadata } from 'next'
+
+import Container from '@/app/components/layout/Container'
+import { metadata } from '@/app/utils/metadata'
+import { ogImageUrl } from '@/app/utils/urls'
+import { getAllPageSlugs, getPage, getSettings } from '@/sanity/lib/fetch'
 
 import ContentBody from '../../../components/ContentBody'
 
@@ -20,7 +21,7 @@ export async function generateMetadata({
   return metadata({
     title: page.title!,
     description: description!,
-    url: `https://${domain}/${slug}`, // TODO: use `lib/urls`
+    url: `https://${domain}/${slug}`, // TODO: use `@/app/utils/urls`
     image: ogImageUrl(domain, page.title),
   })
 }

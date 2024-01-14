@@ -1,5 +1,6 @@
-import { getSettings } from 'lib/sanity.fetch'
 import Link from 'next/link'
+
+import { getSettings } from '@/sanity/lib/fetch'
 
 export default async function Navbar() {
   const settings = await getSettings()

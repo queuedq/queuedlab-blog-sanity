@@ -1,5 +1,6 @@
-import { useNextSanityImage } from 'lib/sanity.image'
 import Image from 'next/image'
+
+import { useNextSanityImage } from '@/sanity/lib/utils'
 
 export default function Figure({ value }) {
   const imageProps = useNextSanityImage(value.image)

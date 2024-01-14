@@ -1,9 +1,10 @@
 import { toHTML } from '@portabletext/to-html'
 import { parseISO } from 'date-fns'
 import { Feed } from 'feed'
-import { getAllPostsWithContent, getSettings } from 'lib/sanity.fetch'
-import { feedUrl, ogImageUrl, postUrl } from 'lib/urls'
 import { NextApiRequest, NextApiResponse } from 'next'
+
+import { feedUrl, ogImageUrl, postUrl } from '@/app/utils/urls'
+import { getAllPostsWithContent, getSettings } from '@/sanity/lib/fetch'
 
 export default async function feedApi(
   req: NextApiRequest,

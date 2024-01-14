@@ -1,10 +1,11 @@
-import ContentBody from 'app/components/ContentBody'
-import Container from 'app/components/layout/Container'
-import { metadata } from 'app/utils/metadata'
-import { getAllPostsSlugs, getPost, getSettings } from 'lib/sanity.fetch'
-import type { Post } from 'lib/types'
-import { ogImageUrl } from 'lib/urls'
 import { Metadata } from 'next'
+
+import ContentBody from '@/app/components/ContentBody'
+import Container from '@/app/components/layout/Container'
+import { metadata } from '@/app/utils/metadata'
+import { ogImageUrl } from '@/app/utils/urls'
+import { getAllPostsSlugs, getPost, getSettings } from '@/sanity/lib/fetch'
+import type { Post } from '@/types'
 
 import PostHeader from '../../../../components/post/PostHeader'
 
@@ -22,7 +23,7 @@ export async function generateMetadata({
   return metadata({
     title: post.title!,
     description: post.excerpt!,
-    url: `https://${domain}/posts/${slug}`, // TODO: use `lib/urls`
+    url: `https://${domain}/posts/${slug}`, // TODO: use `@/app/utils/urls`
     image: ogImageUrl(domain, post.title),
   })
 }

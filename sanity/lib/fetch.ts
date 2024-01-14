@@ -1,11 +1,13 @@
 import 'server-only'
 
 import type { QueryParams } from '@sanity/client'
-import * as demo from 'lib/demo.data'
 import { draftMode } from 'next/headers'
 
-import { revalidateSecret } from './sanity.api'
-import { client } from './sanity.client'
+import { Page, Post, Settings } from '@/types'
+
+import { revalidateSecret } from './api'
+import { client } from './client'
+import * as demo from './demo'
 import {
   allPostsQuery,
   allPostsWithContentQuery,
@@ -17,8 +19,7 @@ import {
   postsByCategoryQuery,
   postSlugsQuery,
   settingsQuery,
-} from './sanity.queries'
-import { Page, Post, Settings } from './types'
+} from './queries'
 
 // sanityFetch() reference: https://www.sanity.io/guides/nextjs-app-router-live-preview
 export const token = process.env.SANITY_API_READ_TOKEN

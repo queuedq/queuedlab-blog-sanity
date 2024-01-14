@@ -1,5 +1,6 @@
-import { getSettings } from 'lib/sanity.fetch'
 import Link from 'next/link'
+
+import { getSettings } from '@/sanity/lib/fetch'
 
 import CategoryMenu from './CategoryMenu'
 import Navbar from './Navbar'

@@ -7,8 +7,9 @@
 import { SanityDocument } from 'sanity'
 import { DefaultDocumentNodeResolver } from 'sanity/structure'
 import { Iframe } from 'sanity-plugin-iframe-pane'
-import authorType from 'schemas/author'
-import postType from 'schemas/post'
+
+import authorType from '@/sanity/schemas/author'
+import postType from '@/sanity/schemas/post'
 
 import AuthorAvatarPreviewPane from './AuthorAvatarPreviewPane'
 

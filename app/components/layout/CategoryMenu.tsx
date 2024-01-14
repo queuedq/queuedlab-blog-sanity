@@ -1,6 +1,7 @@
 import classNames from 'classnames'
-import { Category } from 'lib/types'
 import Link from 'next/link'
+
+import { Category } from '@/types'
 
 interface CategoryMenuProps {
   categories: Category[]

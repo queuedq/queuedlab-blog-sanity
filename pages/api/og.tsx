@@ -1,9 +1,10 @@
 import { ImageResponse } from '@vercel/og'
-import { height, OpenGraphImage, width } from 'app/components/OpenGraphImage'
-import * as demo from 'lib/demo.data'
-import { getSettings } from 'lib/sanity.fetch'
 import type { NextRequest, NextResponse } from 'next/server'
 import type { PageConfig } from 'next/types'
+
+import { height, OpenGraphImage, width } from '@/app/components/OpenGraphImage'
+import * as demo from '@/sanity/lib/demo'
+import { getSettings } from '@/sanity/lib/fetch'
 
 export const config: PageConfig = { runtime: 'edge' }
 

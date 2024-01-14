@@ -1,10 +1,11 @@
 import { Card } from '@sanity/ui'
-import { height, OpenGraphImage, width } from 'app/components/OpenGraphImage'
 import { createIntlSegmenterPolyfill } from 'intl-segmenter-polyfill'
-import type { Settings } from 'lib/types'
 import satori, { type SatoriOptions } from 'satori'
 import styled from 'styled-components'
 import useSWR from 'swr/immutable'
+
+import { height, OpenGraphImage, width } from '@/app/components/OpenGraphImage'
+import type { Settings } from '@/types'
 
 async function init(): Promise<SatoriOptions['fonts']> {
   if (!globalThis?.Intl?.Segmenter) {

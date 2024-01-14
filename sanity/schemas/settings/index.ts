@@ -1,11 +1,12 @@
 import { CogIcon } from '@sanity/icons'
 import { getTimeZones } from '@vvo/tzdb'
-import * as demo from 'lib/demo.data'
 import { defineField, defineType } from 'sanity'
-import category from 'schemas/category'
-import page from 'schemas/page'
-import { referenceArray } from 'schemas/utils/utils'
 
+import * as demo from '@/sanity/lib/demo'
+
+import category from '../category'
+import page from '../page'
+import { referenceArray } from '../utils/utils'
 import OpenGraphInput from './OpenGraphInput'
 
 export default defineType({

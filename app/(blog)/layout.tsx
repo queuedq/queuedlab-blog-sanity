@@ -1,13 +1,14 @@
 import 'public/fonts/pretendard-variable/pretendardvariable-dynamic-subset.css'
 
-import { getSettings } from 'lib/sanity.fetch'
-import { feedUrl, ogImageUrl } from 'lib/urls'
 import { Metadata } from 'next'
+
+import { feedUrl, ogImageUrl } from '@/app/utils/urls'
+import { getSettings } from '@/sanity/lib/fetch'
 
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSettings()
   const { title, description, domain } = settings
-  const url = `https://${domain}/` // TODO: use `lib/urls`
+  const url = `https://${domain}/` // TODO: use `@/app/utils/urls`
   const ogImage = ogImageUrl(domain, title)
 
   return {
