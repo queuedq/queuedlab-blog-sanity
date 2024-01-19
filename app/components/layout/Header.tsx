@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { getSettings } from '@/sanity/lib/fetch'
+import { loadSettings } from '@/sanity/loader/loadQuery'
 
 import CategoryMenu from './CategoryMenu'
 import Navbar from './Navbar'
@@ -20,7 +20,7 @@ export default async function BlogHeader({
 }: {
   category: string | undefined
 }) {
-  const settings = await getSettings()
+  const { data: settings } = await loadSettings()
   const { title, headerCategories } = settings
 
   return (

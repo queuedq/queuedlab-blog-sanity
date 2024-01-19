@@ -1,12 +1,12 @@
 import Link from 'next/link'
 
 import { feedUrl } from '@/app/utils/urls'
-import { getSettings } from '@/sanity/lib/fetch'
+import { loadSettings } from '@/sanity/loader/loadQuery'
 
 import RssIcon from './RssIcon'
 
 export default async function Footer() {
-  const settings = await getSettings()
+  const { data: settings } = await loadSettings()
   const { domain, copyrightNotice } = settings
 
   return (

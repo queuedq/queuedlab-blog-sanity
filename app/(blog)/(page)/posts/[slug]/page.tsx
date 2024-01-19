@@ -1,11 +1,12 @@
 import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
 import ContentBody from '@/app/components/ContentBody'
 import Container from '@/app/components/layout/Container'
 import { metadata } from '@/app/utils/metadata'
 import { ogImageUrl } from '@/app/utils/urls'
-import { getAllPostsSlugs, getPost, getSettings } from '@/sanity/lib/fetch'
-import type { Post } from '@/types'
+import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
+import { loadPost, loadSettings } from '@/sanity/loader/loadQuery'
 
 import PostHeader from '../../../../components/post/PostHeader'
 
@@ -15,10 +16,11 @@ export async function generateMetadata({
   params: { slug: string }
 }): Promise<Metadata> {
   const { slug } = params
-  const settings = await getSettings()
+  const { data: settings } = await loadSettings()
   const { domain } = settings
 
-  const post = (await getPost(slug))!
+  const { data: post } = await loadPost(slug)
+  if (!post) return {}
 
   return metadata({
     title: post.title!,
@@ -34,7 +36,8 @@ export default async function PostPage({
   params: { slug: string }
 }) {
   const { slug } = params
-  const post = (await getPost(slug)) as Post
+  const { data: post } = await loadPost(slug)
+  if (!post) notFound()
 
   return (
     <Container>
@@ -47,6 +50,5 @@ export default async function PostPage({
 }
 
 export async function generateStaticParams() {
-  const slugs = await getAllPostsSlugs()
-  return slugs.map((slug) => ({ slug }))
+  return generateStaticSlugs('post')
 }

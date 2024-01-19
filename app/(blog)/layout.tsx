@@ -3,10 +3,10 @@ import '@/public/fonts/pretendard-variable/pretendardvariable-dynamic-subset.css
 import { Metadata } from 'next'
 
 import { feedUrl, ogImageUrl } from '@/app/utils/urls'
-import { getSettings } from '@/sanity/lib/fetch'
+import { loadSettings } from '@/sanity/loader/loadQuery'
 
 export async function generateMetadata(): Promise<Metadata> {
-  const settings = await getSettings()
+  const { data: settings } = await loadSettings()
   const { title, description, domain } = settings
   const url = `https://${domain}/` // TODO: use `@/app/utils/urls`
   const ogImage = ogImageUrl(domain, title)

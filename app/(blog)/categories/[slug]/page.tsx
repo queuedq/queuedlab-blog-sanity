@@ -4,11 +4,8 @@ import Container from '@/app/components/layout/Container'
 import PostList from '@/app/components/post/PostList'
 import { metadata } from '@/app/utils/metadata'
 import { ogImageUrl } from '@/app/utils/urls'
-import {
-  getAllCategorySlugs,
-  getPostsByCategory,
-  getSettings,
-} from '@/sanity/lib/fetch'
+import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
+import { loadPostsByCategory, loadSettings } from '@/sanity/loader/loadQuery'
 
 export async function generateMetadata({
   params,
@@ -16,7 +13,7 @@ export async function generateMetadata({
   params: { slug: string }
 }): Promise<Metadata> {
   const { slug } = params
-  const settings = await getSettings()
+  const { data: settings } = await loadSettings()
   const { title, domain, description } = settings
 
   return metadata({
@@ -29,7 +26,7 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params
-  const posts = await getPostsByCategory(slug)
+  const { data: posts } = await loadPostsByCategory(slug)
 
   return (
     <Container>
@@ -39,6 +36,5 @@ export default async function Page({ params }: { params: { slug: string } }) {
 }
 
 export async function generateStaticParams() {
-  const slugs = await getAllCategorySlugs()
-  return slugs.map((slug) => ({ slug }))
+  return generateStaticSlugs('category')
 }

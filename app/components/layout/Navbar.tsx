@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
-import { getSettings } from '@/sanity/lib/fetch'
+import { loadSettings } from '@/sanity/loader/loadQuery'
 
 export default async function Navbar() {
-  const settings = await getSettings()
+  const { data: settings } = await loadSettings()
 
   return (
     <nav className="flex gap-x-5 text-sm text-gray-700">

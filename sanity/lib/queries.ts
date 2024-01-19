@@ -1,6 +1,8 @@
 import { groq } from 'next-sanity'
 
-// Fields
+////////////////////////////////
+// Common fields
+
 const postFields = groq`
   _id,
   title,
@@ -13,14 +15,9 @@ const postFields = groq`
   "tags": tags[]->{name, "slug": slug.current},
 `
 
-const pageFields = groq`
-  _id,
-  title,
-  coverImage,
-  "slug": slug.current,
-`
+////////////////////////////////
+// Settings
 
-// Settings queries
 export const settingsQuery = groq`
 *[_type == "settings"][0] {
   ...,
@@ -28,29 +25,8 @@ export const settingsQuery = groq`
   "headerCategories": headerCategories[]->{name, "slug": slug.current, color},
 }`
 
-// Posts queries
-export const allPostsQuery = groq`
-*[_type == "post"] | order(date desc, _updatedAt desc) {
-  ${postFields}
-}`
-
-export const allPostsWithContentQuery = groq`
-*[_type == "post"] | order(date desc, _updatedAt desc) {
-  ${postFields}
-  content,
-}`
-
-export const postsByCategoryQuery = groq`
-*[_type == "post" && $category in categories[]->slug.current] | order(date desc, _updatedAt desc) {
-  ${postFields}
-}`
-
-// Post & Page queries
-export const pageQuery = groq`
-*[_type == "page" && slug.current == $slug][0] {
-  content,
-  ${pageFields}
-}`
+////////////////////////////////
+// Posts
 
 export const postQuery = groq`
 *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) [0] {
@@ -58,20 +34,24 @@ export const postQuery = groq`
   ${postFields}
 }`
 
-export const postBySlugQuery = groq`
-*[_type == "post" && slug.current == $slug][0] {
+export const allPostsQuery = groq`
+*[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`
 
-// Slug queries (for getStaticPaths)
-export const pageSlugsQuery = groq`
-*[_type == "page" && defined(slug.current)][].slug.current
-`
+export const postsByCategoryQuery = groq`
+*[_type == "post" && $category in categories[]->slug.current] | order(date desc, _updatedAt desc) {
+  ${postFields}
+}`
 
-export const postSlugsQuery = groq`
-*[_type == "post" && defined(slug.current)][].slug.current
-`
+////////////////////////////////
+// Page
 
-export const categorySlugsQuery = groq`
-*[_type == "postCategory" && defined(slug.current)][].slug.current
-`
+export const pageQuery = groq`
+*[_type == "page" && slug.current == $slug][0] {
+  _id,
+  title,
+  coverImage,
+  content,
+  "slug": slug.current,
+}`

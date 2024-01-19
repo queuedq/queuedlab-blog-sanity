@@ -25,10 +25,12 @@
     "@portabletext/react": "^2.0.0",
     "@portabletext/to-html": "^2.0.0",
     "@sanity/block-tools": "^3.10.3",
+    "@sanity/client": "^6.11.1",
     "@sanity/code-input": "^4.1.0",
     "@sanity/color-input": "^3.0.2",
     "@sanity/image-url": "^1.0.2",
     "@sanity/portable-text-editor": "^3.24.1",
+    "@sanity/react-loader": "^1.7.4",
     "@sanity/ui": "^1.9.3",
     "@sanity/vision": "^3.2.4",
     "@svgr/webpack": "^8.1.0",
@@ -77,6 +79,6 @@
     "prettier-plugin-tailwindcss": "^0.2.1"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   }
 }

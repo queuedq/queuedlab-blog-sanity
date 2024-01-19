@@ -1,9 +1,11 @@
 import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
 import Container from '@/app/components/layout/Container'
 import { metadata } from '@/app/utils/metadata'
 import { ogImageUrl } from '@/app/utils/urls'
-import { getAllPageSlugs, getPage, getSettings } from '@/sanity/lib/fetch'
+import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
+import { loadPage, loadSettings } from '@/sanity/loader/loadQuery'
 
 import ContentBody from '../../../components/ContentBody'
 
@@ -13,10 +15,11 @@ export async function generateMetadata({
   params: { slug: string }
 }): Promise<Metadata> {
   const { slug } = params
-  const settings = await getSettings()
+  const { data: settings } = await loadSettings()
   const { domain, description } = settings
 
-  const page = await getPage(slug)
+  const { data: page } = await loadPage(slug)
+  if (!page) return {}
 
   return metadata({
     title: page.title!,
@@ -28,7 +31,8 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params
-  const page = await getPage(slug)
+  const { data: page } = await loadPage(slug)
+  if (!page) notFound()
 
   return (
     <Container>
@@ -43,6 +47,5 @@ export default async function Page({ params }: { params: { slug: string } }) {
 }
 
 export async function generateStaticParams() {
-  const slugs = await getAllPageSlugs()
-  return slugs
+  return generateStaticSlugs('page')
 }
