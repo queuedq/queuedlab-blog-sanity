@@ -1,11 +1,8 @@
 import { ImageResponse } from '@vercel/og'
-import type { PageConfig } from 'next/types'
 
 import { height, OpenGraphImage, width } from '@/components/OpenGraphImage'
 import * as demo from '@/sanity/lib/demo'
 import { loadSettings } from '@/sanity/loader/loadQuery'
-
-export const config: PageConfig = { runtime: 'edge' }
 
 export async function GET(req: Request) {
   // // TODO: Maybe separate this API into another service like AWS Lambda,
