@@ -1,14 +1,13 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
-import ContentBody from '@/app/components/ContentBody'
-import Container from '@/app/components/layout/Container'
 import { metadata } from '@/app/utils/metadata'
 import { ogImageUrl } from '@/app/utils/urls'
+import ContentBody from '@/components/ContentBody'
+import Container from '@/components/layout/Container'
+import PostHeader from '@/components/post/PostHeader'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
 import { loadPost, loadSettings } from '@/sanity/loader/loadQuery'
-
-import PostHeader from '../../../../components/post/PostHeader'
 
 export async function generateMetadata({
   params,

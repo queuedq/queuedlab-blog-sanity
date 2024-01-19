@@ -1,9 +1,9 @@
 import { draftMode } from 'next/headers'
 
-import AlertBanner from '@/app/components/layout/AlertBanner'
-import Container from '@/app/components/layout/Container'
-import Footer from '@/app/components/layout/Footer'
-import BlogHeader from '@/app/components/layout/Header'
+import AlertBanner from '@/components/layout/AlertBanner'
+import Container from '@/components/layout/Container'
+import Footer from '@/components/layout/Footer'
+import BlogHeader from '@/components/layout/Header'
 
 interface BlogLayoutProps {
   children: React.ReactNode

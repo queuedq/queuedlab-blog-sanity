@@ -1,5 +1,5 @@
-import Container from '@/app/components/layout/Container'
-import PostList from '@/app/components/post/PostList'
+import Container from '@/components/layout/Container'
+import PostList from '@/components/post/PostList'
 import { loadAllPosts } from '@/sanity/loader/loadQuery'
 
 export default async function Page() {

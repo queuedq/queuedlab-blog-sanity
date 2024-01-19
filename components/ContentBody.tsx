@@ -1,6 +1,5 @@
-import RichText from '@/app/components/rich-text/RichText'
-
 import styles from './ContentBody.module.css'
+import RichText from './rich-text/RichText'
 
 export default function ContentBody({ content }) {
   return (

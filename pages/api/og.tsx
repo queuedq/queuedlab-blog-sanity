@@ -2,7 +2,7 @@ import { ImageResponse } from '@vercel/og'
 import type { NextRequest, NextResponse } from 'next/server'
 import type { PageConfig } from 'next/types'
 
-import { height, OpenGraphImage, width } from '@/app/components/OpenGraphImage'
+import { height, OpenGraphImage, width } from '@/components/OpenGraphImage'
 import * as demo from '@/sanity/lib/demo'
 import { getSettings } from '@/sanity/lib/fetch'
 

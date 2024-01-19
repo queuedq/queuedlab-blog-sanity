@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
 
-import Container from '@/app/components/layout/Container'
-import PostList from '@/app/components/post/PostList'
 import { metadata } from '@/app/utils/metadata'
 import { ogImageUrl } from '@/app/utils/urls'
+import Container from '@/components/layout/Container'
+import PostList from '@/components/post/PostList'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
 import { loadPostsByCategory, loadSettings } from '@/sanity/loader/loadQuery'
 

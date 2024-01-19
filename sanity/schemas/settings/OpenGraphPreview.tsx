@@ -4,7 +4,7 @@ import satori, { type SatoriOptions } from 'satori'
 import styled from 'styled-components'
 import useSWR from 'swr/immutable'
 
-import { height, OpenGraphImage, width } from '@/app/components/OpenGraphImage'
+import { height, OpenGraphImage, width } from '@/components/OpenGraphImage'
 import type { Settings } from '@/types'
 
 async function init(): Promise<SatoriOptions['fonts']> {
