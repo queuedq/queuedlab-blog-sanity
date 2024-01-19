@@ -44,6 +44,12 @@ export const postsByCategoryQuery = groq`
   ${postFields}
 }`
 
+export const rssFeedQuery = groq`
+*[_type == "post"] | order(date desc, _updatedAt desc)[0...10] {
+  content,
+  ${postFields}
+}`
+
 ////////////////////////////////
 // Page
 

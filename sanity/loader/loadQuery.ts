@@ -9,6 +9,7 @@ import {
   pageQuery,
   postQuery,
   postsByCategoryQuery,
+  rssFeedQuery,
   settingsQuery,
 } from '@/sanity/lib/queries'
 import { Page, Post, Settings } from '@/types'
@@ -91,6 +92,10 @@ export function loadPostsByCategory(category: string) {
     { category },
     { next: { tags: ['post'] } },
   )
+}
+
+export function loadRssFeed() {
+  return loadQuery<Post[]>(rssFeedQuery, {}, { next: { tags: ['post'] } })
 }
 
 ////////////////////////////////

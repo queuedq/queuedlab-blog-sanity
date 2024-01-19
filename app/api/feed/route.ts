@@ -1,24 +1,19 @@
 import { toHTML } from '@portabletext/to-html'
 import { parseISO } from 'date-fns'
 import { Feed } from 'feed'
-import { NextApiRequest, NextApiResponse } from 'next'
 
 import { feedUrl, ogImageUrl, postUrl } from '@/app/utils/urls'
-import { getAllPostsWithContent, getSettings } from '@/sanity/lib/fetch'
+import { loadRssFeed, loadSettings } from '@/sanity/loader/loadQuery'
 
-export default async function feedApi(
-  req: NextApiRequest,
-  res: NextApiResponse,
-) {
-  // TODO: Use only recent posts
+export async function GET(req: Request) {
   const [settings, posts] = await Promise.all([
-    getSettings(),
-    getAllPostsWithContent(),
+    loadSettings().then((x) => x.data),
+    loadRssFeed().then((x) => x.data),
   ])
 
   // https://github.com/jpmonette/feed
   const feed = new Feed({
-    title: settings.title,
+    title: settings.title!,
     description: settings.description,
     id: `https://${settings.domain}/`,
     link: `https://${settings.domain}/`,
@@ -40,7 +35,7 @@ export default async function feedApi(
 
   posts.forEach((post) => {
     feed.addItem({
-      title: post.title,
+      title: post.title!,
       id: postUrl(settings.domain, post.slug),
       link: postUrl(settings.domain, post.slug),
       description: post.excerpt,
@@ -55,11 +50,15 @@ export default async function feedApi(
         //   link: "https://example.com/janedoe"
         // },
       ],
-      date: parseISO(post.date),
+      date: parseISO(post.date!),
       image: ogImageUrl(settings.domain, post.title),
     })
   })
 
-  res.setHeader('Content-Type', 'text/xml; charset=utf-8')
-  res.send(feed.atom1())
+  return new Response(feed.atom1(), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/atom+xml; charset=utf-8',
+    },
+  })
 }
