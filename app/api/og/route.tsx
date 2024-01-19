@@ -1,14 +1,13 @@
 import { ImageResponse } from '@vercel/og'
-import type { NextRequest, NextResponse } from 'next/server'
 import type { PageConfig } from 'next/types'
 
 import { height, OpenGraphImage, width } from '@/components/OpenGraphImage'
 import * as demo from '@/sanity/lib/demo'
-import { getSettings } from '@/sanity/lib/fetch'
+import { loadSettings } from '@/sanity/loader/loadQuery'
 
 export const config: PageConfig = { runtime: 'edge' }
 
-export default async function og(req: NextRequest, res: NextResponse) {
+export async function GET(req: Request) {
   // // TODO: Maybe separate this API into another service like AWS Lambda,
   // // so that I can use more generous limit?
 
@@ -28,7 +27,7 @@ export default async function og(req: NextRequest, res: NextResponse) {
 
   let title = searchParams.get('title')
   if (!title) {
-    const settings = await getSettings()
+    const { data: settings } = await loadSettings()
     title = settings?.ogImage?.title!
   }
 
