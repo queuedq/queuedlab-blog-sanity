@@ -58,7 +58,7 @@ export async function GET(req: Request) {
     })
   })
 
-  return new Response(feed.atom1(), {
+  return new Response(feed.rss2(), {
     status: 200,
     headers: {
       'Content-Type': 'text/xml; charset=utf-8',
