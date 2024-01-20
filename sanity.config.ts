@@ -12,6 +12,7 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { latexInput } from 'sanity-plugin-latex-input'
 import { media } from 'sanity-plugin-media'
 
+import { draftUrl } from '@/app/utils/urls'
 import { apiVersion, dataset, projectId } from '@/sanity/lib/api'
 import { defaultDocumentNode } from '@/sanity/plugins/previewPane'
 import { rootStructure } from '@/sanity/plugins/rootStructure'
@@ -40,7 +41,7 @@ const config = defineConfig({
     }),
     presentationTool({
       previewUrl: {
-        draftMode: { enable: '/api/draft' },
+        draftMode: { enable: draftUrl },
       },
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton

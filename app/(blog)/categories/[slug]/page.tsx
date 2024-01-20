@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 import { metadata } from '@/app/utils/metadata'
-import { ogImageUrl } from '@/app/utils/urls'
+import { categoryUrl, ogImageUrl } from '@/app/utils/urls'
 import Container from '@/components/layout/Container'
 import PostList from '@/components/post/PostList'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
@@ -14,13 +14,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = params
   const { data: settings } = await loadSettings()
-  const { title, domain, description } = settings
+  const { title, description } = settings
 
   return metadata({
     title: title!, // TODO: better title
     description: description!,
-    url: `https://${domain}/${slug}`, // TODO: use `@/app/utils/urls`
-    image: ogImageUrl(domain, title),
+    url: categoryUrl(slug),
+    image: ogImageUrl(title),
   })
 }
 

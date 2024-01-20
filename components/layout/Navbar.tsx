@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import { pageUrl } from '@/app/utils/urls'
 import { loadSettings } from '@/sanity/loader/loadQuery'
 
 export default async function Navbar() {
@@ -10,7 +11,7 @@ export default async function Navbar() {
       {settings.headerPages?.map((page) => (
         <Link
           key={page.slug}
-          href={`/${page.slug}`}
+          href={pageUrl(page.slug)}
           className="hover:underline"
         >
           {page.title}

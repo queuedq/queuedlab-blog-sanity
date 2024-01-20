@@ -1,7 +1,10 @@
-// OG images must have an absolute URL
-export const ogImageUrl = (domain, title) =>
-  `https://${domain}/api/og?${new URLSearchParams({ title })}`
+export const postUrl = (slug) => `/posts/${slug}`
+export const pageUrl = (slug) => `/${slug}`
+export const categoryUrl = (slug) => `/categories/${slug}`
+export const ogImageUrl = (title) => `/api/og?${new URLSearchParams({ title })}`
 
-export const postUrl = (domain, slug) => `https://${domain}/posts/${slug}`
+export const feedUrl = '/feed.xml'
+export const faviconUrl = '/favicon.ico'
 
-export const feedUrl = (domain) => `https://${domain}/feed.xml`
+export const draftUrl = '/api/draft'
+export const disableDraftUrl = '/api/disable-draft'

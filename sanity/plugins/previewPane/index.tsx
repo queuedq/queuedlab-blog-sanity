@@ -8,6 +8,7 @@ import { SanityDocument } from 'sanity'
 import { DefaultDocumentNodeResolver } from 'sanity/structure'
 import { Iframe } from 'sanity-plugin-iframe-pane'
 
+import { draftUrl, postUrl } from '@/app/utils/urls'
 import authorType from '@/sanity/schemas/author'
 import postType from '@/sanity/schemas/post'
 
@@ -43,7 +44,7 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (
           .options({
             url: {
               preview: getPreviewUrl,
-              draftMode: '/api/draft',
+              draftMode: draftUrl,
             },
             reload: { button: true },
           })
@@ -56,5 +57,5 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (
 }
 
 function getPreviewUrl(doc: SanityDocument) {
-  return `/posts/${doc?.slug?.current}`
+  return postUrl((doc?.slug as any)?.current)
 }

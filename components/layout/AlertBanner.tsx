@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
+import { disableDraftUrl } from '@/app/utils/urls'
 
 export default function AlertBanner({
   preview,
@@ -14,7 +14,7 @@ export default function AlertBanner({
       <div className="px-5 py-2 text-center text-sm">
         {loading ? 'Loading... ' : 'This page is a preview. '}
         <a
-          href="/api/disable-draft"
+          href={disableDraftUrl}
           className="underline transition-colors duration-200 hover:text-cyan"
         >
           Click here

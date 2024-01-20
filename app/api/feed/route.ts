@@ -2,7 +2,7 @@ import { toHTML } from '@portabletext/to-html'
 import { parseISO } from 'date-fns'
 import { Feed } from 'feed'
 
-import { feedUrl, ogImageUrl, postUrl } from '@/app/utils/urls'
+import { faviconUrl, feedUrl, ogImageUrl, postUrl } from '@/app/utils/urls'
 import { getRssComponents } from '@/components/rich-text/components'
 import { loadRssFeed, loadSettings } from '@/sanity/loader/loadQuery'
 
@@ -11,21 +11,23 @@ export async function GET(req: Request) {
     loadSettings().then((x) => x.data),
     loadRssFeed().then((x) => x.data),
   ])
+  const { domain, title, description, copyrightNotice } = settings
+  const absolute = (url) => new URL(url, `https://${domain}/`).toString()
 
   // https://github.com/jpmonette/feed
   const feed = new Feed({
-    title: settings.title!,
-    description: settings.description,
-    id: `https://${settings.domain}/`,
-    link: `https://${settings.domain}/`,
-    image: ogImageUrl(settings.domain, settings.title),
-    favicon: `https://${settings.domain}/favicon/favicon.ico`,
-    copyright: `${settings.copyrightNotice}`,
+    title: title!,
+    description: description,
+    id: absolute('/'),
+    link: absolute('/'),
+    image: absolute(ogImageUrl(title)),
+    favicon: absolute(faviconUrl),
+    copyright: `${copyrightNotice}`,
     feedLinks: {
-      atom: feedUrl(settings.domain),
+      atom: absolute(feedUrl),
     },
     author: {
-      name: settings.title,
+      name: title,
     },
     // author: {
     //   name: 'John Doe',
@@ -39,13 +41,13 @@ export async function GET(req: Request) {
   posts.forEach((post) => {
     feed.addItem({
       title: post.title!,
-      id: postUrl(settings.domain, post.slug),
-      link: postUrl(settings.domain, post.slug),
+      id: absolute(postUrl(post.slug)),
+      link: absolute(postUrl(post.slug)),
       description: post.excerpt,
       content: toHTML(post.content, { components }),
       author: [
         {
-          name: settings.title,
+          name: title,
         },
         // {
         //   name: "Jane Doe",
@@ -54,7 +56,7 @@ export async function GET(req: Request) {
         // },
       ],
       date: parseISO(post.date!),
-      image: ogImageUrl(settings.domain, post.title),
+      image: absolute(ogImageUrl(post.title)),
     })
   })
 

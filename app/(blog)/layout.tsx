@@ -8,10 +8,9 @@ import { loadSettings } from '@/sanity/loader/loadQuery'
 export async function generateMetadata(): Promise<Metadata> {
   const { data: settings } = await loadSettings()
   const { title, description, domain } = settings
-  const url = `https://${domain}/` // TODO: use `@/app/utils/urls`
-  const ogImage = ogImageUrl(domain, title)
 
   return {
+    metadataBase: new URL(`https://${domain}`),
     title: {
       default: title!,
       template: `%s | ${title}`,
@@ -20,16 +19,18 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title,
       description,
-      url,
+      url: '/',
       type: 'website',
-      images: [ogImage],
+      // TODO: this uses `localhost:3000` as its base in dev mode, which might be Next.js bug
+      // https://github.com/vercel/next.js/issues/54349
+      images: [ogImageUrl(title)],
     },
     alternates: {
       types: {
         'application/atom+xml': [
           {
             title,
-            url: feedUrl(domain),
+            url: feedUrl,
           },
         ],
       },

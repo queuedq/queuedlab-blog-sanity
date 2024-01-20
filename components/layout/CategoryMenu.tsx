@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import Link from 'next/link'
 
+import { categoryUrl } from '@/app/utils/urls'
 import { Category } from '@/types'
 
 interface CategoryMenuProps {
@@ -20,7 +21,7 @@ export default function CategoryMenu(props: CategoryMenuProps) {
     },
     ...categories.map((category) => ({
       name: category.name,
-      href: `/categories/${category.slug}`,
+      href: categoryUrl(category.slug),
       color: category.color?.hex,
       selected: currentCategory === category.slug,
     })),
