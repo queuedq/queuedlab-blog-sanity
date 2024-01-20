@@ -3,6 +3,7 @@ import { parseISO } from 'date-fns'
 import { Feed } from 'feed'
 
 import { feedUrl, ogImageUrl, postUrl } from '@/app/utils/urls'
+import { getRssComponents } from '@/components/rich-text/components'
 import { loadRssFeed, loadSettings } from '@/sanity/loader/loadQuery'
 
 export async function GET(req: Request) {
@@ -33,13 +34,15 @@ export async function GET(req: Request) {
     // },
   })
 
+  const components = await getRssComponents()
+
   posts.forEach((post) => {
     feed.addItem({
       title: post.title!,
       id: postUrl(settings.domain, post.slug),
       link: postUrl(settings.domain, post.slug),
       description: post.excerpt,
-      content: toHTML(post.content), // TODO: support custom component rendering
+      content: toHTML(post.content, { components }),
       author: [
         {
           name: settings.title,

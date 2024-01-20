@@ -10,23 +10,9 @@
  */
 import { PortableText } from '@portabletext/react'
 
-import BlockCode from './BlockCode'
-import Figure from './Figure'
-import Latex from './Latex'
-import YouTubeEmbed from './YoutubeEmbed'
-
-const components = {
-  types: {
-    code: BlockCode,
-    figure: Figure,
-    horizontalRule: () => <hr />,
-    latex: Latex,
-    youtube: YouTubeEmbed,
-  },
-}
+import components from './components'
 
 export default function RichText({ content }) {
   // console.log(content)
-
   return <PortableText value={content} components={components} />
 }

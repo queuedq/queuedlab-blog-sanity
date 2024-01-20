@@ -9,3 +9,11 @@ export default function Latex({ value, isInline }) {
     <BlockMath>{value.body}</BlockMath>
   )
 }
+
+export function LatexRss({ value, isInline }) {
+  return isInline ? (
+    <span>{`$${value.body}$`}</span>
+  ) : (
+    <div>{`$$${value.body}$$`}</div>
+  )
+}
