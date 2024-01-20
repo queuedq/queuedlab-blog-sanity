@@ -4,4 +4,4 @@ export const ogImageUrl = (domain, title) =>
 
 export const postUrl = (domain, slug) => `https://${domain}/posts/${slug}`
 
-export const feedUrl = (domain) => `https://${domain}/api/feed`
+export const feedUrl = (domain) => `https://${domain}/feed.xml`

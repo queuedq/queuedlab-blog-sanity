@@ -13,7 +13,7 @@ export default async function Footer() {
       <div>{copyrightNotice}</div>
       <div>
         {/* TODO: use @/app/utils/urls */}
-        <Link href={'/api/feed'} className="hover:underline">
+        <Link href={'/feed.xml'} className="hover:underline">
           <RssIcon
             width={14}
             height={14}

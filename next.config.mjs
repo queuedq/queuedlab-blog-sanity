@@ -51,6 +51,12 @@ const config = {
 
     return config
   },
+  rewrites: () => [
+    {
+      source: '/feed.xml',
+      destination: '/api/feed',
+    },
+  ],
 }
 
 export default config
