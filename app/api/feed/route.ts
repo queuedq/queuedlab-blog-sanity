@@ -61,7 +61,7 @@ export async function GET(req: Request) {
   return new Response(feed.atom1(), {
     status: 200,
     headers: {
-      'Content-Type': 'application/atom+xml; charset=utf-8',
+      'Content-Type': 'text/xml; charset=utf-8',
     },
   })
 }
