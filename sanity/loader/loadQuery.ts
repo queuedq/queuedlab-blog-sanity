@@ -67,7 +67,7 @@ export function loadSettings() {
   return loadQuery<Settings>(
     settingsQuery,
     {},
-    { next: { tags: ['settings'] } },
+    { next: { tags: ['settings', 'post', 'category'] } },
   )
 }
 
