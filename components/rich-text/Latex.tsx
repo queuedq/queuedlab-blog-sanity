@@ -7,9 +7,7 @@ export default function Latex({ value, isInline }) {
   return isInline ? (
     <InlineMath>{value.body}</InlineMath>
   ) : (
-    <p>
-      <BlockMath>{value.body}</BlockMath>
-    </p>
+    <BlockMath>{value.body}</BlockMath>
   )
 }
 
