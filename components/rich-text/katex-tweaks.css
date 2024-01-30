@@ -1,0 +1,5 @@
+/* https://katex.org/docs/issues.html#css-customization */
+.katex-display {
+  overflow: auto hidden;
+  margin: 0;
+}

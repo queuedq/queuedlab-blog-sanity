@@ -3,7 +3,7 @@ import RichText from './rich-text/RichText'
 
 export default function ContentBody({ content }) {
   return (
-    <div className={styles.portableText}>
+    <div className={`break-words ${styles.portableText}`}>
       <RichText content={content} />
     </div>
   )
