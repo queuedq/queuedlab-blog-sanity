@@ -107,7 +107,7 @@
 
 /* horizontal rule */
 .portableText hr {
-  @apply mx-auto my-8 w-16 border-t-gray-300;
+  @apply mx-auto my-6 border-t-slate-200;
 }
 
 /* blockquote */
