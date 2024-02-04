@@ -1,5 +1,10 @@
-/* https://katex.org/docs/issues.html#css-customization */
+/* For customization, see https://katex.org/docs/issues.html#css-customization */
 .katex-display {
-  overflow: auto hidden;
   margin: 0;
+}
+
+/* Add margin at horizontal scroll end */
+.katex-display .katex-html::after {
+  content: '';
+  @apply pr-5; /* same as container margin */
 }
