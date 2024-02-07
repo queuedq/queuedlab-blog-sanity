@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
 import { metadata } from '@/app/utils/metadata'
 import { categoryUrl, ogImageUrl } from '@/app/utils/urls'
@@ -34,6 +35,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     loadCategory(slug),
     loadPostsByCategory(slug),
   ])
+  if (!category) notFound()
 
   return (
     <Container>
