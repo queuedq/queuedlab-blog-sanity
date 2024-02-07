@@ -24,7 +24,7 @@ export default async function BlogHeader({
   const { title, headerCategories } = settings
 
   return (
-    <header>
+    <header className="mb-16">
       <div className="mb-4 flex flex-wrap items-baseline justify-between pt-8">
         {category === '_index' ? (
           <h1>
@@ -35,12 +35,10 @@ export default async function BlogHeader({
         )}
         <Navbar />
       </div>
-      <div className="mb-16">
-        <CategoryMenu
-          categories={headerCategories ?? []}
-          currentCategory={category}
-        />
-      </div>
+      <CategoryMenu
+        categories={headerCategories ?? []}
+        currentCategory={category}
+      />
     </header>
   )
 }
