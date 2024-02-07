@@ -7,7 +7,7 @@ import BlogHeader from '@/components/layout/Header'
 
 interface BlogLayoutProps {
   children: React.ReactNode
-  category: string | undefined
+  category?: string
 }
 
 export default function BlogLayout({ children, category }: BlogLayoutProps) {
