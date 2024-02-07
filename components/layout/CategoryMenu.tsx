@@ -28,11 +28,11 @@ export default function CategoryMenu(props: CategoryMenuProps) {
   ]
 
   return (
-    <nav className="flex flex-wrap text-sm font-semibold text-slate-400">
+    <nav className="flex flex-wrap text-sm leading-relaxed font-semibold text-slate-400">
       {categoryInfos.map(({ name, href, color, selected }, index) => (
         <div
           key={name}
-          className="after:mx-2.5 after:font-light [&:not(:last-child)]:after:content-['/'] "
+          className="after:mx-2 [&:not(:last-child)]:after:content-['·'] "
         >
           <Link
             href={href}
