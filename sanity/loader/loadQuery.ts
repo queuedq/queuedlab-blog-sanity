@@ -6,13 +6,14 @@ import { draftMode } from 'next/headers'
 import { client } from '@/sanity/lib/client'
 import {
   allPostsQuery,
+  categoryQuery,
   pageQuery,
   postQuery,
   postsByCategoryQuery,
   rssFeedQuery,
   settingsQuery,
 } from '@/sanity/lib/queries'
-import { Page, Post, Settings } from '@/types'
+import { Category, Page, Post, Settings } from '@/types'
 
 const serverClient = client.withConfig({
   token: process.env.SANITY_API_READ_TOKEN,
@@ -106,5 +107,16 @@ export function loadPage(slug: string) {
     pageQuery,
     { slug },
     { next: { tags: ['page'] } },
+  )
+}
+
+////////////////////////////////
+// Category
+
+export function loadCategory(slug: string) {
+  return loadQuery<Category | null>(
+    categoryQuery,
+    { slug },
+    { next: { tags: ['category'] } },
   )
 }

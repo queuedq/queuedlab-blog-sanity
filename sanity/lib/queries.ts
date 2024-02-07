@@ -61,3 +61,14 @@ export const pageQuery = groq`
   content,
   "slug": slug.current,
 }`
+
+////////////////////////////////
+// Category
+
+export const categoryQuery = groq`
+*[_type == "postCategory" && slug.current == $slug][0] {
+  _id,
+  name,
+  color,
+  "slug": slug.current,
+}`

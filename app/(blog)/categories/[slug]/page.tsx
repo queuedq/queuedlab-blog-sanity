@@ -5,7 +5,11 @@ import { categoryUrl, ogImageUrl } from '@/app/utils/urls'
 import Container from '@/components/layout/Container'
 import PostList from '@/components/post/PostList'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
-import { loadPostsByCategory, loadSettings } from '@/sanity/loader/loadQuery'
+import {
+  loadCategory,
+  loadPostsByCategory,
+  loadSettings,
+} from '@/sanity/loader/loadQuery'
 
 export async function generateMetadata({
   params,
@@ -26,10 +30,23 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params
-  const { data: posts } = await loadPostsByCategory(slug)
+  const [{ data: category }, { data: posts }] = await Promise.all([
+    loadCategory(slug),
+    loadPostsByCategory(slug),
+  ])
 
   return (
     <Container>
+      <h1 className="mb-12 text-4xl text-gray-900 font-bold">
+        <span>{category?.name}</span>
+        <div className="inline-block align-top w-0">
+          {/* w-0: To make this decoration wrap with the last word */}
+          <div
+            className="ml-1 w-3 h-3 rounded-sm"
+            style={{ backgroundColor: category?.color?.hex }}
+          ></div>
+        </div>
+      </h1>
       <PostList posts={posts} />
     </Container>
   )
