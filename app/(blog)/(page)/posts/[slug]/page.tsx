@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { metadata } from '@/app/utils/metadata'
-import { ogImageUrl, postUrl } from '@/app/utils/urls'
+import { postUrl, staticOgImageUrl } from '@/app/utils/urls'
 import ContentBody from '@/components/ContentBody'
 import Container from '@/components/layout/Container'
 import PostHeader from '@/components/post/PostHeader'
@@ -22,7 +22,8 @@ export async function generateMetadata({
     title: post.title!,
     description: post.excerpt!,
     url: postUrl(slug),
-    image: ogImageUrl(post.title),
+    // image: ogImageUrl(post.title),
+    image: staticOgImageUrl,
   })
 }
 

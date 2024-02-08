@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { metadata } from '@/app/utils/metadata'
-import { ogImageUrl, pageUrl } from '@/app/utils/urls'
+import { pageUrl, staticOgImageUrl } from '@/app/utils/urls'
 import ContentBody from '@/components/ContentBody'
 import Container from '@/components/layout/Container'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
@@ -24,7 +24,8 @@ export async function generateMetadata({
     title: page.title!,
     description: description!, // TODO: better page description
     url: pageUrl(slug),
-    image: ogImageUrl(page.title),
+    // image: ogImageUrl(page.title),
+    image: staticOgImageUrl,
   })
 }
 

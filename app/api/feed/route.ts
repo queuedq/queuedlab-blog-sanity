@@ -2,7 +2,7 @@ import { toHTML } from '@portabletext/to-html'
 import { parseISO } from 'date-fns'
 import { Feed } from 'feed'
 
-import { faviconUrl, feedUrl, ogImageUrl, postUrl } from '@/app/utils/urls'
+import { faviconUrl, feedUrl, postUrl, staticOgImageUrl } from '@/app/utils/urls'
 import { getRssComponents } from '@/components/rich-text/components'
 import { loadRssFeed, loadSettings } from '@/sanity/loader/loadQuery'
 
@@ -20,7 +20,8 @@ export async function GET(req: Request) {
     description: description,
     id: absolute('/'),
     link: absolute('/'),
-    image: absolute(ogImageUrl(title)),
+    // image: absolute(ogImageUrl(title)),
+    image: absolute(staticOgImageUrl),
     favicon: absolute(faviconUrl),
     copyright: `${copyrightNotice}`,
     feedLinks: {
@@ -56,7 +57,8 @@ export async function GET(req: Request) {
         // },
       ],
       date: parseISO(post.date!),
-      image: absolute(ogImageUrl(post.title)),
+      // image: absolute(ogImageUrl(post.title)),
+      image: absolute(staticOgImageUrl),
     })
   })
 

@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { metadata } from '@/app/utils/metadata'
-import { categoryUrl, ogImageUrl } from '@/app/utils/urls'
+import { categoryUrl, staticOgImageUrl } from '@/app/utils/urls'
 import Container from '@/components/layout/Container'
 import PostList from '@/components/post/PostList'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
@@ -25,7 +25,8 @@ export async function generateMetadata({
     title: title!, // TODO: better title
     description: description!,
     url: categoryUrl(slug),
-    image: ogImageUrl(title),
+    // image: ogImageUrl(title),
+    image: staticOgImageUrl,
   })
 }
 
