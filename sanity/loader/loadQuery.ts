@@ -79,7 +79,7 @@ export function loadPost(slug: string) {
   return loadQuery<Post | null>(
     postQuery,
     { slug },
-    { next: { tags: ['post'] } },
+    { next: { tags: [`post:${slug}`] } },
   )
 }
 
@@ -106,7 +106,7 @@ export function loadPage(slug: string) {
   return loadQuery<Page | null>(
     pageQuery,
     { slug },
-    { next: { tags: ['page'] } },
+    { next: { tags: [`page:${slug}`] } },
   )
 }
 
