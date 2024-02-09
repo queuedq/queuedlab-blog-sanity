@@ -56,11 +56,14 @@ const config = {
       source: '/feed.xml',
       destination: '/api/feed',
     },
+  ],
+  redirects: () => [
     {
       source: '/rss.xml',
-      destination: '/api/feed',
+      destination: '/feed.xml',
+      permanent: true,
     },
-  ],
+  ]
 }
 
 export default config
