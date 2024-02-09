@@ -59,6 +59,11 @@ const config = {
   ],
   redirects: () => [
     {
+      source: '/api/feed',
+      destination: '/feed.xml',
+      permanent: true,
+    },
+    {
       source: '/rss.xml',
       destination: '/feed.xml',
       permanent: true,
