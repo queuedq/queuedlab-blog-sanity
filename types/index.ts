@@ -1,5 +1,10 @@
 import { ColorValue } from '@sanity/color-input'
 
+// For queries that fetch _id only
+export interface IdOnly {
+  _id: string
+}
+
 export interface Author {
   name?: string
   picture?: any

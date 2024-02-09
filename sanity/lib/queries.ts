@@ -28,6 +28,8 @@ export const settingsQuery = groq`
 ////////////////////////////////
 // Posts
 
+export const postIdQuery = groq`*[_type == "post" && slug.current == $slug][0] { _id }`
+
 export const postQuery = groq`
 *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) [0] {
   content,

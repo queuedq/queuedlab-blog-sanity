@@ -8,12 +8,13 @@ import {
   allPostsQuery,
   categoryQuery,
   pageQuery,
+  postIdQuery,
   postQuery,
   postsByCategoryQuery,
   rssFeedQuery,
   settingsQuery,
 } from '@/sanity/lib/queries'
-import { Category, Page, Post, Settings } from '@/types'
+import { Category, IdOnly, Page, Post, Settings } from '@/types'
 
 const serverClient = client.withConfig({
   token: process.env.SANITY_API_READ_TOKEN,
@@ -74,6 +75,14 @@ export function loadSettings() {
 
 ////////////////////////////////
 // Posts
+
+export function loadPostId(slug: string) {
+  return loadQuery<IdOnly | null>(
+    postIdQuery,
+    { slug },
+    { next: { tags: [`post:${slug}`] } },
+  )
+}
 
 export function loadPost(slug: string) {
   return loadQuery<Post | null>(
