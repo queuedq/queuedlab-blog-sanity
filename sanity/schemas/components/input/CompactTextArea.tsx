@@ -14,6 +14,6 @@ export default function CompactTextArea(props) {
     [onChange],
   )
 
-  // https://www.sanity.io/ui/docs/primitive/text-areax
+  // https://www.sanity.io/ui/docs/primitive/text-area
   return <TextArea {...elementProps} onChange={handleChange} value={value} />
 }
