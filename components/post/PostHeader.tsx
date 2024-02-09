@@ -13,7 +13,7 @@ export default function PostHeader({ post }: PostHeaderProps) {
 
   return (
     <div className="mt-16 mb-16 flex flex-col">
-      <h1 className="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl sm:leading-tight">
+      <h1 className="text-3xl sm:text-4xl font-bold leading-tight text-gray-900">
         {title}
       </h1>
       {/* <div className="hidden md:mb-12 md:block">
@@ -28,7 +28,7 @@ export default function PostHeader({ post }: PostHeaderProps) {
       {categories && categories.length > 0 && (
         <div
           className="-order-1 font-semibold tracking-wide"
-          style={{ color: categories[0]?.color.hex }}
+          style={{ color: categories[0]?.color?.hex }}
         >
           <Link
             href={`/categories/${categories[0]?.slug}`}
@@ -44,7 +44,7 @@ export default function PostHeader({ post }: PostHeaderProps) {
         </p>
       )}
       <div className="mt-3 text-sm tracking-wide text-gray-500">
-        <PostDate dateString={date} />
+        <PostDate dateString={date!} />
       </div>
     </div>
   )
