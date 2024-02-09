@@ -56,6 +56,10 @@ const config = {
       source: '/feed.xml',
       destination: '/api/feed',
     },
+    {
+      source: '/rss.xml',
+      destination: '/api/feed',
+    },
   ],
 }
 
