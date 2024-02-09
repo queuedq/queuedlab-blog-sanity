@@ -40,7 +40,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
   return (
     <Container>
-      <h1 className="mb-12 text-4xl text-gray-900 font-bold">
+      <h1 className="mb-12 text-3xl text-gray-900 font-bold">
         <span>{category?.name}</span>
         <div className="inline-block align-top w-0">
           {/* w-0: To make this decoration wrap with the last word */}
