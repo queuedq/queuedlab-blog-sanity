@@ -18,12 +18,14 @@ export async function generateMetadata({
   params: { slug: string }
 }): Promise<Metadata> {
   const { slug } = params
-  const { data: settings } = await loadSettings()
-  const { title, description } = settings
+  const [{ data: settings }, { data: category }] = await Promise.all([
+    loadSettings(),
+    loadCategory(slug),
+  ])
 
   return metadata({
-    title: title!, // TODO: better title
-    description: description!,
+    title: category?.name ?? slug,
+    description: settings.description!, // TODO: better description
     url: categoryUrl(slug),
     // image: ogImageUrl(title),
     image: staticOgImageUrl,
