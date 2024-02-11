@@ -6,6 +6,7 @@ import { createClient } from '@sanity/client'
 import { patchWebpackConfig } from 'next-global-css'
 
 async function fetchSanityRedirects() {
+  // https://github.com/vercel/next.js/discussions/15344
   const client = createClient({
     projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
     dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,

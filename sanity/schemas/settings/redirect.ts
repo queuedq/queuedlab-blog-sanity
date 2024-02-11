@@ -1,6 +1,8 @@
 import { EnterRightIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
+// Schema reference: https://maxkarlsson.dev/blog/redirects-with-sanity-gatsby-netlify
+// Redirect rule API: https://nextjs.org/docs/app/api-reference/next-config-js/redirects
 export default defineType({
   name: 'redirect',
   title: 'Redirect',
