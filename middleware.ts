@@ -1,7 +1,9 @@
 import { get } from '@vercel/edge-config'
 import { NextRequest, NextResponse } from 'next/server'
 
-// https://vercel.com/docs/edge-network/redirects
+// References
+// https://vercel.com/docs/edge-network/redirects#edge-middleware
+// https://github.com/vercel/next.js/discussions/15344#discussioncomment-6586944
 // https://github.com/vercel/examples/blob/f172cedc3ec6399823fa1319e93e2588d40f1cfe/edge-middleware/maintenance-page/middleware.ts
 export async function middleware(request: NextRequest) {
   try {
@@ -21,6 +23,7 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
+    // Reference: https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
     /*
      * Match all request paths except for the ones starting with:
      * - api (API routes)
