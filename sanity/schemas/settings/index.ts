@@ -8,7 +8,6 @@ import category from '../category'
 import page from '../page'
 import { referenceArray } from '../utils/utils'
 import OpenGraphInput from './OpenGraphInput'
-import redirect from './redirect'
 
 export default defineType({
   name: 'settings',
@@ -19,7 +18,6 @@ export default defineType({
   groups: [
     { name: 'general', title: 'General Info' },
     { name: 'header_footer', title: 'Header & Footer' },
-    { name: 'redirects', title: 'Redirects' },
   ],
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,
@@ -109,13 +107,13 @@ export default defineType({
     }),
 
     // Redirects
+    // Currently unused in favor of Edge Config (see `middleware.ts`).
 
-    defineField({
-      name: 'redirects',
-      description: "Redirection list. Don't prefix URLs with slash (/).",
-      type: 'array',
-      of: [{ type: redirect.name }],
-      group: 'redirects',
-    }),
+    // defineField({
+    //   name: 'redirects',
+    //   type: 'array',
+    //   of: [{ type: redirect.name }],
+    //   group: 'redirects',
+    // }),
   ],
 })
