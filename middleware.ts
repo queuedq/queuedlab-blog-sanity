@@ -5,17 +5,17 @@ import { NextRequest, NextResponse } from 'next/server'
 // https://vercel.com/docs/edge-network/redirects#edge-middleware
 // https://github.com/vercel/next.js/discussions/15344#discussioncomment-6586944
 // https://github.com/vercel/examples/blob/f172cedc3ec6399823fa1319e93e2588d40f1cfe/edge-middleware/maintenance-page/middleware.ts
-export async function middleware(request: NextRequest) {
+export async function middleware(req: NextRequest) {
   try {
     const redirect = ((await get('redirects')) as Array<any>)?.find(
-      ({ source }) => source === request.nextUrl.pathname,
+      ({ source }) => source === req.nextUrl.pathname,
     )
+    if (!redirect) return
 
-    if (redirect) {
-      return NextResponse.redirect(new URL(redirect.destination, request.url), {
-        status: redirect.permanent ? 308 : 307,
-      })
-    }
+    req.nextUrl.pathname = redirect.destination
+    return NextResponse.redirect(req.nextUrl, {
+      status: redirect.permanent ? 308 : 307,
+    })
   } catch (err) {
     console.error(err)
   }
