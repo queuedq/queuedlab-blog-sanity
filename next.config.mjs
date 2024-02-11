@@ -1,8 +1,30 @@
+import { createClient } from '@sanity/client'
 // Workaround for KaTeX CSS import
 // https://github.com/vercel/next.js/issues/19936
 // https://github.com/vercel/next.js/discussions/27953
 // https://github.com/bem/next-global-css
 import { patchWebpackConfig } from 'next-global-css'
+
+async function fetchSanityRedirects() {
+  const client = createClient({
+    projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+    dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+    apiVersion: '2023-06-21',
+    useCdn: true,
+  })
+
+  const data = await client.fetch(`*[_type == "settings"][0] { redirects }`)
+
+  const redirects = data.redirects.map((redirect) => {
+    return {
+      source: `/${redirect.from}`,
+      destination: `/${redirect.to}`,
+      permanent: redirect.statusCode === '308',
+    }
+  })
+
+  return redirects
+}
 
 /** @type {import('next').NextConfig} */
 const config = {
@@ -57,18 +79,14 @@ const config = {
       destination: '/api/feed',
     },
   ],
-  redirects: () => [
+  redirects: async () => [
     {
       source: '/api/feed',
       destination: '/feed.xml',
       permanent: true,
     },
-    {
-      source: '/rss.xml',
-      destination: '/feed.xml',
-      permanent: true,
-    },
-  ]
+    ...(await fetchSanityRedirects()),
+  ],
 }
 
 export default config

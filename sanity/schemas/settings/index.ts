@@ -8,6 +8,7 @@ import category from '../category'
 import page from '../page'
 import { referenceArray } from '../utils/utils'
 import OpenGraphInput from './OpenGraphInput'
+import redirect from './redirect'
 
 export default defineType({
   name: 'settings',
@@ -18,10 +19,14 @@ export default defineType({
   groups: [
     { name: 'general', title: 'General Info' },
     { name: 'header_footer', title: 'Header & Footer' },
+    { name: 'redirects', title: 'Redirects' },
   ],
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,
+
   fields: [
+    // General Info
+
     defineField({
       name: 'title',
       description: 'This field is the title of your blog.',
@@ -80,6 +85,8 @@ export default defineType({
       group: 'general',
     }),
 
+    // Header & Footer
+
     // TODO: use orderable document list instead
     // https://www.sanity.io/plugins/orderable-document-list
     defineField({
@@ -99,6 +106,16 @@ export default defineType({
       title: 'Copyright Notice',
       type: 'string',
       group: 'header_footer',
+    }),
+
+    // Redirects
+
+    defineField({
+      name: 'redirects',
+      description: "Redirection list. Don't prefix URLs with slash (/).",
+      type: 'array',
+      of: [{ type: redirect.name }],
+      group: 'redirects',
     }),
   ],
 })
