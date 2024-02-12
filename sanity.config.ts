@@ -17,6 +17,7 @@ import { apiVersion, dataset, projectId } from '@/sanity/lib/api'
 import { defaultDocumentNode } from '@/sanity/plugins/previewPane'
 import { rootStructure } from '@/sanity/plugins/rootStructure'
 import { singletonPlugin } from '@/sanity/plugins/singleton'
+import StudioLayoutPlugin from '@/sanity/plugins/StudioLayoutPlugin'
 import * as schemas from '@/sanity/schemas'
 
 const title =
@@ -30,6 +31,9 @@ const config = defineConfig({
   schema: {
     // If you want more content types, you can add them to this array
     types: Object.values(schemas),
+  },
+  studio: {
+    components: { layout: StudioLayoutPlugin },
   },
   plugins: [
     structureTool({
