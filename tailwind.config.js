@@ -13,6 +13,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['Pretendard Variable', ...defaultTheme.fontFamily.sans],
+      serif: ['MaruBuri', ...defaultTheme.fontFamily.serif],
     },
     extend: {
       colors: {

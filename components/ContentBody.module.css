@@ -112,7 +112,7 @@
 
 /* blockquote */
 .portableText blockquote {
-  @apply border-l-4 border-slate-500 pl-4 italic text-slate-500;
+  @apply border-l-4 border-slate-500 pl-4 font-serif text-slate-500;
 }
 
 /* figure */
