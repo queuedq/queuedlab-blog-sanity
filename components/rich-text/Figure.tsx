@@ -9,10 +9,13 @@ export default function Figure({ value }) {
 
   return (
     <figure>
-      {/* max height for letterboxing tall images */}
       <Image
         {...imageProps}
         alt={value.alt ?? ''}
+        // Using unoptimized because I want users to be able to save the original image.
+        // For responsive images, use sizes="100vw" instead.
+        unoptimized
+        // max-height for letterboxing tall images
         className="max-h-[min(60vh,28em)] w-auto mx-auto"
       />
       <figcaption>{value.caption}</figcaption>
