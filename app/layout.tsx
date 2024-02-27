@@ -12,6 +12,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://hangeul.pstatic.net/hangeul_static/css/maru-buri.css"
+        />
+      </head>
       <body>{children}</body>
     </html>
   )
