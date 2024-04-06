@@ -43,6 +43,14 @@
   @apply mt-8 mb-4 text-sm leading-normal;
 }
 
+/* stacked headings */
+.portableText h2 + h3,
+.portableText h3 + h4,
+.portableText h4 + h5,
+.portableText h5 + h6 {
+  @apply mt-4;
+}
+
 /* bold */
 .portableText strong {
   @apply text-gray-900;
