@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { metadata } from '@/app/utils/metadata'
 import { postUrl, staticOgImageUrl } from '@/app/utils/urls'
 import ContentBody from '@/components/ContentBody'
+import Giscus from '@/components/Giscus'
 import Container from '@/components/layout/Container'
 import PostHeader from '@/components/post/PostHeader'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
@@ -42,6 +43,9 @@ export default async function PostPage({
         <PostHeader post={post} />
         <ContentBody content={post.content} />
       </article>
+      <div className="mt-16">
+        <Giscus />
+      </div>
     </Container>
   )
 }
