@@ -14,6 +14,12 @@ module.exports = {
     fontFamily: {
       sans: ['Pretendard Variable', ...defaultTheme.fontFamily.sans],
       serif: ['MaruBuri', ...defaultTheme.fontFamily.serif],
+      mono: [
+        // Using Google fonts
+        // https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#with-tailwind-css
+        'var(--font-roboto-mono)',
+        ...defaultTheme.fontFamily.mono,
+      ],
     },
     extend: {
       colors: {

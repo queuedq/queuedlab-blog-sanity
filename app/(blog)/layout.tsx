@@ -1,5 +1,3 @@
-import '@/public/fonts/pretendard-variable/pretendardvariable-dynamic-subset.css'
-
 import { Metadata } from 'next'
 
 import { feedUrl, staticOgImageUrl } from '@/app/utils/urls'

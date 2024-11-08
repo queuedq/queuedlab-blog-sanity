@@ -1,12 +1,14 @@
 import './prism-dracula-patched.css'
 
-import Refractor from 'react-refractor'
+import { Refractor, registerLanguage } from 'react-refractor'
 import cpp from 'refractor/lang/cpp'
 import js from 'refractor/lang/javascript'
+import xml from 'refractor/lang/xml-doc'
 
 // TODO: use other syntax highlighter that does not require registering common languages?
-Refractor.registerLanguage(cpp)
-Refractor.registerLanguage(js)
+registerLanguage(cpp)
+registerLanguage(js)
+registerLanguage(xml)
 
 export default function BlockCode({ value }) {
   return (

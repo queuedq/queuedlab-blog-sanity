@@ -223,13 +223,14 @@ pre[class*='language-'] {
   color: var(--foreground);
   background: var(--background);
   text-shadow: none;
-  font-family:
+  /* PATCH: Use default font family settings for code block */
+  /* font-family:
     PT Mono,
     Consolas,
     Monaco,
     'Andale Mono',
     'Ubuntu Mono',
-    monospace;
+    monospace; */
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -251,10 +252,10 @@ pre[class*='language-'] {
 
 pre[class*='language-'] {
   background: var(--background);
-  /* PATCHED */
+  /* PATCH */
   /* border-radius: 0.5em; */
   padding: 1em;
-  /* PATCHED */
+  /* PATCH */
   /* margin: 0.5em 0; */
   overflow: auto;
   height: auto;
