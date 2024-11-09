@@ -32,7 +32,7 @@ module.exports = {
         // - #8b9bb2   : 54.3
         // - slate-500 : 73
         // https://cliambrown.com/contrast/
-        // https://polypane.app/color-contrast/
+        // https://colorcontrast.app/
         'category-menu': '#8b9bb2',
       },
       spacing: {
