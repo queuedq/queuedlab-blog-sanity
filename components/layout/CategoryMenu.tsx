@@ -1,7 +1,7 @@
-import classNames from 'classnames'
 import Link from 'next/link'
 
 import { categoryUrl } from '@/app/utils/urls'
+import { cn } from '@/lib/utils'
 import { Category } from '@/types'
 
 interface CategoryMenuProps {
@@ -28,7 +28,7 @@ export default function CategoryMenu(props: CategoryMenuProps) {
   ]
 
   return (
-    <nav className="flex flex-wrap text-sm leading-relaxed font-semibold text-slate-400">
+    <nav className="flex flex-wrap text-sm leading-relaxed font-semibold text-category-menu">
       {categoryInfos.map(({ name, href, color, selected }, index) => (
         <div
           key={name}
@@ -36,9 +36,9 @@ export default function CategoryMenu(props: CategoryMenuProps) {
         >
           <Link
             href={href}
-            className={classNames(
+            className={cn(
               'transition-all duration-100 ease-in-out',
-              selected ? null : '[&:not(:hover)]:!text-slate-400',
+              selected ? null : '[&:not(:hover)]:!text-category-menu',
             )}
             style={{ color }}
           >
