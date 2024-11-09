@@ -1,5 +1,5 @@
 import { parseISO } from 'date-fns'
-import enUS from 'date-fns/locale/en-US'
+import { enUS } from 'date-fns/locale/en-US'
 import { formatInTimeZone } from 'date-fns-tz'
 
 import { loadSettings } from '@/sanity/loader/loadQuery'

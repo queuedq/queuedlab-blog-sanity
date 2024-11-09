@@ -8,7 +8,6 @@ import { cn } from '@/lib/utils'
 // import '@/public/fonts/pretendard-variable/pretendardvariable-dynamic-subset.css'
 
 const robotoMono = Roboto_Mono({
-  weight: ['400'],
   subsets: ['latin'],
   variable: '--font-roboto-mono',
 })

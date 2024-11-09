@@ -9,7 +9,6 @@ const OpenGraphPreview = lazy(() => import('./OpenGraphPreview'))
 
 const RatioSkeleton = styled(Skeleton).attrs({
   radius: 3,
-  shadow: 1,
   overflow: 'hidden',
 })`
   aspect-ratio: ${width} / ${height};

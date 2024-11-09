@@ -28,21 +28,23 @@ export default function PostPreview({ post }: PostPreviewProps) {
           {title}
         </Link>
       </h3>
-      {categories && categories.length > 0 && (
+      {categories?.[0] && (
         <div className="-order-1 text-sm font-semibold tracking-wide text-gray-500">
           <Link
-            href={`/categories/${categories[0]?.slug}`}
+            href={`/categories/${categories[0].slug}`}
             className={`${style.category} transition-all duration-100 ease-in-out hover:underline`}
-            style={{ color: categories[0]?.color.hex }}
+            style={{ color: categories[0].color?.hex }}
           >
-            {categories[0]?.name}
+            {categories[0].name}
           </Link>
         </div>
       )}
       {excerpt && <p className="mt-2 text-gray-500">{excerpt}</p>}
-      <div className="mt-3 text-xs tracking-wide text-gray-500">
-        <PostDate dateString={date} />
-      </div>
+      {date && (
+        <div className="mt-3 text-xs tracking-wide text-gray-500">
+          <PostDate dateString={date} />
+        </div>
+      )}
     </div>
   )
 }

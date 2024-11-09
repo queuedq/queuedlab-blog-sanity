@@ -1,8 +1,8 @@
-import { OnPasteFn } from '@sanity/portable-text-editor'
+import { OnPasteFn } from '@portabletext/editor'
+import rehypeUnwrapImages from 'rehype-unwrap-images'
 import remarkHtml from 'remark-html'
 import remarkMath from 'remark-math'
 import remarkParse from 'remark-parse'
-import remarkUnwrapImages from 'remark-unwrap-images'
 import { TypedObject } from 'sanity'
 import { unified } from 'unified'
 
@@ -45,7 +45,7 @@ async function markdownToHtml(markdownContent: string) {
   // https://github.com/remarkjs/remark-math/tree/main
   const file = await unified()
     .use(remarkParse)
-    .use(remarkUnwrapImages)
+    .use(rehypeUnwrapImages)
     .use(remarkMath)
     .use(remarkHtml, { sanitize: false })
     .process(markdownContent)

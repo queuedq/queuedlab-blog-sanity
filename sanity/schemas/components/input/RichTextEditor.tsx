@@ -1,4 +1,4 @@
-import { PortableTextEditor } from '@sanity/portable-text-editor'
+import { PortableTextEditor } from '@portabletext/editor'
 import { Inline, Stack, Switch, Text } from '@sanity/ui'
 import { useState } from 'react'
 import { BlockEditor } from 'sanity'
