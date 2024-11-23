@@ -22,6 +22,7 @@ export default defineType({
   ],
   preview: {
     select: {
+      media: 'asset',
       title: 'caption',
     },
   },
