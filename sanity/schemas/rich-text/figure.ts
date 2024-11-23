@@ -18,7 +18,14 @@ export default defineType({
       name: 'caption',
       type: 'string',
     }),
-    // TODO: add image size option
+    defineField({
+      name: 'size',
+      type: 'string',
+      initialValue: 'large',
+      options: {
+        list: ['medium', 'large'],
+      },
+    }),
   ],
   preview: {
     select: {

@@ -124,6 +124,13 @@
 }
 
 /* figure */
+.portableText img {
+  /* Set max-height for letterboxing tall images */
+  @apply max-h-[min(60vh,28em)] w-auto mx-auto;
+}
+.portableText img[data-size='medium'] {
+  @apply max-h-[16em];
+}
 .portableText figure figcaption {
   @apply mt-4 text-center text-slate-500;
 }
