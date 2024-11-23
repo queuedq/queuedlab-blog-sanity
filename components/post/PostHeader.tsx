@@ -39,11 +39,11 @@ export default function PostHeader({ post }: PostHeaderProps) {
         </div>
       )}
       {excerpt && (
-        <p className="mt-2 text-lg leading-normal text-gray-500 sm:text-xl sm:leading-normal">
+        <p className="mt-2 text-lg leading-normal text-gray-500 sm:mt-3 sm:text-xl sm:leading-normal">
           {excerpt}
         </p>
       )}
-      <div className="mt-3 text-sm tracking-wide text-gray-500">
+      <div className="mt-3 text-xs tracking-wide text-gray-500">
         <PostDate dateString={date!} />
       </div>
     </div>
