@@ -5,18 +5,17 @@ import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'figure',
-  type: 'object',
+  type: 'image',
   icon: ImageIcon,
   title: 'Figure',
-
-  deprecated: {
-    reason: 'Object schema type does not support image drag-and-drop. Use Fig instead.'
-  },
-
   fields: [
     defineField({
       name: 'image',
       type: 'image',
+      deprecated: {
+        reason:
+          "Figure's schema type has changed from object to image, so use the default (asset) field.",
+      },
     }),
     defineField({
       name: 'alt',
@@ -31,7 +30,7 @@ export default defineType({
   ],
   preview: {
     select: {
-      media: 'image',
+      media: 'asset',
       title: 'caption',
     },
   },

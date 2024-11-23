@@ -63,10 +63,6 @@ export default defineType({
       type: FigureType.name,
     }),
     defineField({
-      name: 'fig',
-      type: FigType.name,
-    }),
-    defineField({
       name: 'horizontalRule',
       type: HorizontalRuleType.name,
     }),

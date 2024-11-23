@@ -10,7 +10,6 @@ import YouTubeEmbed from './YoutubeEmbed'
 const components = {
   types: {
     code: BlockCode,
-    fig: Figure,
     figure: Figure,
     horizontalRule: () => <hr />,
     latex: Latex,
@@ -32,7 +31,6 @@ export async function getRssComponents() {
   return {
     types: {
       code: str(BlockCode),
-      fig: str(FigureRss),
       figure: str(FigureRss),
       horizontalRule: str(() => <hr />),
       latex: str(LatexRss),
