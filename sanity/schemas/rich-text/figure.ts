@@ -10,14 +10,6 @@ export default defineType({
   title: 'Figure',
   fields: [
     defineField({
-      name: 'image',
-      type: 'image',
-      deprecated: {
-        reason:
-          "Figure's schema type has changed from object to image, so use the default (asset) field.",
-      },
-    }),
-    defineField({
       name: 'alt',
       type: 'string',
       title: 'Alternative text',
