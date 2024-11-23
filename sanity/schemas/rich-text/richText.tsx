@@ -1,6 +1,7 @@
 import { defineField, defineType } from 'sanity'
 
 import { RichTextEditor } from '../components/input/RichTextEditor'
+import FigType from './fig'
 import FigureType from './figure'
 import HorizontalRuleType from './horizontalRule'
 import YoutubeType from './youtube'
@@ -60,6 +61,10 @@ export default defineType({
     defineField({
       name: 'figure',
       type: FigureType.name,
+    }),
+    defineField({
+      name: 'fig',
+      type: FigType.name,
     }),
     defineField({
       name: 'horizontalRule',

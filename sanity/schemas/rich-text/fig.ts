@@ -4,20 +4,11 @@ import { defineField, defineType } from 'sanity'
 // import FigurePreview from './components/FigurePreview'
 
 export default defineType({
-  name: 'figure',
-  type: 'object',
+  name: 'fig',
+  type: 'image',
   icon: ImageIcon,
-  title: 'Figure',
-
-  deprecated: {
-    reason: 'Object schema type does not support image drag-and-drop. Use Fig instead.'
-  },
-
+  title: 'Fig',
   fields: [
-    defineField({
-      name: 'image',
-      type: 'image',
-    }),
     defineField({
       name: 'alt',
       type: 'string',
@@ -31,7 +22,6 @@ export default defineType({
   ],
   preview: {
     select: {
-      media: 'image',
       title: 'caption',
     },
   },
