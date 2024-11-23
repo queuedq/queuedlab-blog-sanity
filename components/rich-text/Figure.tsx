@@ -5,7 +5,8 @@ import { client } from '@/sanity/lib/client'
 import { useNextSanityImage } from '@/sanity/lib/utils'
 
 export default function Figure({ value }) {
-  const imageProps = useNextSanityImage(value.image)
+  const image = value.asset ? value : value.image // TODO: remove after figure migration
+  const imageProps = useNextSanityImage(image)
 
   return (
     <figure>
@@ -24,7 +25,8 @@ export default function Figure({ value }) {
 }
 
 export function FigureRss({ value }) {
-  const url = urlBuilder(client).image(value.image).url()
+  const image = value.asset ? value : value.image // TODO: remove after figure migration
+  const url = urlBuilder(client).image(image).url()
 
   return (
     <figure>
