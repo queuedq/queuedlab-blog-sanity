@@ -12,7 +12,7 @@ export default function AlertBanner({
   if (!preview) return null
 
   return (
-    <div className="border-b border-accent-7 bg-accent-7 text-white">
+    <div className="bg-neutral-700 text-white">
       <Container>
         <div className="px-5 py-2 text-center text-sm">
           {loading ? 'Loading... ' : 'This page is a preview. '}
