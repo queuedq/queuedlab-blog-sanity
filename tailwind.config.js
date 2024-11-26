@@ -23,10 +23,6 @@ module.exports = {
     },
     extend: {
       colors: {
-        // brand: '#8a2ae2',
-        // https://maketintsandshades.com/#8a2ae2
-      },
-      textColor: {
         // #8b9bb2 is slightly darker version of slate-400. APCA Lc on white:
         // - slate-400 : 50.2
         // - #8b9bb2   : 54.3
@@ -34,12 +30,11 @@ module.exports = {
         // https://cliambrown.com/contrast/
         // https://colorcontrast.app/
         'category-menu': '#8b9bb2',
+        link: '#0e7ade',
       },
-      spacing: {
-        28: '7rem',
-      },
+      // https://tailwindcss.com/docs/letter-spacing
       letterSpacing: {
-        tighter: '-.04em',
+        tight: '-.015em', // originally -.025em
       },
       lineHeight: {
         tight: 1.2,

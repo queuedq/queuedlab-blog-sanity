@@ -46,6 +46,13 @@ export const postsByCategoryQuery = groq`
   ${postFields}
 }`
 
+// $tag_slug instead of $tag because Sanity thinks that's a mistake (cf. QueryParams type)
+// > you're using a fetch option as a GROQ parameter, this is likely a mistake
+export const postsByTagQuery = groq`
+*[_type == "post" && $tag_slug in tags[]->slug.current] | order(date desc, _updatedAt desc) {
+  ${postFields}
+}`
+
 export const rssFeedQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc)[0...10] {
   content,
@@ -72,5 +79,15 @@ export const categoryQuery = groq`
   _id,
   name,
   color,
+  "slug": slug.current,
+}`
+
+////////////////////////////////
+// Tag
+
+export const tagQuery = groq`
+*[_type == "postTag" && slug.current == $slug][0] {
+  _id,
+  name,
   "slug": slug.current,
 }`

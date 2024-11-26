@@ -6,6 +6,7 @@ import { postUrl, staticOgImageUrl } from '@/app/utils/urls'
 import ContentBody from '@/components/ContentBody'
 import Giscus from '@/components/Giscus'
 import Container from '@/components/layout/Container'
+import PostFooter from '@/components/post/PostFooter'
 import PostHeader from '@/components/post/PostHeader'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
 import { loadPost } from '@/sanity/loader/loadQuery'
@@ -42,6 +43,7 @@ export default async function PostPage({
       <article>
         <PostHeader post={post} />
         <ContentBody content={post.content} />
+        <PostFooter post={post} />
       </article>
       <div className="mt-16">
         <Giscus />

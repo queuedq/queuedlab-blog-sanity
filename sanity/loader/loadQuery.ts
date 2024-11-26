@@ -11,10 +11,12 @@ import {
   postIdQuery,
   postQuery,
   postsByCategoryQuery,
+  postsByTagQuery,
   rssFeedQuery,
   settingsQuery,
+  tagQuery,
 } from '@/sanity/lib/queries'
-import { Category, IdOnly, Page, Post, Settings } from '@/types'
+import { Category, IdOnly, Page, Post, Settings, Tag } from '@/types'
 
 const serverClient = client.withConfig({
   token: process.env.SANITY_API_READ_TOKEN,
@@ -104,6 +106,14 @@ export function loadPostsByCategory(category: string) {
   )
 }
 
+export function loadPostsByTag(tag_slug: string) {
+  return loadQuery<Post[]>(
+    postsByTagQuery,
+    { tag_slug },
+    { next: { tags: ['post'] } },
+  )
+}
+
 export function loadRssFeed() {
   return loadQuery<Post[]>(rssFeedQuery, {}, { next: { tags: ['post'] } })
 }
@@ -128,4 +138,11 @@ export function loadCategory(slug: string) {
     { slug },
     { next: { tags: ['category'] } },
   )
+}
+
+////////////////////////////////
+// Tag
+
+export function loadTag(slug: string) {
+  return loadQuery<Tag | null>(tagQuery, { slug }, { next: { tags: ['tag'] } })
 }

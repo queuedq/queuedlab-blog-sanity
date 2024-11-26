@@ -82,8 +82,8 @@ export default defineType({
       initialValue: () => new Date().toISOString(),
     }),
     defineField({
-      name: 'tag',
-      title: 'Tag',
+      name: 'tags',
+      title: 'Tags',
       type: 'array',
       of: [
         {

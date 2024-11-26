@@ -58,7 +58,7 @@
 
 /* link */
 .portableText a {
-  @apply border-[#0e7ade] font-medium text-[#0e7ade];
+  @apply border-link font-medium text-link;
 }
 .portableText a:hover {
   @apply underline;
